@@ -17,7 +17,7 @@ var isMyFavoriteFood = function(food) {
 var isThisMyFavorite = isMyFavoriteFood(food);
 
 //----------------
-//const, =>, class, template literals, enhanced object literals (foo: foo, -> foo,)
+//const, class, template literals, enhanced object literals (foo: foo, -> foo,)
 
 var User = function(options) {
   this.username = options.username;
