@@ -4,7 +4,7 @@
   "description": "LambdaSchool's JavaScript Mini-Bootcamp Homework 1",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/eslint tests/*.js && ./node_modules/.bin/eslint src/*.js && jest",
+    "test": "eslint tests/*.js && eslint src/*.js && jest",
     "test:watch": "npm test -- --watch"
   },
   "repository": {
