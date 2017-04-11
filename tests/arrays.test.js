@@ -38,7 +38,7 @@ describe('arrays', () => {
     it('should reduce the array\'s contents to a single value', () => {
       const arr = [1, 2, 3, 4, 5];
       const result = arrayMethods.reduce(arr, (memo, num) => (memo + num));
-      expect(result).toBe(15);
+      expect(result).toBe(16);
     });
     it('should accept a memo argument', () => {
       const arr = [1, 2, 3, 4, 5];
