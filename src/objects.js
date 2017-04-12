@@ -38,7 +38,7 @@ const pairs = (obj) => {
   Object.keys(obj).forEach((key) => {
     const pair = (this.key, this.value);
     list.push(pair);
-  })
+  });
 };
 
 const invert = (obj) => {

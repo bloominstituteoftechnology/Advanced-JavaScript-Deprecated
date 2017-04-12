@@ -5,9 +5,10 @@
 const nFibonacci = (n) => {
   // fibonacci sequence: 1 2 3 5 8 13 ...
   // return the nth number in the sequence
-  for (let i = 0; i <=n; i++) {
+  for (let i = 0; i <= n; i++) {
     return i;
   }
+  return false;
 };
 
 const nFactorial = (n) => {
@@ -16,6 +17,7 @@ const nFactorial = (n) => {
   for (let i = n; i > 0; i--) {
     return n * (n - 1);
   }
+  return false;
 };
 
 const checkMatchingLeaves = (obj) => {
