@@ -42,4 +42,4 @@ const addArgs = (...args) => args.reduce((acc, val) => acc + val, 0);
 
 const argsToCb = (cb, ...args) => cb(...args);
 
-const result = argsToCb(addArgs, 1, 2, 3, 4, 5); //result should be 15
+const result = argsToCb(addArgs, 1, 2, 3, 4, 5); //the result should be 15
