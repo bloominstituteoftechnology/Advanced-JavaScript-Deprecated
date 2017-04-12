@@ -28,9 +28,8 @@ describe('arrays', () => {
     it('should pass each item into the transform function', () => {
       const arr = [1, 2, 3];
       const mappedArr = arrayMethods.map(arr, n => (n * 2));
-      expect(mappedArr[0]).toBe(2);
-      expect(mappedArr[1]).toBe(4);
-      expect(mappedArr[2]).toBe(6);
+      console.log('>>>mappedArr', mappedArr);
+      expect(mappedArr).toEqual([2, 4, 6]);
     });
   });
 
@@ -44,6 +43,11 @@ describe('arrays', () => {
       const arr = [1, 2, 3, 4, 5];
       const result = arrayMethods.reduce(arr, (memo, num) => (memo + num), 10);
       expect(result).toBe(25);
+    });
+    it('should handle any type of data in the array', () => {
+      const arr = ['h', 'e', 'l', 'l', 'o', '!'];
+      const result = arrayMethods.reduce(arr, (memo, num) => (memo + num));
+      expect(result).toBe('hello!');
     });
   });
 
