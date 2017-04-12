@@ -28,7 +28,6 @@ describe('arrays', () => {
     it('should pass each item into the transform function', () => {
       const arr = [1, 2, 3];
       const mappedArr = arrayMethods.map(arr, n => (n * 2));
-      console.log('>>>mappedArr', mappedArr);
       expect(mappedArr).toEqual([2, 4, 6]);
     });
   });
