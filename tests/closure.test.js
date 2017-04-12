@@ -66,7 +66,7 @@ describe('closure', () => {
     it('The cached function should return the correct result', () => {
       const foo = x => (x * x);
       const cachedFunction = closureMethods.cacheFunction(foo);
-      expect(cachedFunction(5, 5)).toBe(25);
+      expect(cachedFunction(5)).toBe(25);
     });
     it('should cache function results and not rerun the original callback if the same arguments are presented', () => {
       const foo = jest.fn();
