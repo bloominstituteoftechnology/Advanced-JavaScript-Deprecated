@@ -5,19 +5,20 @@
 const nFibonacci = (n) => {
   // fibonacci sequence: 1 2 3 5 8 13 ...
   // return the nth number in the sequence
-  for (let i = 0; i <= n; i++) {
-    return i;
+  if (n < 2) {
+    return 1;
   }
-  return false;
+  return this.nFibonacci(n - 1) + this.nFibonacci(n - 2);
 };
+
 
 const nFactorial = (n) => {
   // factorial example: !5 = 5 * 4 * 3 * 2 * 1
   // return the factorial of `n`
-  for (let i = n; i > 0; i--) {
-    return n * (n - 1);
+  if (n < 2) {
+    return 1;
   }
-  return false;
+  return n * nFactorial(n - 1);
 };
 
 const checkMatchingLeaves = (obj) => {

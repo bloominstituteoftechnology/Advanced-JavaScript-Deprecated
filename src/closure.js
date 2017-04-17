@@ -7,17 +7,37 @@ const counter = () => {
   // Example: const newCounter = counter();
   // newCounter(); // 1
   // newCounter(); // 2
+  let increment = 0;
+  return () => (++increment);
 };
 
 const counterFactory = () => {
-  // Return an object that has two methods called `increment` and `decrement`.
+  // **Return an **object that has two methods called `increment` and `decrement`.
   // `increment` should increment a counter variable in closure scope and return it.
   // `decrement` should decrement the counter variable and return it.
+  let counterVar = 0;
+  const increment = function increment() {
+    counterVar++;
+  };
+  const decrement = function decrement() {
+    counterVar--;
+  };
+  return {
+    increment: increment(),
+    decrement: decrement(),
+  };
 };
 
 const limitFunctionCallCount = (cb, n) => {
   // Should return a function that invokes `cb`.
   // The returned function should only allow `cb` to be invoked `n` times.
+  let countTimes = 0;
+  const callN = function callN() {
+    for (let i = 0; countTimes < n; countTimes++) {
+      return cb(n);
+    }
+    return callN();
+  };
 };
 
 const cacheFunction = (cb) => {
