@@ -16,15 +16,11 @@ const counterFactory = () => {
   // `increment` should increment a counter variable in closure scope and return it.
   // `decrement` should decrement the counter variable and return it.
   let counterVar = 0;
-  const increment = function increment() {
-    counterVar++;
-  };
-  const decrement = function decrement() {
-    counterVar--;
-  };
   return {
-    increment: increment(),
-    decrement: decrement(),
+    increment: () =>
+    (counterVar++),
+    decrement: () =>
+    (counterVar--),
   };
 };
 
@@ -32,15 +28,20 @@ const limitFunctionCallCount = (cb, n) => {
   // Should return a function that invokes `cb`.
   // The returned function should only allow `cb` to be invoked `n` times.
   let countTimes = 0;
-  const callN = function callN() {
-    for (let i = 0; countTimes < n; countTimes++) {
-      return cb(n);
-    }
-    return callN();
+  return (x) => {
+    if (countTimes === n) return null;
+    countTimes++;
+    return cb(x);
   };
 };
 
 const cacheFunction = (cb) => {
+  const cache = {};
+  return (input) => {
+    if (Object.prototype.hasOwnProperty.call(cache, input)) return cache[input];
+    cache[input] = cb(input);
+    return cache[input];
+  };
   // Should return a funciton that invokes `cb`.
   // A cache (object) should be kept in closure scope.
   // The cache should keep track of all arguments have been used to invoke this function.

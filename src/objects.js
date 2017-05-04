@@ -18,11 +18,10 @@ const values = (obj) => {
   // Return all of the values of the object's own properties.
   // Ignore functions
   // http://underscorejs.org/#values
-  const strings = [];
-  Object.values(obj).forEach((value) => {
-    strings.push(value);
-  });
-  return strings;
+//   const strings = [];
+//   Object.values(obj).forEach((value) => {
+//     return value;
+//   });
 };
 
 const mapObject = (obj, cb) => {
@@ -70,7 +69,7 @@ const defaults = (obj, defaultProps) => {
   // two objects, obj with empty props matching props in defaultProps
   // insert values from defaultProps into obj to complete and return it
   Object.keys(obj).forEach((key) => {
-    if (obj[key] === null) {
+    if (obj[key] === null || obj[key].length < 1) {
       obj[key] = defaultProps[key];
     }
   });
