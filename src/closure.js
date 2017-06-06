@@ -7,12 +7,43 @@ const counter = () => {
   // Example: const newCounter = counter();
   // newCounter(); // 1
   // newCounter(); // 2
+  const count = () => {
+    let x = 0;
+    x++;
+    return x;
+  };
+  return count;
 };
 
 const counterFactory = () => {
   // Return an object that has two methods called `increment` and `decrement`.
   // `increment` should increment a counter variable in closure scope and return it.
   // `decrement` should decrement the counter variable and return it.
+  // class factory {
+  //   constructor(x = 0) {
+  //     this.x = x;
+  //   }
+  //   this.increment() = this.x => this.x++;
+  //   this.decrement() = this.x => this.x--;
+  // }
+  // return factory;
+  // const obj = () => {
+  //   let x = 0;
+  //   const increment() {
+  //     x++;
+  //     return x;
+  //   };
+  //   const decrement() {
+  //     x--;
+  //     return x;
+  //   };
+  // };
+  // return obj;
+  let count = 0;
+  return {
+    increment: () => (++count),
+    decrement: () => (--count),
+  };
 };
 
 const limitFunctionCallCount = (cb, n) => {
