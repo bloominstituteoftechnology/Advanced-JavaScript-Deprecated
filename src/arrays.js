@@ -14,18 +14,40 @@ const each = (elements, cb) => {
 const map = (elements, cb) => {
   // Produces a new array of values by mapping each value in list through a transformation function (iteratee).
   // Return the new array.
+  const newArr = [];
+  for (let i = 0; i < elements.length; i++) {
+    newArr.append(cb(elements[i]));
+  }
+  return newArr;
 };
 
 const reduce = (elements, cb, memo) => {
   // Combine all elements into a single value going from left to right.
   // Elements will be passed one by one into `cb`.
   // `memo` is the starting value.  If `memo` is undefined then make `elements[0]` the initial value.
+  let temp = memo;
+  if (memo === undefined) {
+    temp = elements[0];
+  }
+  for (let i = 0; i < elements.length; i++) {
+    cb(elements[i], temp);
+  }
 };
 
 const find = (elements, cb) => {
   // Look through each value in `elements` and pass each element to `cb`.
   // If `cb` returns `true` then return that element.
   // Return `undefined` if no elements pass the truth test.
+  const temp = [];
+  for (let i = 0; i < elements.length; i++) {
+    if (cb(elements[i]) === true) {
+      temp.push(elements[i]);
+    }
+  }
+  if (temp.length === 0) {
+    return undefined;
+  }
+  return temp[0];
 };
 
 const filter = (elements, cb) => {
