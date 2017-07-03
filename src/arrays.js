@@ -3,17 +3,23 @@
 
 
 const each = (elements, cb) => {
+  for (let i = 0; i < elements.length; i++) {
+    cb(elements[i], i);
+  }
   // Iterates over a list of elements, yielding each in turn to the `cb` function.
   // This only needs to work with arrays.
   // based off http://underscorejs.org/#each
 };
 
 const map = (elements, cb) => {
+  const newArr = elements.map(cb);
+  return newArr;
   // Produces a new array of values by mapping each value in list through a transformation function (iteratee).
   // Return the new array.
 };
 
 const reduce = (elements, cb, memo) => {
+  elements.reduce(cb, memo);
   // Combine all elements into a single value going from left to right.
   // Elements will be passed one by one into `cb`.
   // `memo` is the starting value.  If `memo` is undefined then make `elements[0]` the initial value.
