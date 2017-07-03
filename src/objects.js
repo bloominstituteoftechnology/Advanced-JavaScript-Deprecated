@@ -1,8 +1,6 @@
 // Complete the following underscore functions.
 // Reference http://underscorejs.org/ for examples.
 
-/* eslint-disable no-unused-vars */
-
 const keys = (obj) => {
   // Retrieve all the names of the object's properties.
   // Return the keys as strings in an array.
@@ -45,5 +43,5 @@ module.exports = {
   mapObject,
   pairs,
   invert,
-  defaults,
+  defaults
 };

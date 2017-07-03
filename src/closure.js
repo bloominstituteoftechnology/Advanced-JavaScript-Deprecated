@@ -1,7 +1,5 @@
 // Complete the following functions.
 
-/* eslint-disable no-unused-vars */
-
 const counter = () => {
   // Return a function that when invoked increments and returns a counter variable.
   // Example: const newCounter = counter();
@@ -35,5 +33,5 @@ module.exports = {
   counter,
   counterFactory,
   cacheFunction,
-  limitFunctionCallCount,
+  limitFunctionCallCount
 };

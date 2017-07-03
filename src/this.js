@@ -2,8 +2,6 @@
 // There are no tests for this file.
 // To verify your code works you can run this file using `node this.js` while in the `/src` folder
 
-/* eslint-disable no-useless-constructor, no-unused-vars */
-
 class User {
   constructor(options) {
     // set a username and password property on the user object that is created
@@ -12,8 +10,6 @@ class User {
   // this method should take in a string and compare it to the object's password property
   // return `true` if they match, otherwise return `false`
 }
-
-/* eslint-enable no-useless-constructor */
 
 const me = new User({ username: 'LambdaSchool', password: 'correcthorsebatterystaple' });
 const result = me.checkPassword('correcthorsebatterystaple'); // should return `true`
@@ -25,7 +21,6 @@ const checkPassword = function comparePasswords(passwordToCompare) {
   // note that we use the `function` keyword and not `=>`
 };
 
-/* eslint-enable no-unused-vars */
 // invoke `checkPassword` on `me` by explicitly setting the `this` context
 // use .call, .apply, and .bind
 
