@@ -9,7 +9,6 @@ const each = (elements, cb) => {
   for (let i = 0; i < elements.length; i++) {
     cb(elements[i], i);
   }
-
 };
 
 const map = (elements, cb) => {
@@ -32,12 +31,11 @@ const reduce = (elements, cb, memo) => {
       memo = cb(memo, elements[i]);
     }
     return memo;
-  } else {
-      for (let i = 0; i < elements.length; i++) {
-        memo = cb(memo, elements[i]);
-      }
-      return memo;
   }
+  for (let i = 0; i < elements.length; i++) {
+    memo = cb(memo, elements[i]);
+  }
+  return memo;
 };
 
 const find = (elements, cb) => {
