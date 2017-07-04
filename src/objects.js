@@ -59,8 +59,8 @@ const defaults = (obj, defaultProps) => {
   // Return `obj`.
   // http://underscorejs.org/#defaults
   for (const key in defaultProps) {
-    if (key  in obj){
-      continue
+    if (key in obj){
+      continue;
     } else {
       obj[key] = defaultProps[key];
     }
