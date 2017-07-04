@@ -19,19 +19,30 @@ const map = (elements, cb) => {
 };
 
 const reduce = (elements, cb, memo) => {
-  elements.reduce(cb, memo);
   // Combine all elements into a single value going from left to right.
   // Elements will be passed one by one into `cb`.
   // `memo` is the starting value.  If `memo` is undefined then make `elements[0]` the initial value.
 };
 
 const find = (elements, cb) => {
+  for (let i = 0; i < elements.length; i++) {
+    if (cb(elements[i])) {
+      return elements[i];
+    }
+  }
   // Look through each value in `elements` and pass each element to `cb`.
   // If `cb` returns `true` then return that element.
   // Return `undefined` if no elements pass the truth test.
 };
 
 const filter = (elements, cb) => {
+  const newArr = [];
+  for (let i = 0; i < elements.length; i++) {
+    if (cb(elements[i])) {
+      return newArr.push(elements[i]);
+    }
+    return [];
+  }
   // Similar to `find` but you will return an array of all elements that passed the truth test
   // Return an empty array if no elements pass the truth test
 };
