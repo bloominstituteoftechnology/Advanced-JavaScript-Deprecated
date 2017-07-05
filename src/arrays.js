@@ -39,6 +39,15 @@ const reduce = (elements, cb, memo) => {
   // Elements will be passed one by one into `cb`.
   // `memo` is the starting value.  If `memo` is undefined then make `elements[0]` the initial value.
 
+  // Helping Padjo
+  // let result = memo || elements[0];
+  // if (!memo) elements.shift(); // <---- superfluous
+  // for (let i = 0; i < elements.length; i++) {
+  //   // console.log('pat' + cb(elements[i], i));
+  //   result += cb(elements[i], i);
+  // }
+  // return result;
+
   // Ryan's solution - no string/number check, nice!
   // if (memo === undefined) {
   //   memo = elements[0];
@@ -53,17 +62,17 @@ const reduce = (elements, cb, memo) => {
   // return memo;
 
   // version 1 - elements NOT passed into cb
-  let sum;
-  if (typeof (elements[0]) === 'number') {
-    sum = 0;
-    if (memo) sum = memo;
-  } else if (typeof (elements[0]) === 'string') {
-    sum = '';
-    if (memo) sum = memo;
-  }
-  for (let i = 0; i < elements.length; i++) {
-    sum += elements[i];
-  } return sum;
+  // let sum;
+  // if (typeof (elements[0]) === 'number') {
+  //   sum = 0;
+  //   if (memo) sum = memo;
+  // } else if (typeof (elements[0]) === 'string') {
+  //   sum = '';
+  //   if (memo) sum = memo;
+  // }
+  // for (let i = 0; i < elements.length; i++) {
+  //   sum += elements[i];
+  // } return sum;
 
   // version 2 - elements passed into cb
   // let sum;
