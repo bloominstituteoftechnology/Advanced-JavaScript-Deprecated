@@ -46,10 +46,10 @@ const filter = (elements, cb) => {
   const newArr = [];
   for (let i = 0; i < elements.length; i++) {
     if (cb(elements[i])) {
-      return newArr.push(elements[i]);
+      newArr.push(elements[i]);
     }
-    return [];
   }
+  return newArr;
   // Similar to `find` but you will return an array of all elements that passed the truth test
   // Return an empty array if no elements pass the truth test
 };
