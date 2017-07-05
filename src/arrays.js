@@ -25,7 +25,7 @@ const each = (elements, cb) => {
 const map = (elements, cb) => {
   // Produces a new array of values by mapping each value in list through a transformation function (iteratee).
   // Return the new array.
-  // version 1
+  // version 1 √
   // // const newArray = new Array();
   // const newArray = [];
   // for (let i = 0; i < elements.length; i++) {
@@ -33,7 +33,7 @@ const map = (elements, cb) => {
   // }
   // return newArray;
 
-  // version 2
+  // version 2 √
   // solution using previous function
   // const results = [];
   // each(elements, (item) => { // <---- Calls above "each" method *****************************
@@ -41,7 +41,7 @@ const map = (elements, cb) => {
   // });
   // return results;
 
-  // version 3
+  // version 3 √
   // solution using map() - map returns a new array of elements
   return elements.map(cb);
 };
@@ -50,30 +50,8 @@ const reduce = (elements, cb, memo) => {
   // Combine all elements into a single value going from left to right.
   // Elements will be passed one by one into `cb`.
   // `memo` is the starting value.  If `memo` is undefined then make `elements[0]` the initial value.
-
-  // Helping Padjo
-  // let result = memo || elements[0];
-  // if (!memo) elements.shift(); // <---- superfluous
-  // for (let i = 0; i < elements.length; i++) {
-  //   // console.log('pat' + cb(elements[i], i));
-  //   result += cb(elements[i], i);
-  // }
-  // return result;
-
-  // Ryan's solution - no string/number check, nice!
-  // if (memo === undefined) {
-  //   memo = elements[0];
-  //   for (let i = 1; i < elements.length; i++) {
-  //     memo = cb(memo, elements[i]);
-  //   }
-  //   return memo;
-  // }
-  // for (let i = 0; i < elements.length; i++) {
-  //   memo = cb(memo, elements[i]);
-  // }
-  // return memo;
-
-  // version 1 - elements NOT passed into cb
+  // version 1 √
+  // elements NOT passed into cb
   let sum;
   if (typeof (elements[0]) === 'number') {
     sum = 0;
@@ -86,7 +64,8 @@ const reduce = (elements, cb, memo) => {
     sum += elements[i];
   } return sum;
 
-  // version 2 - elements passed into cb
+  // version 2 √
+  // elements passed into cb
   // let sum;
   // if (typeof (elements[0]) === 'number') {
   //   sum = 0;
@@ -98,13 +77,36 @@ const reduce = (elements, cb, memo) => {
   // for (let i = 0; i < elements.length; i++) {
   //   sum = cb(sum, elements[i]);
   // } return sum;
+
+  // Helping Padjo
+  // let result = memo || elements[0];
+  // if (!memo) elements.shift(); // <---- superfluous
+  // for (let i = 0; i < elements.length; i++) {
+  //   // console.log('pat' + cb(elements[i], i));
+  //   result += cb(elements[i], i);
+  // }
+  // return result;
+
+  // Ryan's solution √
+  // no string/number check, nice!
+  // if (memo === undefined) {
+  //   memo = elements[0];
+  //   for (let i = 1; i < elements.length; i++) {
+  //     memo = cb(memo, elements[i]);
+  //   }
+  //   return memo;
+  // }
+  // for (let i = 0; i < elements.length; i++) {
+  //   memo = cb(memo, elements[i]);
+  // }
+  // return memo;
 };
 
 const find = (elements, cb) => {
   // Look through each value in `elements` and pass each element to `cb`.
   // If `cb` returns `true` then return that element.
   // Return `undefined` if no elements pass the truth test.
-  // version 1
+  // version 1 √
   for (let i = 0; i < elements.length; i++) {
     if (cb(elements[i]) === true) {
       return elements[i];
@@ -116,7 +118,7 @@ const find = (elements, cb) => {
 const filter = (elements, cb) => {
   // Similar to `find` but you will return an array of all elements that passed the truth test
   // Return an empty array if no elements pass the truth test
-  // version 1
+  // version 1 √
   const trueArray = []; // ----> WHY ISN'T THIS let???
   for (let i = 0; i < elements.length; i++) {
     if (cb(elements[i]) === true) {
@@ -129,7 +131,7 @@ const filter = (elements, cb) => {
 const flatten = (elements) => {
   // Flattens a nested array (the nesting can be to any depth).
   // Example: flatten([1, [2], [3, [[4]]]]); => [1, 2, 3, 4];
-  // version 1
+  // version 1 √
   let flat = [];
   for (let i = 0; i < elements.length; i++) {
     if (elements[i] instanceof Array) {
