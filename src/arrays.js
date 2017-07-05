@@ -11,7 +11,7 @@ const each = (elements, cb) => {
     cb(elements[i], i); // I AM CONFUSED, WHY DOES CB TAKE 2 PARAMETERS??? Arbitrary - just emulating forEach
   }
 
-  // version 2 - try with forEach √
+  // version 2 - using forEach √
   // elements.forEach((value, index) => {
   //   cb(value, index);
   // });
@@ -35,44 +35,39 @@ const map = (elements, cb) => {
 
   // version 2 √
   // solution using previous function
-  // const results = [];
-  // each(elements, (item) => { // <---- Calls above "each" method *****************************
-  //   results.push(cb(item));
-  // });
-  // return results;
+  const results = [];
+  each(elements, (item) => { // <---- Calls above "each" method *****************************
+    results.push(cb(item));
+  });
+  return results;
 
   // version 3 √
   // solution using map() - map returns a new array of elements
-  return elements.map(cb);
+  // return elements.map(cb);
 };
 
 // Modifying the parameter with a default value:
 // const reduce = (elements, cb, memo = elements.shift()) => {
-//   for (let i = 0; i < elements.length; i++) {
-//     memo = cb(memo, elements[i]);
-//   }
-//   return memo;
+  // Combine all elements into a single value going from left to right.
+  // Elements will be passed one by one into `cb`.
+  // `memo` is the starting value.  If `memo` is undefined then make `elements[0]` the initial value.
+  // version 1 √
+  // for (let i = 0; i < elements.length; i++) {
+  //   memo = cb(memo, elements[i]);
+  // }
+  // return memo;
+
+  // version 2 - NOPE
+  // using previous solutions
+  // return map(memo, cb);
 // };
+// NOT modifying parameter default values
 const reduce = (elements, cb, memo) => {
   // Combine all elements into a single value going from left to right.
   // Elements will be passed one by one into `cb`.
   // `memo` is the starting value.  If `memo` is undefined then make `elements[0]` the initial value.
   // version 1 √
   // elements NOT passed into cb
-  let sum;
-  if (typeof (elements[0]) === 'number') {
-    sum = 0;
-    if (memo) sum = memo;
-  } else if (typeof (elements[0]) === 'string') {
-    sum = '';
-    if (memo) sum = memo;
-  }
-  for (let i = 0; i < elements.length; i++) {
-    sum += elements[i];
-  } return sum;
-
-  // version 2 √
-  // elements passed into cb
   // let sum;
   // if (typeof (elements[0]) === 'number') {
   //   sum = 0;
@@ -82,10 +77,24 @@ const reduce = (elements, cb, memo) => {
   //   if (memo) sum = memo;
   // }
   // for (let i = 0; i < elements.length; i++) {
-  //   sum = cb(sum, elements[i]);
+  //   sum += elements[i];
   // } return sum;
 
-  // version 3
+  // version 2 √
+  // elements passed into cb
+  let sum;
+  if (typeof (elements[0]) === 'number') {
+    sum = 0;
+    if (memo) sum = memo;
+  } else if (typeof (elements[0]) === 'string') {
+    sum = '';
+    if (memo) sum = memo;
+  }
+  for (let i = 0; i < elements.length; i++) {
+    sum = cb(sum, elements[i]);
+  } return sum;
+
+  // version 3 - NOPE
   // solution using reduce()
   // const total = elements.reduce(cb, memo);
   // return total;
@@ -114,7 +123,7 @@ const find = (elements, cb) => {
     if (cb(elements[i]) === true) {
       return elements[i];
     }
-    // return undefined; // WTF? Why does commenting this out make it pass?????
+    // return undefined; // WTF? Why does uncommenting this out make it fail?????
   }
 };
 
