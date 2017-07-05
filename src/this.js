@@ -22,12 +22,12 @@ class User {
 const me = new User({ username: 'LambdaSchool', password: 'correcthorsebatterystaple' });
 const result = me.checkPassword('correcthorsebatterystaple'); // should return `true`
 
-const checkPassword = function comparePasswords(passwordToCompare) {
+const checkPassword = function comparePasswords(passwordToCompare1) {
   // recreate the `checkPassword` method that you made on the `User` class
   // use `this` to access the object's `password` property.
   // do not modify this function's parameters
   // note that we use the `function` keyword and not `=>`
-  const word = passwordToCompare;
+  const word = passwordToCompare1;
   if (word === this.password) {
     return true;
   }
@@ -38,9 +38,9 @@ const checkPassword = function comparePasswords(passwordToCompare) {
 // use .call, .apply, and .bind
 
 // .call
-checkPassword.call(me, passwordToCompare);
+checkPassword.call(me, 'badpassword');
 // .apply
-checkPassword.apply(me, [passwordToCompare]);
+checkPassword.apply(me, ['badbadbadpassword']);
 // .bind
 const boundCheckPassword = checkPassword.bind(me);
-boundCheckPassword(passwordToCompare);
+boundCheckPassword('blahhhhh');
