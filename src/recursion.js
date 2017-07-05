@@ -20,6 +20,18 @@ const nFactorial = (n) => {
 const checkMatchingLeaves = (obj) => {
   // return true if every property on `obj` is the same
   // otherwise return false
+  const trees = Object.keys(obj);
+  const treeKeys1 = Object.keys(trees[0]);
+  const treeKeys2 = Object.keys(trees[1]);
+  const n = treeKeys1.length;
+  const m = treeKeys2.length;
+  if (n !=== m) {
+    return false;
+  }
+  let z = 0;
+  if ((obj[1][(treeKeys1[z])]) === (Obj[2][(treeKeys1[z])]) {
+    return checkMatchingLeaves(obj), z;
+  }
 };
 
 /* eslint-enable no-unused-vars */
