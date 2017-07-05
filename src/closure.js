@@ -24,10 +24,16 @@ const limitFunctionCallCount = (cb, n) => {
   // Should return a function that invokes `cb`.
   // The returned function should only allow `cb` to be invoked `n` times.
   let num = 0;
-  return function inner() {
-    num += 1;
-    while (num <= n) {
-      return cb();
+  return function inner () {
+    num ++;
+    if(num <= n) {
+      if (arguments.length) {
+        return cb.apply(null, arguments);
+      } else {
+	return cb();
+      } 
+    } else {
+      return null;
     }
   };
 };
