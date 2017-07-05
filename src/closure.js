@@ -5,18 +5,26 @@ const counter = () => {
   // Example: const newCounter = counter();
   // newCounter(); // 1
   // newCounter(); // 2
-  // version 1
-  let value = 0;
+  // version 1 √
+  // let value = 0;
+  // const increment = () => value += 1;
+  // return increment;
+
+  // verion 2 √
+  // let value = 0;
   // const increment = i => value += 1; // Interesting that this works - why?
-  const increment = () => value += 1;
-  return increment;
+  // return increment;
+
+  // version 3 √
+  let value = 0;
+  return () => value += 1;
 };
 
 const counterFactory = () => {
   // Return an object that has two methods called `increment` and `decrement`.
   // `increment` should increment a counter variable in closure scope and return it.
   // `decrement` should decrement the counter variable and return it.
-  // version 1
+  // version 1 ???
   let value = 0;
   const obj = {
     increment() {
