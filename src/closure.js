@@ -67,41 +67,30 @@ const counterFactory = () => {
 const limitFunctionCallCount = (cb, n) => {
   // Should return a function that invokes `cb`.
   // The returned function should only allow `cb` to be invoked `n` times.
-  // version 1 - NOPE
-  // let num = 0;
-  // return () => {
-  //   if (num < n) { return cb(); }
-  //   num++;
-  //   cb();
-  // };
+  // Ely's solution √
+//   let limit = 0;
+//   const funcToReturn = (x, y, z) => {
+//     if (limit < n) {
+//       limit += 1;
+//       return cb(x, y, z);
+//     }
+//     return null;
+//   };
+//   return funcToReturn;
+// };
 
+  // Sarah's solution
   let num = 0;
-  return function inner() {
+  return function inner(...args) {
     num++;
     if (num <= n) {
       if (arguments.length) {
-        return cb.apply(null, arguments);
-      } return cb();
-    } return null;
+        return cb(...args);
+      }
+      return cb();
+    }
+    return null;
   };
-
-  // let limit = 0;
-  // const funcToReturn = () => {
-  //   if (limit < n) {
-  //     limit += 1;
-  //     return cb();
-  //   }
-  //   return null;
-  // };
-  // return funcToReturn;
-
-  // version 2
-  // let callCount = 0;
-  // return () => {
-  //   callCount++;
-  //   if (callCount <= n) { return cb(); }
-  //   return null;
-  // };
 };
 
 const cacheFunction = (cb) => {
