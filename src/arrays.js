@@ -26,7 +26,7 @@ const map = (elements, cb) => {
   // Produces a new array of values by mapping each value in list through a transformation function (iteratee).
   // Return the new array.
   // version 1
-  // const newArray = new Array();
+  // // const newArray = new Array();
   // const newArray = [];
   // for (let i = 0; i < elements.length; i++) {
   //   newArray.push(cb(elements[i]));
