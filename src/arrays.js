@@ -53,7 +53,7 @@ const map = (elements, cb) => {
 //   }
 //   return memo;
 // };
-const reduce = (elements, cb, memo => {
+const reduce = (elements, cb, memo) => {
   // Combine all elements into a single value going from left to right.
   // Elements will be passed one by one into `cb`.
   // `memo` is the starting value.  If `memo` is undefined then make `elements[0]` the initial value.
