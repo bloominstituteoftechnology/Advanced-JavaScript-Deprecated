@@ -38,33 +38,32 @@ const reduce = (elements, cb, memo) => {
   // Combine all elements into a single value going from left to right.
   // Elements will be passed one by one into `cb`.
   // `memo` is the starting value.  If `memo` is undefined then make `elements[0]` the initial value.
-  // version 1
-  // if (memo === undefined) {
-  if (memo === null) {
-    // memo = elements[0];
-    // memo = 0;
-    memo = elements.shift();
+
+  // version 1 - elements NOT passed into cb
+  let sum;
+  if (typeof (elements[0]) === 'number') {
+    sum = 0;
+    if (memo) sum = memo;
+  } else if (typeof (elements[0]) === 'string') {
+    sum = '';
+    if (memo) sum = memo;
   }
-  let value = 0;
   for (let i = 0; i < elements.length; i++) {
-    value += elements[i];
-    // value += cb(elements[i]);
-  }
-  return value;
-  // return elements.reduce(cb, memo);
+    sum += elements[i];
+  } return sum;
 
-  // version 2
-  // memo = memo || 0;
-  // const test = elements.reduce(cb, memo);
-  // return test;
-
-  // version 3
-  // if (!memo) memo = elements.shift();
-  // // if (!memo) memo = elements[0]; // WHY DOESN'T THIS WORK???
-  // elements.forEach((item, index) => {
-  //   memo = cb(memo, item);
-  // });
-  // return memo;
+  // version 2 - elements passed into cb
+  // let sum;
+  // if (typeof (elements[0]) === 'number') {
+  //   sum = 0;
+  //   if (memo) sum = memo;
+  // } else if (typeof (elements[0]) === 'string') {
+  //   sum = '';
+  //   if (memo) sum = memo;
+  // }
+  // for (let i = 0; i < elements.length; i++) {
+  //   sum = cb(sum, elements[i]);
+  // } return sum;
 };
 
 const find = (elements, cb) => {
@@ -72,21 +71,22 @@ const find = (elements, cb) => {
   // If `cb` returns `true` then return that element.
   // Return `undefined` if no elements pass the truth test.
   // version 1
-  // for (let i = 0; i < elements.length; i++) {
-  //   if (cb(elements[i]) === true) {
-  //     return cb(elements[i];
-  //   } else return undefined;
-  // }
+  for (let i = 0; i < elements.length; i++) {
+    if (cb(elements[i]) === true) {
+      return elements[i];
+    }
+    // return undefined; // WTF? Why does commenting this out make it pass?????
+  }
 };
 
 const filter = (elements, cb) => {
   // Similar to `find` but you will return an array of all elements that passed the truth test
   // Return an empty array if no elements pass the truth test
   // version 1
-  const trueArray = [];
+  const trueArray = []; // ----> WHY ISN'T THIS let???
   for (let i = 0; i < elements.length; i++) {
     if (cb(elements[i]) === true) {
-      trueArray.push(cb(elements[i]));
+      trueArray.push(elements[i]);
     }
   }
   return trueArray;
@@ -96,23 +96,16 @@ const flatten = (elements) => {
   // Flattens a nested array (the nesting can be to any depth).
   // Example: flatten([1, [2], [3, [[4]]]]); => [1, 2, 3, 4];
   // version 1
-  // const flat = [];
-  // for (let i = 0; i < elements.length; i++) {
-  //   const temp = elements[i];
-  //   for (let j = 0; j < temp.length; j++) {
-  //     flat.push(temp[j]);
-  //   }
-  // }
-  // return flat;
-
-  // version 2
-  // const flat = [];
-  // return flat.flatten(elements);
-
-  // version 3
-  // const flattened = elements.reduce((a, b) => {
-  //   return a.concat(b);
-  // }, []);
+  let flat = [];
+  for (let i = 0; i < elements.length; i++) {
+    if (elements[i] instanceof Array) {
+      // flat = flat.push(flatten(elements[i]));
+      flat = flat.concat(flatten(elements[i]));
+    } else {
+      flat.push(elements[i]);
+    }
+  }
+  return flat;
 };
 
 /* eslint-enable no-unused-vars, max-len */
