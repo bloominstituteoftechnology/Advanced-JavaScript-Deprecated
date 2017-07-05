@@ -24,15 +24,42 @@ const counterFactory = () => {
   // Return an object that has two methods called `increment` and `decrement`.
   // `increment` should increment a counter variable in closure scope and return it.
   // `decrement` should decrement the counter variable and return it.
-  // version 1 ???
+  // version 1 - NOPE
+  // let value = 0;
+  // const obj = {
+  //   increment() { value += 1; }, // Ha - no return!!!
+  //   decrement() { value -= 1; }  // whoops!
+  // };
+  // return obj;
+
+  // version 2 - NOPE
+  // trying to tighten up code - Ha - but still no method returns!!!
+  // let value = 0;
+  // return {
+  //   increment() { value += 1; },
+  //   decrement() { value -= 1; }
+  // };
+
+  // version 3 √
+  // let value = 0;
+  // return {
+  //   increment() { return value += 1; },
+  //   decrement() { return value -= 1; }
+  // };
+
+  // version 4 √
+  // let value = 0;
+  // const obj = {
+  //   increment() { return value += 1; },
+  //   decrement() { return value -= 1; }
+  // };
+  // return obj;
+
+  // version 5 √
   let value = 0;
   const obj = {
-    increment() {
-      value += 1;
-    },
-    decrement() {
-      value -= 1;
-    }
+    increment: () => value += 1,
+    decrement: () => value -= 1
   };
   return obj;
 };
@@ -40,14 +67,41 @@ const counterFactory = () => {
 const limitFunctionCallCount = (cb, n) => {
   // Should return a function that invokes `cb`.
   // The returned function should only allow `cb` to be invoked `n` times.
-  // version 1
-  // let callCount = 0;
-  // const limit = () => {
-  //   if (callCount >= n) return;
-  //   callCount++;
+  // version 1 - NOPE
+  // let num = 0;
+  // return () => {
+  //   if (num < n) { return cb(); }
+  //   num++;
   //   cb();
   // };
-  // return limit;
+
+  let num = 0;
+  return function inner() {
+    num++;
+    if (num <= n) {
+      if (arguments.length) {
+        return cb.apply(null, arguments);
+      } return cb();
+    } return null;
+  };
+
+  // let limit = 0;
+  // const funcToReturn = () => {
+  //   if (limit < n) {
+  //     limit += 1;
+  //     return cb();
+  //   }
+  //   return null;
+  // };
+  // return funcToReturn;
+
+  // version 2
+  // let callCount = 0;
+  // return () => {
+  //   callCount++;
+  //   if (callCount <= n) { return cb(); }
+  //   return null;
+  // };
 };
 
 const cacheFunction = (cb) => {
