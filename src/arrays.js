@@ -39,6 +39,19 @@ const reduce = (elements, cb, memo) => {
   // Elements will be passed one by one into `cb`.
   // `memo` is the starting value.  If `memo` is undefined then make `elements[0]` the initial value.
 
+  // Ryan's solution - no string/number check, nice!
+  // if (memo === undefined) {
+  //   memo = elements[0];
+  //   for (let i = 1; i < elements.length; i++) {
+  //     memo = cb(memo, elements[i]);
+  //   }
+  //   return memo;
+  // }
+  // for (let i = 0; i < elements.length; i++) {
+  //   memo = cb(memo, elements[i]);
+  // }
+  // return memo;
+
   // version 1 - elements NOT passed into cb
   let sum;
   if (typeof (elements[0]) === 'number') {
