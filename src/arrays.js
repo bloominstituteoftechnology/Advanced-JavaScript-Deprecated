@@ -8,7 +8,7 @@ const each = (elements, cb) => {
   // based off http://underscorejs.org/#each
   // version 1
   for (let i = 0; i < elements.length; i++) {
-    cb(elements[i], i); // I AM CONFUSED, WHY DOES CB TAKE 2 PARAMETERS???
+    cb(elements[i], i); // I AM CONFUSED, WHY DOES CB TAKE 2 PARAMETERS??? Arbitrary - just emulating forEach
   }
 
   // version 2 - try with forEach √
@@ -27,11 +27,23 @@ const map = (elements, cb) => {
   // Return the new array.
   // version 1
   // const newArray = new Array();
-  const newArray = [];
-  for (let i = 0; i < elements.length; i++) {
-    newArray.push(cb(elements[i]));
-  }
-  return newArray;
+  // const newArray = [];
+  // for (let i = 0; i < elements.length; i++) {
+  //   newArray.push(cb(elements[i]));
+  // }
+  // return newArray;
+
+  // version 2
+  // solution using previous function
+  // const results = [];
+  // each(elements, (item) => { // <---- Calls above "each" method *****************************
+  //   results.push(cb(item));
+  // });
+  // return results;
+
+  // version 3
+  // solution using map() - map returns a new array of elements
+  return elements.map(cb);
 };
 
 const reduce = (elements, cb, memo) => {
@@ -62,17 +74,17 @@ const reduce = (elements, cb, memo) => {
   // return memo;
 
   // version 1 - elements NOT passed into cb
-  // let sum;
-  // if (typeof (elements[0]) === 'number') {
-  //   sum = 0;
-  //   if (memo) sum = memo;
-  // } else if (typeof (elements[0]) === 'string') {
-  //   sum = '';
-  //   if (memo) sum = memo;
-  // }
-  // for (let i = 0; i < elements.length; i++) {
-  //   sum += elements[i];
-  // } return sum;
+  let sum;
+  if (typeof (elements[0]) === 'number') {
+    sum = 0;
+    if (memo) sum = memo;
+  } else if (typeof (elements[0]) === 'string') {
+    sum = '';
+    if (memo) sum = memo;
+  }
+  for (let i = 0; i < elements.length; i++) {
+    sum += elements[i];
+  } return sum;
 
   // version 2 - elements passed into cb
   // let sum;
