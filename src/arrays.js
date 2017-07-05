@@ -46,7 +46,14 @@ const map = (elements, cb) => {
   return elements.map(cb);
 };
 
-const reduce = (elements, cb, memo) => {
+// Modifying the parameter with a default value:
+// const reduce = (elements, cb, memo = elements.shift()) => {
+//   for (let i = 0; i < elements.length; i++) {
+//     memo = cb(memo, elements[i]);
+//   }
+//   return memo;
+// };
+const reduce = (elements, cb, memo => {
   // Combine all elements into a single value going from left to right.
   // Elements will be passed one by one into `cb`.
   // `memo` is the starting value.  If `memo` is undefined then make `elements[0]` the initial value.
@@ -78,14 +85,10 @@ const reduce = (elements, cb, memo) => {
   //   sum = cb(sum, elements[i]);
   // } return sum;
 
-  // Helping Padjo
-  // let result = memo || elements[0];
-  // if (!memo) elements.shift(); // <---- superfluous
-  // for (let i = 0; i < elements.length; i++) {
-  //   // console.log('pat' + cb(elements[i], i));
-  //   result += cb(elements[i], i);
-  // }
-  // return result;
+  // version 3
+  // solution using reduce()
+  // const total = elements.reduce(cb, memo);
+  // return total;
 
   // Ryan's solution √
   // no string/number check, nice!
