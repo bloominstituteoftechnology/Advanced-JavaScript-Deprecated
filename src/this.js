@@ -18,7 +18,6 @@ class User {
 
 const me = new User({ username: 'LambdaSchool', password: 'correcthorsebatterystaple' });
 const result = me.checkPassword('correcthorsebatterystaple'); // should return `true`
-console.log('result: ', result);
 
 const checkPassword = function comparePasswords(passwordToCompare) {
   // recreate the `checkPassword` method that you made on the `User` class
@@ -33,12 +32,11 @@ const checkPassword = function comparePasswords(passwordToCompare) {
 
 // .call
 // checkPassword.call(me, 'correcthorsebatterystaple');
-console.log('.call: ', checkPassword.call(me, 'correcthorsebatterystaple'));
+checkPassword.call(me, 'correcthorsebatterystaple');
 
 // .apply
 // checkPassword.apply(me, ['correcthorsebatterystaple']);
-console.log('.apply: ', checkPassword.apply(me, ['correcthorsebatterystaple']));
+checkPassword.apply(me, ['correcthorsebatterystaple']);
 
 // .bind
 const boundCheckPW = checkPassword.bind(me, 'correcthorsebatterystaple');
-console.log('.bind: ', boundCheckPW());
