@@ -80,23 +80,37 @@ const filter = (elements, cb) => {
 const flatten = (elements) => {
   // Flattens a nested array (the nesting can be to any depth).
   // Example: flatten([1, [2], [3, [[4]]]]); => [1, 2, 3, 4];
+  // Thanks to Karthik Viswanathan for the following code:
 
-  const flattener = (els, arr) => {
-    if (els.length > 0) {
-      const el = els.shift();
-      if (el instanceof Array) {
-        flattener(el, arr);
-      } else {
-        arr.push(el);
-      }
+  let result = [];
 
-      flattener(els, arr);
+  each(elements, (elem) => {
+    if (Array.isArray(elem)) {
+      result = result.concat(flatten(elem));
+    } else {
+      result.push(elem);
     }
+  });
 
-    return arr;
-  };
+  return result;
 
-  return flattener(elements, []);
+  // WRONG; use `each' plus better recursion
+  // const flattener = (els, arr) => {
+  //   if (els.length > 0) {
+  //     const el = els.shift();
+  //     if (el instanceof Array) {
+  //       flattener(el, arr);
+  //     } else {
+  //       arr.push(el);
+  //     }
+
+  //     flattener(els, arr);
+  //   }
+
+  //   return arr;
+  // };
+
+  // return flattener(elements, []);
 };
 
 /* eslint-enable no-unused-vars, max-len */
