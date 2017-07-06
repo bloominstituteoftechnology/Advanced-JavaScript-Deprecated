@@ -42,17 +42,17 @@ class User {
 //var username = 'JavaScriptForever';
 //var password = 'password';
 
-const username = 'JavaScriptForever';
-const password = 'password';
+//const username = 'JavaScriptForever';
+//const password = 'password';
 //var me = new User({
   //username: username,
   //password: password,
 //});
 const me = new User({
-  name: username,
-  password: password,
+  name: 'JavaScriptForever',
+  password: 'password',
 });
-
+console.log(me.sayHi);
 // ----------------
 // let, const, =>, ... (spread operator)
 
@@ -82,5 +82,6 @@ const addArgs = () => {
 
 const stuff = [1, 2, 3, 4, 5]
 const result = addArgs(...stuff);
+//console.log(result);
 
 /* eslint-enable */
