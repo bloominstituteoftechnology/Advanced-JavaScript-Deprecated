@@ -26,8 +26,8 @@ class User {
   };
 }
 
-var username = 'JavaScriptForever';
-var password = 'password';
+const username = 'JavaScriptForever';
+const password = 'password';
 
 const me = new User({
   username,
@@ -42,6 +42,8 @@ const addArgs = (...args) => {
   return args.reduce((a, b) => a + b, sum);
 };
 
-const result = addArgs(1, 2, 3, 4, 5); //result should be 15
+const addArgsToCb = (cb, ...args) => (cb(...args));
+
+const result = addArgsToCb(addArgs, 1, 2, 3, 4, 5); //result should be 15
 
 /* eslint-enable */
