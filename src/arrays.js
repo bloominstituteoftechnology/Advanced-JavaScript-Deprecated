@@ -6,9 +6,6 @@ const each = (elements, cb) => {
   // Iterates over a list of elements, yielding each in turn to the `cb` function.
   // This only needs to work with arrays.
   // based off http://underscorejs.org/#each
-  if (!elements || !Array.isArray(elements)) {
-    throw new Error('Please give me an array');
-  };
   for (let i = 0; i < elements.length; i++) {
     cb(elements[i], i);
   }
@@ -18,20 +15,16 @@ const map = (elements, cb) => {
   // Produces a new array of values by mapping each value in list through a transformation function (iteratee).
   // Return the new array.
   const newArr = [];
-  each(elements, (elem) => {
-    result.push(cb(elem));
-  });
-  //for (let i = 0; i < elements.length; i++) {
-   // newArr.push(cb(elements[i]));
- // }
-  //return newArr;
-//};
+  for (let i = 0; i < elements.length; i++) {
+    newArr.push(cb(elements[i]));
+  }
+  return newArr;
+};
 
 const reduce = (elements, cb, memo) => {
   // Combine all elements into a single value going from left to right.
   // Elements will be passed one by one into `cb`.
   // `memo` is the starting value.  If `memo` is undefined then make `elements[0]` the initial value.
-	// ------------------------------------------------------------------
   if (memo === undefined) {
     memo = elements[0];
     for (let i = 1; i < elements.length; i++) {
@@ -40,26 +33,6 @@ const reduce = (elements, cb, memo) => {
     return memo;
   }
   for (let i = 0; i < elements.length; i++) {
-    memo = cb(memo, elements[i]);
-  }
-  return memo;
-};
-	//__________________________________________________________________________
- // if (memo === undefined) {
-   // memo = elements.shitf(); ----> //don't use this because you just altered your array
-  //}
-	//--------------------------------------------------------------------------------
- // each(elements, (elem) => {
-    //memo = cb(memo, elem);
-  //});
-  //return memo;
-//};
-  let i = 0;
-  if(memo === undefined) {
-    memo = elements[0];
-    i = 1;
- }
-  for (; i < elements.length; i++) {
     memo = cb(memo, elements[i]);
   }
   return memo;
@@ -106,10 +79,6 @@ const flatten = (elements) => {
   }
   return flat;
 };
-// to flatten an array, first flatten ______________ and then______________
-// to flatten an arry, first flatten each nested array and then concatenate all the elements.
-
-
 
 /* eslint-enable no-unused-vars, max-len */
 
