@@ -7,50 +7,80 @@
 //----------------
 // const, =>, default parameters, arrow functions default return statements using ()
 
-var food = 'pineapple';
+//var food = 'pineapple';
+const food = 'pineapple';
 
-var isMyFavoriteFood = function(food) {
-  food = food || 'thousand-year-old egg'; //This sets a default value if `food` is falsey
-  return food === 'thousand-year-old egg';
-};
+//var isMyFavoriteFood = function(food) {
+ // food = food || 'thousand-year-old egg'; //This sets a default value if `food` is falsey
+  //return food === 'thousand-year-old egg';
+//};
+const isMyFavoriteFood = (food = 'thousand-year-old egg') =>  food;
 
-var isThisMyFavorite = isMyFavoriteFood(food);
+//var isThisMyFavorite = isMyFavoriteFood(food);
+const isThisMyFavorite = isMyFavoriteFood(food);
 
 //----------------
 //const, class, template literals, enhanced object literals (foo: foo, -> foo,)
 
-var User = function(options) {
-  this.username = options.username;
-  this.password = options.password;
-  this.sayHi = function() {
-    return this.username + ' says hello!';
-  };
+//var User = function(options) {
+ // this.username = options.username;
+  //this.password = options.password;
+  //this.sayHi = function() {
+    //return this.username + ' says hello!';
+  //};
+//}
+
+class User {
+  constructor(options) {
+    this.username = options.username;
+    this.password = options.password;
+    this.sayHi = function() {
+      return `${this.username} says hello!`;
+    }
+  }
 }
+//var username = 'JavaScriptForever';
+//var password = 'password';
 
-var username = 'JavaScriptForever';
-var password = 'password';
-
-var me = new User({
-  username: username,
+const username = 'JavaScriptForever';
+const password = 'password';
+//var me = new User({
+  //username: username,
+  //password: password,
+//});
+const me = new User({
+  name: username,
   password: password,
 });
 
 // ----------------
 // let, const, =>, ... (spread operator)
 
-var addArgs = function () {
-  var sum = 0;
+//var addArgs = function () {
+  //var sum = 0;
+  //for (var i = 0; i < arguments.length; i++) {
+    //sum += arguments[i];
+  //}
+  //return sum;
+//};
+
+const addArgs = () => {
+  let sum = 0;
   for (var i = 0; i < arguments.length; i++) {
     sum += arguments[i];
   }
   return sum;
 };
+  
+//var argsToCb = function (cb) {
+  //var args = Array.prototype.slice.call(arguments);
+  //return cb.apply(null, args.splice(1));
+//};
 
-var argsToCb = function (cb) {
-  var args = Array.prototype.slice.call(arguments);
-  return cb.apply(null, args.splice(1));
-};
+// -----> come back and redo above block, if needed
+//var result = argsToCb(addArgs, 1, 2, 3, 4, 5); //result should be 15
 
-var result = argsToCb(addArgs, 1, 2, 3, 4, 5); //result should be 15
+const stuff = [1, 2, 3, 4, 5]
+const result = addArgs(...stuff);
 
 /* eslint-enable */

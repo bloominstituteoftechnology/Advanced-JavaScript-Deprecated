@@ -21,17 +21,43 @@ const checkMatchingLeaves = (obj) => {
   // return true if every property on `obj` is the same
   // otherwise return false
   const trees = Object.keys(obj);
-  const treeKeys1 = Object.keys(trees[0]);
-  const treeKeys2 = Object.keys(trees[1]);
-  const n = treeKeys1.length;
-  const m = treeKeys2.length;
-  if (n !=== m) {
-    return false;
+  let numberToCompare = 1;
+  //find first number and store it to zebra
+  //for(let j = 0; j < obj.length; j++) {
+    //if(typeof obj[j] === 'number' && Number.isNaN(obj[j]) === false) {
+      //numberToCompare = obj[j];
+      //}
+    //}
+  //new function check
+  function check(thingToCheck) {
+    //is null?
+    if(thingToCheck === null) {
+      return false;
+    }
+    //is number?
+    if(Number.isNaN(thingToCheck) === true) {
+        return false;
+      }
+    if(typeof thingToCheck !== 'number') {
+    //is object?
+      if(typeof thingToCheck !== "object") {
+        return false;
+      }
+    //has children?
+      if(thingToCheck.detectChildNodesHere){
+      //how many children?
+      //for stuff in thingToCheck ---> check(stuff)
+        for(let i = 0; i < obj[thingToCheck].length; i++) {
+          check(k);
+        }
+        return false;
+      }
+    }
+    if(thingToCheck !== numberToCompare) {
+      return false;
+    }
   }
-  let z = 0;
-  if ((obj[1][(treeKeys1[z])]) === (Obj[2][(treeKeys1[z])]) {
-    return checkMatchingLeaves(obj), z;
-  }
+  return true;
 };
 
 /* eslint-enable no-unused-vars */
