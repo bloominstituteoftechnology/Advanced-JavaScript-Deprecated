@@ -18,25 +18,31 @@ const map = (elements, cb) => {
 
   const arr = [];
 
-  for (let i = 0; i < elements.length; i++) {
-    arr[i] = cb(elements[i]);
-  }
+  each(elements, el => arr.push(cb(el)));
+
+  // WRONG; should use `each'
+  // for (let i = 0; i < elements.length; i++) {
+  //   arr[i] = cb(elements[i]);
+  // }
 
   return arr;
 };
 
-const reduce = (elements, cb, memo) => {
+const reduce = (elements, cb, memo = elements.shift()) => {
   // Combine all elements into a single value going from left to right.
   // Elements will be passed one by one into `cb`.
   // `memo` is the starting value.  If `memo` is undefined then make `elements[0]` the initial value.
 
-  let reduced = (memo === undefined) ? elements.shift() : memo;
+  each(elements, el => memo = cb(memo, el));
 
-  for (let i = 0; i < elements.length; i++) {
-    reduced += elements[i];
-  }
+  // WRONG: should use `each'
+  // let reduced = (memo === undefined) ? elements.shift() : memo;
 
-  return reduced;
+  // for (let i = 0; i < elements.length; i++) {
+  //   reduced += elements[i];
+  // }
+
+  return memo;
 };
 
 const find = (elements, cb) => {
@@ -57,11 +63,16 @@ const filter = (elements, cb) => {
 
   const filtered = [];
 
-  for (let i = 0; i < elements.length; i++) {
-    if (cb(elements[i])) {
-      filtered.push(elements[i]);
-    }
-  }
+  each(elements, (el) => {
+    if (cb(el)) { filtered.push(el); }
+  });
+
+  // WRONG: should use `each'
+  // for (let i = 0; i < elements.length; i++) {
+  //   if (cb(elements[i])) {
+  //     filtered.push(elements[i]);
+  //   }
+  // }
 
   return filtered;
 };
