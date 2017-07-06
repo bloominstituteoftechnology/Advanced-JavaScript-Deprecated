@@ -1,7 +1,6 @@
 // Complete the following functions.
 // These functions only need to work with arrays.
 
-
 const each = (elements, cb) => {
   // Iterates over a list of elements, yielding each in turn to the `cb` function.
   // This only needs to work with arrays.
