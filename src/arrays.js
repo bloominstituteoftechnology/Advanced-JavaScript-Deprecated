@@ -49,8 +49,6 @@ const map = (elements, cb) => {
   // return elements.map(cb);
 };
 
-//
-//
 // =============================================================
 // REDUCE SOLUTION modifying the parameter with a default value:
 // =============================================================
