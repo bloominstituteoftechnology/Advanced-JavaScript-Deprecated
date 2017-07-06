@@ -6,9 +6,12 @@ const each = (elements, cb) => {
   // Iterates over a list of elements, yielding each in turn to the `cb` function.
   // This only needs to work with arrays.
   // based off http://underscorejs.org/#each
+  // Q: I AM CONFUSED, WHY DOES CB TAKE 2 PARAMETERS???
+  // A: somewhat arbitrary, discernable from the test suite
+  //    just emulating forEach and underscore's each
   // version 1
   for (let i = 0; i < elements.length; i++) {
-    cb(elements[i], i); // I AM CONFUSED, WHY DOES CB TAKE 2 PARAMETERS??? Arbitrary - just emulating forEach
+    cb(elements[i], i);
   }
 
   // version 2 - using forEach √
@@ -18,7 +21,7 @@ const each = (elements, cb) => {
 
   // version 3 - NOPE - OH, HA! I'd have to install underscore for this to work...
   // _.each(elements, (value, index) => {
-  //   cb(value, index); // <--- ??? Not sure that's it, how to return index?
+  //   cb(value, index); // <--- ??? Not sure that's it
   // });
 };
 
@@ -46,22 +49,29 @@ const map = (elements, cb) => {
   // return elements.map(cb);
 };
 
-// Modifying the parameter with a default value:
+//
+//
+// =============================================================
+// REDUCE SOLUTION modifying the parameter with a default value:
+// =============================================================
 // const reduce = (elements, cb, memo = elements.shift()) => {
-  // Combine all elements into a single value going from left to right.
-  // Elements will be passed one by one into `cb`.
-  // `memo` is the starting value.  If `memo` is undefined then make `elements[0]` the initial value.
-  // version 1 √
-  // for (let i = 0; i < elements.length; i++) {
-  //   memo = cb(memo, elements[i]);
-  // }
-  // return memo;
-
-  // version 2 - NOPE
-  // using previous solutions
-  // return map(memo, cb);
+//   Combine all elements into a single value going from left to right.
+//   Elements will be passed one by one into `cb`.
+//   `memo` is the starting value.  If `memo` is undefined then make `elements[0]` the initial value.
+//   version 1 √
+//   for (let i = 0; i < elements.length; i++) {
+//     memo = cb(memo, elements[i]);
+//   }
+//   return memo;
+//
+//   version 2 - NOPE
+//   using previous solutions
+//   return map(memo, cb);
 // };
-// NOT modifying parameter default values
+//
+// =======================================================
+// REDUCE SOLUTION NOT modifying parameter default values:
+// =======================================================
 const reduce = (elements, cb, memo) => {
   // Combine all elements into a single value going from left to right.
   // Elements will be passed one by one into `cb`.
@@ -123,7 +133,8 @@ const find = (elements, cb) => {
     if (cb(elements[i]) === true) {
       return elements[i];
     }
-    // return undefined; // WTF? Why does uncommenting this out make it fail?????
+    // Q: why does uncommenting this out make it fail?????
+    // return undefined;
   }
 };
 
@@ -146,8 +157,9 @@ const flatten = (elements) => {
   // version 1 √
   let flat = [];
   for (let i = 0; i < elements.length; i++) {
-    if (elements[i] instanceof Array) {
-      // flat = flat.push(flatten(elements[i]));
+    // if (elements[i] instanceof Array) { // <---- Also works
+    if (Array.isArray(elements[i])) {
+      // flat = flat.push(flatten(elements[i])); // <--- nope
       flat = flat.concat(flatten(elements[i]));
     } else {
       flat.push(elements[i]);
