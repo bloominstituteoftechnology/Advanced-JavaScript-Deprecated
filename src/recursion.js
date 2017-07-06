@@ -3,11 +3,15 @@
 const nFibonacci = (n) => {
   // fibonacci sequence: 1 2 3 5 8 13 ...
   // return the nth number in the sequence
+  // if (n > 1) {
+  // }
 };
 
 const nFactorial = (n) => {
   // factorial example: !5 = 5 * 4 * 3 * 2 * 1
   // return the factorial of `n`
+  if (n === 1) return n;
+  return n * nFactorial(n - 1);
 };
 
 const checkMatchingLeaves = (obj) => {
