@@ -39,4 +39,5 @@ checkPassword.call(me, 'correcthorsebatterystaple');
 checkPassword.apply(me, ['correcthorsebatterystaple']);
 
 // .bind
-const boundCheckPW = checkPassword.bind(me, 'correcthorsebatterystaple');
+const boundCheckPW = checkPassword.bind(me);
+boundCheckPW('correcthorsebatterystaple');
