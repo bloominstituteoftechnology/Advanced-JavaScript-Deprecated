@@ -47,6 +47,7 @@ const cacheFunction = (cb) => {
   // then it should return the cached result and not invoke `cb` again.
   // `cb` should only ever be invoked once for a given set of arguments.
 
+  // NOT A PARTICULARLY JS WAY OF DOING IT
   const usedArgs = [];
 
   const compareCached = (x, y) => {
