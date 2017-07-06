@@ -28,14 +28,25 @@ const map = (elements, cb) => {
   return arr;
 };
 
-const reduce = (elements, cb, memo = elements.shift()) => {
+const reduce = (elements, cb, memo) => {
   // Combine all elements into a single value going from left to right.
   // Elements will be passed one by one into `cb`.
   // `memo` is the starting value.  If `memo` is undefined then make `elements[0]` the initial value.
 
-  each(elements, el => memo = cb(memo, el));
+  let start = 0;
+  if (memo === undefined) {
+    memo = elements[0];
+    start = 1;
+  }
 
-  // WRONG: should use `each'
+  for (let i = start; i < elements.length; i++) {
+    memo = cb(memo, elements[i]);
+  }
+
+  // WRONG: should not change state, so use for loop with changing initial position
+  // each(elements, el => memo = cb(memo, el));
+
+  // WRONG: changed state by shifting off elements[0]
   // let reduced = (memo === undefined) ? elements.shift() : memo;
 
   // for (let i = 0; i < elements.length; i++) {
