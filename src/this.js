@@ -13,15 +13,19 @@ class User {
   // create a method on the User class called `checkPassword`
   // this method should take in a string and compare it to the object's password property
   // return `true` if they match, otherwise return `false`
-  checkPassword(compareString) {
+  checkPwd(compareString) {
     return compareString === this.password;
   }
 }
 
 const me = new User({ username: 'LambdaSchool', password: 'correcthorsebatterystaple' });
-const result = me.checkPassword('correcthorsebatterystaple'); // should return `true`
-
+// true case
+const result = me.checkPwd('correcthorsebatterystaple'); // should return `true`
 console.log(result);// ---> true
+// false case
+const falseResult = me.checkPwd('staplehorsecorrectbattery'); // should return `true`
+console.log(falseResult);// ---> true
+
 
 const checkPassword = function comparePasswords(passwordToCompare) {
   // recreate the `checkPassword` method that you made on the `User` class
