@@ -27,7 +27,7 @@ const values = (obj) => {
 const mapObject = (obj, cb) => {
   // Like map for arrays, but for objects. Transform the value of each property in turn.
   // http://underscorejs.org/#mapObject
-  Object.keys(obj).forEcah(key => (obj[key] = cb(obj[key])));
+  Object.keys(obj).forEach(key => (obj[key] = cb(obj[key])));
   return obj;
 };
 
@@ -68,8 +68,14 @@ const defaults = (obj, defaultProps) => {
   // http://underscorejs.org/#defaults
   // two objects, obj with empty props matching props in defaultProps
   // insert values from defaultProps into obj to complete and return it
+  // Object.keys(obj).forEach((key) => {
+  //   if (obj[key] === null || obj[key].length < 1) {
+  //     obj[key] = defaultProps[key];
+  //   }
+  // });
+  // return obj;
   Object.keys(obj).forEach((key) => {
-    if (obj[key] === null || obj[key].length < 1) {
+    if (obj[key] === null || obj[key].length === 0) {
       obj[key] = defaultProps[key];
     }
   });
@@ -83,5 +89,5 @@ module.exports = {
   mapObject,
   pairs,
   invert,
-  defaults,
+  defaults
 };
