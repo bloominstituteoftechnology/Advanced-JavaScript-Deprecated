@@ -11,10 +11,10 @@ const nFibonacci = (n) => {
 const nFactorial = (n) => {
   // factorial example: !5 = 5 * 4 * 3 * 2 * 1
   // return the factorial of `n`
-  if ( n === 1) {
+  if (n === 1) {
     return n;
   }
-  return n * nFactorial(n - 1)
+  return n * nFactorial(n - 1);
 };
 
 const checkMatchingLeaves = (obj) => {
@@ -22,63 +22,40 @@ const checkMatchingLeaves = (obj) => {
   // otherwise return false
   const trees = Object.keys(obj);
   let numberToCompare = 'zebra';
-  //find first number and store it to zebra
-  //for(let j = 0; j < obj.length; j++) {
-    //if(typeof obj[j] === 'number' && Number.isNaN(obj[j]) === false) {
-      //numberToCompare = obj[j];
-      //}
-    //}
-  console.log(numberToCompare);
-  //new function check
-  function check(thingToCheck) 
-  {
-    console.log("ThingToCheck: ", thingToCheck);
-    console.log(typeof thingToCheck);
-    //is null?
-    if(thingToCheck === null) 
-    {
-      console.log("first if");
+
+  function check(thingToCheck) {
+    // is null?
+    if (thingToCheck === null) {
       return false;
     }
-    //is number?
-    if(Number.isNaN(thingToCheck) === true) 
-    {
-      console.log("second if");
+    // is number?
+    if (Number.isNaN(thingToCheck) === true) {
       return false;
     }
-    if(typeof thingToCheck !== 'number') 
-    {
-      //is object?
-      if(typeof thingToCheck !== "object") 
-      {
-        console.log("third if");
+    if (typeof thingToCheck !== 'number') {
+      // is object?
+      if (typeof thingToCheck !== 'object') {
         return false;
       }
-    //has children?
-      if(Object.keys(thingToCheck).length > 0)
-      {
-	console.log("forth if");
-        //how many children?
-        //for stuff in thingToCheck ---> check(stuff)
-        for(let i = 0; i < Object.keys(thingToCheck).length; i++) 
-	{
-          if(check(thingToCheck[Object.keys(thingToCheck)[i]]) === false)
-	    return false;
+      // has children?
+      if (Object.keys(thingToCheck).length > 0) {
+        // how many children?
+        // for stuff in thingToCheck ---> check(stuff)
+        for (let i = 0; i < Object.keys(thingToCheck).length; i++) {
+          if (check(thingToCheck[Object.keys(thingToCheck)[i]]) === false) {
+            return false;
+          }
         }
       }
     }
-    if(typeof thingToCheck === 'number' && thingToCheck !== numberToCompare) 
-    {
+    if (typeof thingToCheck === 'number' && thingToCheck !== numberToCompare) {
       if (numberToCompare === 'zebra') {
         numberToCompare = thingToCheck;
-      }
-      else {
-      console.log("fifth if");
-      return false;
+      } else {
+        return false;
       }
     }
     // If we got here we are a number and we match
-    console.log("Finished check on object: ", thingToCheck);
     return true;
   }
   return check(obj);
