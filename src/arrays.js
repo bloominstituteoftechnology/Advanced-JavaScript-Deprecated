@@ -28,14 +28,13 @@ const reduce = (elements, cb, memo) => {
   // Elements will be passed one by one into `cb`.
   // `memo` is the starting value.  If `memo` is undefined then make `elements[0]` the initial value.
 
+  let i = 0;
   if (memo === undefined) {
     memo = elements[0];
-    for (let i = 1; i < elements.length; i++) {
-      memo = cb(memo, (elements[i]));
-    }
-    return memo;
+    i = 1;
   }
-  for (let i = 0; i < elements.length; i++) {
+
+  for (i; i < elements.length; i++) {
     memo = cb(memo, (elements[i]));
   }
   return memo;
@@ -70,7 +69,15 @@ const flatten = (elements) => {
   // Flattens a nested array (the nesting can be to any depth).
   // Example: flatten([1, [2], [3, [[4]]]]); => [1, 2, 3, 4];
 
-  
+  let result = [];
+  for (let i = 0; i < elements.length; i++) {
+    if (Array.isArray(elements[i])) {
+      result = result.concat(flatten(elements[i]));
+    } else {
+      result.push(elements[i]);
+    }
+  }
+  return result;
 };
 
 /* eslint-enable no-unused-vars, max-len */
