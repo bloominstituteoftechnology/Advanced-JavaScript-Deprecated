@@ -75,19 +75,29 @@ const defaults = (obj, defaultProps) => {
   // http://underscorejs.org/#defaults
   // version 1
   // using previous keys method, turn defaultProps object into an array to iterate over
-  const dPKeys = keys(defaultProps);
-  for (let i = 0; i < dPKeys.length; i++) {
+  //
+  // const dPKeys = keys(defaultProps);
+  // for (let i = 0; i < dPKeys.length; i++) {
+  //   if (!obj[dPKeys[i]]) {
+  //     obj[dPKeys[i]] = defaultProps[dPKeys[i]];
+  //   }
+  // }
+  // return obj;
+
+  // version 2
+  const dPKeys = Object.keys(defaultProps);
+  dPKeys.forEach((value, i) => {
     if (!obj[dPKeys[i]]) {
       obj[dPKeys[i]] = defaultProps[dPKeys[i]];
     }
-  }
+  });
   return obj;
 
-  // version 2 - Not sure why this doesn't pass...
+  // version 3 - worked out a solution with ELY
   // const dPKeys = keys(defaultProps);
-  // dPKeys.forEach((i) => {
-  //   if (obj[dPKeys[i]] === undefined) {
-  //     obj[dPKeys[i]] = defaultProps[dPKeys[i]];
+  // dPKeys.forEach((value) => { // x y and z
+  //   if (obj[value] === undefined) {
+  //     obj[value] = defaultProps[value];
   //   }
   // });
   // return obj;
