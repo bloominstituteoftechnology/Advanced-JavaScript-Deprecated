@@ -5,6 +5,7 @@ const keys = (obj) => {
   // Retrieve all the names of the object's properties.
   // Return the keys as strings in an array.
   // Based on http://underscorejs.org/#keys
+  // Linter fails because of for..in loops, but I can't seem to make it work otherwise, same as values()
   const arr = [];
   for (const key in obj) {
     arr.push(key);
