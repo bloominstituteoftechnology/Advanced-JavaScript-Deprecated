@@ -17,48 +17,74 @@
 // var isThisMyFavorite = isMyFavoriteFood(food);
 const food = 'pineapple';
 
-const isMyFavoriteFood = ((food) => {
-  food = food || 'thousand-year-old egg'; //This sets a default value if `food` is falsey
-  return (food === 'thousand-year-old egg');
-});
-
+const isMyFavoriteFood = (food = 'thousand-year-old egg') => food === 'thousand-year-old egg';
+// just double checking scope of keyword "food"
+// const isMyFavoriteFood = (foodItem = 'thousand-year-old egg') => foodItem === 'thousand-year-old egg';
+// False case
 const isThisMyFavorite = isMyFavoriteFood(food);
+console.log(isThisMyFavorite);
+// True case
+const egg = 'thousand-year-old egg';
+const thisIsMyFavorite = isMyFavoriteFood(egg);
+console.log(thisIsMyFavorite);
 
 //----------------
 //const, class, template literals, enhanced object literals (foo: foo, -> foo,)
 
-var User = function(options) {
-  this.username = options.username;
-  this.password = options.password;
-  this.sayHi = function() {
-    return this.username + ' says hello!';
-  };
+// var User = function(options) {
+//   this.username = options.username;
+//   this.password = options.password;
+//   this.sayHi = function() {
+//     return this.username + ' says hello!';
+//   };
+// }
+//
+// var username = 'JavaScriptForever';
+// var password = 'password';
+//
+// var me = new User({
+//   username: username,
+//   password: password,
+// });
+
+class User {
+  constructor(options) {
+    this.username = options.username;
+    this.password = options.password;
+    this.sayHi = function() {
+      return `${this.username} says hello!`; // <--- template literals
+    };
+  }
 }
 
-var username = 'JavaScriptForever';
-var password = 'password';
+const username = 'JavaScriptForever';
+const password = 'password';
 
-var me = new User({
-  username: username,
-  password: password,
+const me = new User({
+  username,                                // <--- enhanced object literals
+  password,                                // <--- enhanced object literals
 });
+
+console.log(me);
 
 // ----------------
 // let, const, =>, ... (spread operator)
 
-var addArgs = function () {
-  var sum = 0;
-  for (var i = 0; i < arguments.length; i++) {
-    sum += arguments[i];
+const addArgs = function (...args) {
+  let sum = 0;
+  for (let i = 0; i < args.length; i++) {
+    sum += args[i];
   }
   return sum;
 };
 
-var argsToCb = function (cb) {
-  var args = Array.prototype.slice.call(arguments);
+const argsToCb = function (cb) {
+  const args = Array.prototype.slice.call(arguments);
   return cb.apply(null, args.splice(1));
 };
 
-var result = argsToCb(addArgs, 1, 2, 3, 4, 5); //result should be 15
+const result = argsToCb(addArgs, 1, 2, 3, 4, 5); //result should be 15
+
+console.log(result);
 
 /* eslint-enable */
