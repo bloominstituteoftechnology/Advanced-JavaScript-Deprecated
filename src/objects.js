@@ -27,13 +27,13 @@ const invert = (obj) => {
   return newObj;
 };
 
-const defaults = (obj, defaultProps) => {
-  // Fill in undefined properties that match properties on the `defaultProps` parameter object.
-  // Return `obj`.
-  // http://underscorejs.org/#defaults
+const defaults = (obj, defProps) => {
+  const dp = keys(defProps);
+  for (let i = 0; i < dp.length; i++) {
+    if (obj[dp[i]] === undefined) obj[dp[i]] = defProps[dp[i]];
+  }
+  return obj;
 };
-
-/* eslint-enable no-unused-vars */
 
 module.exports = {
   keys,
