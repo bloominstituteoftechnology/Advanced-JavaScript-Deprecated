@@ -1,4 +1,4 @@
-// /* eslint-disable */
+/* eslint-disable */
 
 // Refactor the following code to use the specified ES6 features.
 // There are no automated tests.
