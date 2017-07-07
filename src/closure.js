@@ -67,19 +67,23 @@ const counterFactory = () => {
 const limitFunctionCallCount = (cb, n) => {
   // Should return a function that invokes `cb`.
   // The returned function should only allow `cb` to be invoked `n` times.
-  // Ely's solution √
-//   let limit = 0;
-//   const funcToReturn = (x, y, z) => {
-//     if (limit < n) {
-//       limit += 1;
-//       return cb(x, y, z);
-//     }
-//     return null;
-//   };
-//   return funcToReturn;
-// };
+  //
+  // Ely and Sarah helped me in Slack, but i do not understand what's going on here
+  // I got the limitFuncCall example from the JS course with sayHi... but ... ???
+  //
+  // Ely's solution
+  // let limit = 0;
+  // const funcToReturn = (x, y, z) => {
+  //   if (limit < n) {
+  //     limit += 1;
+  //     return cb(x, y, z);
+  //   }
+  //   return null;
+  //   // return undefined;
+  // };
+  // return funcToReturn;
 
-  // Sarah's solution
+  // Sarah's solution √
   let num = 0;
   return function inner(...args) {
     num++;
