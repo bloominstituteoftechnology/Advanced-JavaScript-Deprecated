@@ -8,7 +8,7 @@ class User {
     this.username = options.username;
     this.password = options.password;
   }
-  checkPassword (str) {
+  checkPassword(str) {
     return str === this.password;
   }
   // create a method on the User class called `checkPassword`
@@ -26,7 +26,7 @@ const checkPassword = function comparePasswords(passwordToCompare) {
   // do not modify this function's parameters
   // note that we use the `function` keyword and not `=>`
 };
-console.log(result, checkPassword(me.password));
+// console.log(result, checkPassword(me.password));
 
 // invoke `checkPassword` on `me` by explicitly setting the `this` context
 // use .call, .apply, and .bind
