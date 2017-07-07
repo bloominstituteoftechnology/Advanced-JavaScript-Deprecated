@@ -1,31 +1,30 @@
 // Complete the following functions.
 // These functions only need to work with arrays.
 
+// each() implemented as a tail-recursive loop;
+// reduce() cannot use each() because each() does not have a default index
+const forEach = (elements, cb, i = 0) => {
+  if (i >= 0 && i < elements.length) {
+    cb(elements[i], i);
+    return forEach(elements, cb, i + 1); // tail call
+  }
+};
 
 const each = (elements, cb) => {
   // Iterates over a list of elements, yielding each in turn to the `cb` function.
   // This only needs to work with arrays.
   // based off http://underscorejs.org/#each
 
-  for (let i = 0; i < elements.length; i++) {
-    cb(elements[i], i);
-  }
+  return forEach(elements, cb); // a tail call since forEach is tail-recursive
 };
 
 const map = (elements, cb) => {
   // Produces a new array of values by mapping each value in list through a transformation function (iteratee).
   // Return the new array.
 
-  const arr = [];
-
-  each(elements, el => arr.push(cb(el)));
-
-  // WRONG; should use `each'
-  // for (let i = 0; i < elements.length; i++) {
-  //   arr[i] = cb(elements[i]);
-  // }
-
-  return arr;
+  const mapped = [];
+  forEach(elements, elem => mapped.push(cb(elem)));
+  return mapped;
 };
 
 const reduce = (elements, cb, memo) => {
@@ -33,26 +32,13 @@ const reduce = (elements, cb, memo) => {
   // Elements will be passed one by one into `cb`.
   // `memo` is the starting value.  If `memo` is undefined then make `elements[0]` the initial value.
 
-  let i = 0;
+  let start = 0;
   if (memo === undefined) {
     memo = elements[0];
-    i = 1;
+    start = 1;
   }
 
-  for (; i < elements.length; i++) {
-    memo = cb(memo, elements[i]);
-  }
-
-  // WRONG: should not change state, so use for loop with changing initial position
-  // each(elements, el => memo = cb(memo, el));
-
-  // WRONG: changed state by shifting off elements[0]
-  // let reduced = (memo === undefined) ? elements.shift() : memo;
-
-  // for (let i = 0; i < elements.length; i++) {
-  //   reduced += elements[i];
-  // }
-
+  forEach(elements, (elem) => { memo = cb(memo, elem); }, start);
   return memo;
 };
 
@@ -61,11 +47,15 @@ const find = (elements, cb) => {
   // If `cb` returns `true` then return that element.
   // Return `undefined` if no elements pass the truth test.
 
-  for (let i = 0; i < elements.length; i++) {
-    if (cb(elements[i])) {
-      return elements[i];
+  // tail-recursive
+  const finder = (i = 0) => {
+    if (i < elements.length) {
+      if (cb(elements[i])) return elements[i];
+      return finder(i + 1);
     }
-  }
+    return undefined;
+  };
+  return finder(); // tail call since finder() is tail-recursive
 };
 
 const filter = (elements, cb) => {
@@ -73,18 +63,9 @@ const filter = (elements, cb) => {
   // Return an empty array if no elements pass the truth test
 
   const filtered = [];
-
-  each(elements, (el) => {
-    if (cb(el)) { filtered.push(el); }
+  forEach(elements, (elem) => {
+    if (cb(elem)) { filtered.push(elem); }
   });
-
-  // WRONG: should use `each'
-  // for (let i = 0; i < elements.length; i++) {
-  //   if (cb(elements[i])) {
-  //     filtered.push(elements[i]);
-  //   }
-  // }
-
   return filtered;
 };
 
@@ -93,35 +74,17 @@ const flatten = (elements) => {
   // Example: flatten([1, [2], [3, [[4]]]]); => [1, 2, 3, 4];
   // Thanks to Karthik Viswanathan for the following code:
 
-  let result = [];
+  let flattened = [];
 
-  each(elements, (elem) => {
+  forEach(elements, (elem) => {
     if (Array.isArray(elem)) {
-      result = result.concat(flatten(elem));
+      flattened = flattened.concat(flatten(elem));
     } else {
-      result.push(elem);
+      flattened.push(elem);
     }
   });
 
-  return result;
-
-  // WRONG; use `each' plus better recursion
-  // const flattener = (els, arr) => {
-  //   if (els.length > 0) {
-  //     const el = els.shift();
-  //     if (el instanceof Array) {
-  //       flattener(el, arr);
-  //     } else {
-  //       arr.push(el);
-  //     }
-
-  //     flattener(els, arr);
-  //   }
-
-  //   return arr;
-  // };
-
-  // return flattener(elements, []);
+  return flattened;
 };
 
 /* eslint-enable no-unused-vars, max-len */
