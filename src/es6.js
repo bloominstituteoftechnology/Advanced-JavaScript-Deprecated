@@ -1,4 +1,4 @@
-/* eslint-disable */
+// /* eslint-disable */
 
 // Refactor the following code to use the specified ES6 features.
 // There are no automated tests.
@@ -17,9 +17,9 @@
 // var isThisMyFavorite = isMyFavoriteFood(food);
 const food = 'pineapple';
 
-const isMyFavoriteFood = (food = 'thousand-year-old egg') => food === 'thousand-year-old egg';
-// just double checking scope of keyword "food"
-// const isMyFavoriteFood = (foodItem = 'thousand-year-old egg') => foodItem === 'thousand-year-old egg';
+// const isMyFavoriteFood = (food = 'thousand-year-old egg') => food === 'thousand-year-old egg';
+// just double checking scope of keyword "food" & lintr doesn't like
+const isMyFavoriteFood = (foodItem = 'thousand-year-old egg') => foodItem === 'thousand-year-old egg';
 // False case
 const isThisMyFavorite = isMyFavoriteFood(food);
 console.log(isThisMyFavorite);
@@ -29,7 +29,7 @@ const thisIsMyFavorite = isMyFavoriteFood(egg);
 console.log(thisIsMyFavorite);
 
 //----------------
-//const, class, template literals, enhanced object literals (foo: foo, -> foo,)
+// const, class, template literals, enhanced object literals (foo: foo, -> foo,)
 
 // var User = function(options) {
 //   this.username = options.username;
@@ -51,8 +51,8 @@ class User {
   constructor(options) {
     this.username = options.username;
     this.password = options.password;
-    this.sayHi = function() {
-      return `${this.username} says hello!`; // <--- template literals
+    this.sayHi = function() { // <------------------ Unexpected unnamed function
+      return `${this.username} says hello!`; // <--- template literals √
     };
   }
 }
@@ -61,8 +61,8 @@ const username = 'JavaScriptForever';
 const password = 'password';
 
 const me = new User({
-  username,                                // <--- enhanced object literals
-  password,                                // <--- enhanced object literals
+  username,                                 // <--- enhanced object literals √
+  password,                                 // <--- enhanced object literals √
 });
 
 console.log(me);
@@ -70,7 +70,7 @@ console.log(me);
 // ----------------
 // let, const, =>, ... (spread operator)
 
-const addArgs = function (...args) {
+const addArgs = function (...args) { // <---------- Unexpected unnamed function
   let sum = 0;
   for (let i = 0; i < args.length; i++) {
     sum += args[i];
@@ -78,12 +78,12 @@ const addArgs = function (...args) {
   return sum;
 };
 
-const argsToCb = function (cb) {
-  const args = Array.prototype.slice.call(arguments);
-  return cb.apply(null, args.splice(1));
+const argsToCb = function (cb) { // <-------------- Unexpected unnamed function
+  const args = Array.prototype.slice.call(arguments); // <--- Use the rest parameters instead of 'arguments'
+  return cb.apply(null, args.splice(1)); // <------ Use the spread operator instead of '.apply()'
 };
 
-const result = argsToCb(addArgs, 1, 2, 3, 4, 5); //result should be 15
+const result = argsToCb(addArgs, 1, 2, 3, 4, 5); // result should be 15
 
 console.log(result);
 
