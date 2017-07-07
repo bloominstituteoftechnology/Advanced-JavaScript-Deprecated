@@ -16,8 +16,7 @@ class User {
   }
 }
 
-/* eslint-disable no-undef */ // Remove this comment once you write your classes.
-
+// /* eslint-disable no-undef */ // Remove this comment once you write your classes.
 
 // Create a class called `Animal` and a class called `Cat`.
 // `Cat` should extend the `Animal` class.
@@ -28,6 +27,23 @@ class User {
 // `meow` that should return the string `<name> meowed!` where `<name>` is the `name`
 // property set on the Cat instance.
 
+class Animal {
+  constructor(options) {
+    this.age = options.age;
+  }
+  growOlder() {
+    return this.age;
+  }
+}
+
+class Cat {
+  constructor(options) {
+    this.name = options.name;
+  }
+  meow() {
+    return `${this.name} meowed!`;
+  }
+}
 
 module.exports = {
   User,
