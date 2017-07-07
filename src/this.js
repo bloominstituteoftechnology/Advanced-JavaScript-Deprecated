@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 // Follow the instructions and fill in the blank sections.
 // There are no tests for this file.
 // To verify your code works you can run this file using `node this.js` while in the `/src` folder
