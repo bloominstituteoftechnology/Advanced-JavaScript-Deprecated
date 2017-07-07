@@ -18,12 +18,18 @@ const values = (obj) => {
 const mapObject = (obj, cb) => {
   // Like map for arrays, but for objects. Transform the value of each property in turn.
   // http://underscorejs.org/#mapObject
+  // using previous functions to make array from all keys
   const keyArr = keys(obj);
+  // using previous functions to make array from all values
   const valArr = values(obj);
+  // apply callback function to each element in the array of values
   for (let i = 0; i < valArr.length; i++) {
     valArr[i] = cb(valArr[i]);
   }
+  // declare empty object
   const mappedObj = {};
+  // use it to contain original keys mapped back to
+  // previously corresponding, and now, modified values
   for (let i = 0; i < keyArr.length; i++) {
     mappedObj[keyArr[i]] = valArr[i];
   }
@@ -36,9 +42,12 @@ const pairs = (obj) => {
   const keyArr = keys(obj);
   const valArr = values(obj);
   const pairArr = [];
+  // prepare an array of empty array set to the length of the former object
   for (let i = 0; i < keyArr.length; i++) {
     pairArr.push([]);
   }
+  // populate nested arrays with object key:value pairs
+  // such that key is [n][0] and value is [n][1]
   for (let i = 0; i < keyArr.length; i++) {
     pairArr[i].push(keyArr[i]);
     pairArr[i].push(valArr[i]);
@@ -54,6 +63,7 @@ const invert = (obj) => {
   const valArr = values(obj);
   const mappedObj = {};
   for (let i = 0; i < keyArr.length; i++) {
+    // {key:value} inverted to {value:key}
     mappedObj[valArr[i]] = keyArr[i];
   }
   return mappedObj;
@@ -63,7 +73,24 @@ const defaults = (obj, defaultProps) => {
   // Fill in undefined properties that match properties on the `defaultProps` parameter object.
   // Return `obj`.
   // http://underscorejs.org/#defaults
+  // version 1
+  // using previous keys method, turn defaultProps object into an array to iterate over
+  const dPKeys = keys(defaultProps);
+  for (let i = 0; i < dPKeys.length; i++) {
+    if (!obj[dPKeys[i]]) {
+      obj[dPKeys[i]] = defaultProps[dPKeys[i]];
+    }
+  }
   return obj;
+
+  // version 2 - Not sure why this doesn't pass...
+  // const dPKeys = keys(defaultProps);
+  // dPKeys.forEach((i) => {
+  //   if (obj[dPKeys[i]] === undefined) {
+  //     obj[dPKeys[i]] = defaultProps[dPKeys[i]];
+  //   }
+  // });
+  // return obj;
 };
 
 /* eslint-enable no-unused-vars */
