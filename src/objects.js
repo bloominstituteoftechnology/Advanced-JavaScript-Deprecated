@@ -18,16 +18,6 @@ const values = (obj) => {
   // http://underscorejs.org/#values
 
   return arrays.map(keys(obj), key => obj[key]);
-
-  // WRONG: use `map'; no need for constant props
-  // for (let i = 0; i < props.length; i++) {
-  //   const val = obj[props[i]];
-  //   if (typeof val !== 'function') {
-  //     vals.push(val);
-  //   }
-  // }
-
-  // return vals;
 };
 
 const mapObject = (obj, cb) => {
@@ -35,15 +25,9 @@ const mapObject = (obj, cb) => {
   // http://underscorejs.org/#mapObject
 
   const newObj = {};
-  arrays.each(keys(obj), (key) => {
+  arrays.forEach(keys(obj), (key) => {
     newObj[key] = cb(obj[key]);
   });
-
-  // WRONG: use `each'
-  // for (let i = 0; i < props.length; i++) {
-  //   newObj[props[i]] = cb(obj[props[i]]);
-  // }
-
   return newObj;
 };
 
@@ -52,12 +36,6 @@ const pairs = (obj) => {
   // http://underscorejs.org/#pairs
 
   return arrays.map(keys(obj), key => [key, obj[key]]);
-
-  // WRONG: use map; eliminate unnecessary arrays
-  // for (let i = 0; i < props.length; i++) {
-  //   list.push([props[i], obj[props[i]]]);
-  // }
-  // return list;
 };
 
 const invert = (obj) => {
@@ -66,13 +44,7 @@ const invert = (obj) => {
   // http://underscorejs.org/#invert
 
   const copy = {};
-  arrays.each(keys(obj), key => copy[obj[key]] = key);
-
-  // WRONG: use each; eliminate unnecessary array
-  // for (let i = 0; i < props.length; i++) {
-  //   copy[obj[props[i]]] = props[i];
-  // }
-
+  arrays.forEach(keys(obj), key => copy[obj[key]] = key);
   return copy;
 };
 
@@ -82,21 +54,11 @@ const defaults = (obj, defaultProps) => {
   // http://underscorejs.org/#defaults
 
   const props = keys(obj);
-
-  arrays.each(keys(defaultProps), (key) => {
+  arrays.forEach(keys(defaultProps), (key) => {
     if (props.indexOf(key) === -1) {
       obj[key] = defaultProps[key];
     }
   });
-
-  // WRONG: use each
-  // for (let i = 0; i < defaultKeys.length; i++) {
-  //   const defKey = defaultKeys[i];
-  //   if (props.indexOf(defKey) === -1) {
-  //     obj[defKey] = defaultProps[defKey];
-  //   }
-  // }
-
   return obj;
 };
 

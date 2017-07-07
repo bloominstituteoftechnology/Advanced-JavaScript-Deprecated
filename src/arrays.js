@@ -91,6 +91,7 @@ const flatten = (elements) => {
 
 module.exports = {
   each,
+  forEach,
   map,
   reduce,
   find,
