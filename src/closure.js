@@ -71,7 +71,18 @@ const limitFunctionCallCount = (cb, n) => {
   // Ely and Sarah helped me in Slack, but i do not understand what's going on here
   // I got the limitFuncCall example from the JS course with sayHi... but ... ???
   //
-  // Ely's solution
+  let limit = 0;
+  return (...args) => {
+    limit++;
+    if (n > limit) {
+      // limit++; // <--- acts the same as limit++ before if eval
+      // console.log(limit);
+      return cb(...args);
+    }
+    return null; // <--- still not sure why we need to return null, just because the test is set up that way?
+  };
+
+  // Ely's solution √
   // let limit = 0;
   // const funcToReturn = (x, y, z) => {
   //   if (limit < n) {
@@ -84,17 +95,17 @@ const limitFunctionCallCount = (cb, n) => {
   // return funcToReturn;
 
   // Sarah's solution √
-  let num = 0;
-  return function inner(...args) {
-    num++;
-    if (num <= n) {
-      if (arguments.length) {
-        return cb(...args);
-      }
-      return cb();
-    }
-    return null;
-  };
+  // let num = 0;
+  // return function inner(...args) {
+  //   num++;
+  //   if (num <= n) {
+  //     if (arguments.length) {
+  //       return cb(...args);
+  //     }
+  //     return cb();
+  //   }
+  //   return null;
+  // };
 };
 
 const cacheFunction = (cb) => {
@@ -105,7 +116,20 @@ const cacheFunction = (cb) => {
   // then it should return the cached result and not invoke `cb` again.
   // `cb` should only ever be invoked once for a given set of arguments.
   const cache = {};
-  return cb;
+
+  return (x) => {
+    if (cache[x]) {
+      return cache[x];
+    }
+    cache[x] = cb(x);
+    return cache[x];
+  };
+
+  // if (cb(...args) not in cache) {
+  //   cache.arg = arg
+  //   return cb(...args);
+  // }
+  // return cb;
 };
 
 /* eslint-enable no-unused-vars */
