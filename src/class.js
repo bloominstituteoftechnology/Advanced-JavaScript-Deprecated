@@ -32,12 +32,20 @@ class Animal {
     this.age = options.age;
   }
   growOlder() {
-    return this.age;
+    return this.age + 1;
   }
 }
 
-class Cat {
+// vvv NOPE vvv
+// const Cat.prototype = Object.create(Animal.prototype);
+// Cat.prototype.name = this.name;
+// Cat.prototype.meow = function() {
+//   return `${this.name} meowed!`;
+// };
+
+class Cat extends Animal {
   constructor(options) {
+    super(options);
     this.name = options.name;
   }
   meow() {
