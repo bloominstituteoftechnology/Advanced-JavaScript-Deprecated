@@ -39,73 +39,72 @@ const nFactorial = (n) => {
 const checkMatchingLeaves = (obj) => {
   // return true if every property on `obj` is the same
   // otherwise return false
-  array = Object.keys(obj);
+  // const array = Object.keys(obj);
   // const anObject = {x: 4, y: 6, z: 7};
   // UGH!!!!!!!!!!!!!
-  const tree1 = {
-    x: 1,
-    y: 1,
-    z: 1,
-    xa: {
-      xx: 1,
-      xy: 1,
-      xz: 1,
-      zz: {
-        a: {
-          b: {
-            z: 1,
-          },
-        },
-      },
-    },
-    };
-
-  const keys = (obj) => {
-    return Object.keys(obj);
-  };
-
-  const values = (obj) => {
-    return Object.values(obj);
-  };
-
-  const pairs = (obj) => {
-    const keyArr = keys(obj);
-    const valArr = values(obj);
-    const pairArr = [];
-    for (let i = 0; i < keyArr.length; i++) {
-      pairArr.push([]);
-    }
-    for (let i = 0; i < keyArr.length; i++) {
-      pairArr[i].push(keyArr[i]);
-      pairArr[i].push(valArr[i]);
-    }
-    return pairArr;
-  };
-
-  const recursivePairs = (obj) => {
-    for (let i = 0; i < obj.length; i++) {
-      pairs[i]
-    }
-  };
-
-  const flatten = (elements) => {
-    let flat = [];
-    for (let i = 0; i < elements.length; i++) {
-      if (Array.isArray(elements[i])) {
-        flat = flat.concat(flatten(elements[i]));
-      } else {
-        flat.push(elements[i]);
-      }
-    }
-    return flat;
-  };
-
-  // const flatObj = pairs(anObject)
-  // console.log(flatObj);
-
-  const flatTree = pairs(tree1)
-  console.log(flatTree);
-
+  // const tree1 = {
+  //   x: 1,
+  //   y: 1,
+  //   z: 1,
+  //   xa: {
+  //     xx: 1,
+  //     xy: 1,
+  //     xz: 1,
+  //     zz: {
+  //       a: {
+  //         b: {
+  //           z: 1,
+  //         },
+  //       },
+  //     },
+  //   },
+  //   };
+  //
+  // const keys = (obj) => {
+  //   return Object.keys(obj);
+  // };
+  //
+  // const values = (obj) => {
+  //   return Object.values(obj);
+  // };
+  //
+  // const pairs = (obj) => {
+  //   const keyArr = keys(obj);
+  //   const valArr = values(obj);
+  //   const pairArr = [];
+  //   for (let i = 0; i < keyArr.length; i++) {
+  //     pairArr.push([]);
+  //   }
+  //   for (let i = 0; i < keyArr.length; i++) {
+  //     pairArr[i].push(keyArr[i]);
+  //     pairArr[i].push(valArr[i]);
+  //   }
+  //   return pairArr;
+  // };
+  //
+  // const recursivePairs = (obj) => {
+  //   for (let i = 0; i < obj.length; i++) {
+  //     pairs[i]
+  //   }
+  // };
+  //
+  // const flatten = (elements) => {
+  //   let flat = [];
+  //   for (let i = 0; i < elements.length; i++) {
+  //     if (Array.isArray(elements[i])) {
+  //       flat = flat.concat(flatten(elements[i]));
+  //     } else {
+  //       flat.push(elements[i]);
+  //     }
+  //   }
+  //   return flat;
+  // };
+  //
+  // // const flatObj = pairs(anObject)
+  // // console.log(flatObj);
+  //
+  // const flatTree = pairs(tree1)
+  // console.log(flatTree);
 };
 
 /* eslint-enable no-unused-vars */
