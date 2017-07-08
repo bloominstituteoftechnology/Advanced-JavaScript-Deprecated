@@ -118,13 +118,14 @@ const cacheFunction = (cb) => {
   const cache = {};
 
   return (x) => {
+    // if there is already a cached cb(), then return it from the cache instead of executing the cb again
     if (cache[x]) {
       return cache[x];
     }
+    // otherwise, put the cb(x) into the cache for later use
     cache[x] = cb(x);
     return cache[x];
   };
-
   // if (cb(...args) not in cache) {
   //   cache.arg = arg
   //   return cb(...args);
