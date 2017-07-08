@@ -78,9 +78,9 @@ const addArgs = function (...args) { // <---------- Unexpected unnamed function
   return sum;
 };
 
-const argsToCb = function (cb) { // <-------------- Unexpected unnamed function
+const argsToCb = function (cb) { // <------------------------ Unexpected unnamed function
   const args = Array.prototype.slice.call(arguments); // <--- Use the rest parameters instead of 'arguments'
-  return cb.apply(null, args.splice(1)); // <------ Use the spread operator instead of '.apply()'
+  return cb.apply(null, args.splice(1)); // <---------------- Use the spread operator instead of '.apply()'
 };
 
 const result = argsToCb(addArgs, 1, 2, 3, 4, 5); // result should be 15
