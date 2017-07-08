@@ -1,7 +1,3 @@
-// Complete the following functions.
-// These functions only need to work with arrays.
-
-
 const each = (elements, cb) => {
   for (let i = 0; i < elements.length; i++) {
     cb(elements[i], i);
@@ -45,8 +41,6 @@ const filter = (elements, cb) => {
   return arr;
 };
 
-// const notSoCrazyArr = [[1], [2], [3], [4], [5]];
-// const crazyArr = [1, [2], [3, [[4]]]];
 const flatten = (arr) => {
   let newArr = [];
   for (let i = 0; i < arr.length; i++) {
@@ -58,10 +52,6 @@ const flatten = (arr) => {
   }
   return newArr;
 };
-// console.log(flatten(notSoCrazyArr));
-// //=> [1, 2, 3, 4, 5]
-// console.log(flatten(crazyArr));
-// // //=> [1, 2, 3, 4]
 
 /* eslint-enable no-unused-vars, max-len */
 
