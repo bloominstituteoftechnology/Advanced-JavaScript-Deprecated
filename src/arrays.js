@@ -4,9 +4,7 @@
 /* eslint-disable no-unused-vars, max-len */
 
 const each = (elements, cb) => {
-  // Iterates over a list of elements, yielding each in turn to the `cb` function.
-  // This only needs to work with arrays.
-  // based off http://underscorejs.org/#each
+  elements.forEach(cb);
 };
 
 const map = (elements, cb) => {
@@ -14,7 +12,7 @@ const map = (elements, cb) => {
   // Return the new array.
 };
 
-const reduce = (elements, cb, memo) => {
+const reduce = (elements, cb, memo = elements[0]) => {
   // Combine all elements into a single value going from left to right.
   // Elements will be passed one by one into `cb`.
   // `memo` is the starting value.  If `memo` is undefined then make `elements[0]` the initial value.
