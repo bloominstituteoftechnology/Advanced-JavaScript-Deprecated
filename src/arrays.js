@@ -30,7 +30,7 @@ const map = (elements, cb) => {
   // Return the new array.
 
   // version 1 √
-  // // const newArray = new Array(); <--- no bueno syntax
+  // // const newArray = new Array(); <--- no bueno syntax per linter
   // const newArray = [];
   // for (let i = 0; i < elements.length; i++) {
   //   newArray.push(cb(elements[i]));
@@ -131,12 +131,10 @@ const reduce = (elements, cb, memo) => {
     memo = elements[0];
     i = 1; // <--- starting at second item when no memo is passed in
   }
-
   for (; i < elements.length; i++) {
     memo = cb(memo, elements[i]);
   }
   return memo;
-
 
   // Ryan's solution √
   // no string/number check, nice!
