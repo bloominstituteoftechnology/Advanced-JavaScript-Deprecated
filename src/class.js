@@ -36,7 +36,7 @@ class Animal {
   }
 }
 
-// vvv NOPE vvv
+// vvv NOPE vvv Q: HOW TO SOLVE THIS USING PROTOTYPE?
 // const Cat = Object.create(Animal.prototype);
 // // Cat.prototype.name = this.name;
 // Cat.prototype.name = 'whiskers';
