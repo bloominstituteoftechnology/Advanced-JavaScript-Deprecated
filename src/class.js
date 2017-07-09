@@ -37,21 +37,20 @@ class Animal {
 }
 
 // vvv NOPE vvv
-// const Cat.prototype = Object.create(Animal.prototype);
-// Cat.prototype.name = this.name;
-// Cat.prototype.meow = function() {
-//   return `${this.name} meowed!`;
-// };
+// const Cat = Object.create(Animal.prototype);
+// // Cat.prototype.name = this.name;
+// Cat.prototype.name = 'whiskers';
+// Cat.prototype.meow = () => `${this.name} meowed!`;
 
-class Cat extends Animal {
-  constructor(options) {
-    super(options);
-    this.name = options.name;
-  }
-  meow() {
-    return `${this.name} meowed!`;
-  }
-}
+// class Cat extends Animal {
+//   constructor(options) {
+//     super(options);
+//     this.name = options.name;
+//   }
+//   meow() {
+//     return `${this.name} meowed!`;
+//   }
+// }
 
 module.exports = {
   User,
