@@ -21,11 +21,27 @@ const counterFactory = () => {
 };
 
 const limitFunctionCallCount = (cb, n) => {
+  let count = 0;
+  return (...args) => {
+    if (count < n) {
+      count++;
+      return cb(...args);
+    }
+    return null;
+  };
   // Should return a function that invokes `cb`.
   // The returned function should only allow `cb` to be invoked `n` times.
 };
 
 const cacheFunction = (cb) => {
+  const cache = {};
+  const cached = (x) => {
+    if (x in cache) {
+      return cache[x];
+    }
+    return cache[x] = cb(x);
+  };
+  return cached;
   // Should return a funciton that invokes `cb`.
   // A cache (object) should be kept in closure scope.
   // The cache should keep track of all arguments have been used to invoke this function.
