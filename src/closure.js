@@ -117,20 +117,25 @@ const cacheFunction = (cb) => {
   // `cb` should only ever be invoked once for a given set of arguments.
   const cache = {};
 
+  // version 1 - NOPE
+  // return (x) => {
+  //   // if there is already a cached cb(), then return it from
+  //   // the cache instead of executing the cb again
+  //   if (cache[x]) {
+  //     return cache[x];
+  //   }
+  //   // otherwise, put the cb(x) into the cache for later use
+  //   cache[x] = cb(x);
+  //   return cache[x];
+  // };
+
+  // version 2 √
   return (x) => {
-    // if there is already a cached cb(), then return it from the cache instead of executing the cb again
-    if (cache[x]) {
+    if (x in cache) {
       return cache[x];
     }
-    // otherwise, put the cb(x) into the cache for later use
-    cache[x] = cb(x);
-    return cache[x];
+    return cache[x] = cb(x);
   };
-  // if (cb(...args) not in cache) {
-  //   cache.arg = arg
-  //   return cb(...args);
-  // }
-  // return cb;
 };
 
 /* eslint-enable no-unused-vars */
