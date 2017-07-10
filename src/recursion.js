@@ -23,16 +23,17 @@ const nFibonacci = (n) => {
 const nFactorial = (n) => {
   // factorial example: !5 = 5 * 4 * 3 * 2 * 1
   // return the factorial of `n`
-  // version 1
+
+  // version 1 √
   // if (n === 1) return n;
   // return n * nFactorial(n - 1);
 
-  // version 2: ternary solution
+  // version 2: ternary solution √
   // declare variableName = ifCondition ? thenThis : otherwiseThat;
   // const factorial = (n === 1) ? 1 : n * nFactorial(n - 1);
   // return factorial;
 
-  // version 2.1
+  // version 2.1 √
   return (n === 1) ? n : n * nFactorial(n - 1);
 };
 
