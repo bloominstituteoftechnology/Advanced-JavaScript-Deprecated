@@ -54,8 +54,9 @@ const limitFunctionCallCount = (cb, n) => {
   // The returned function should only allow `cb` to be invoked `n` times.
   //
   // Ely and Sarah helped me in Slack, but i do not understand what's going on here
-  // I got the limitFuncCall example from the JS course with sayHi... but ... ???
-  //
+  // I got the limitFuncCall example from the JS course with sayHi... but still not solid on my understanding
+
+  // version 1 √
   let limit = 0;
   return (...args) => {
     limit++;

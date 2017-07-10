@@ -73,29 +73,32 @@ const defaults = (obj, defaultProps) => {
   // Fill in undefined properties that match properties on the `defaultProps` parameter object.
   // Return `obj`.
   // http://underscorejs.org/#defaults
-  // version 1
+
+  // version 1 √
   // using previous keys method, turn defaultProps object into an array to iterate over
   //
-  // const dPKeys = keys(defaultProps);
-  // for (let i = 0; i < dPKeys.length; i++) {
-  //   if (!obj[dPKeys[i]]) {
-  //     obj[dPKeys[i]] = defaultProps[dPKeys[i]];
-  //   }
-  // }
-  // return obj;
-
-  // version 2
-  const dPKeys = Object.keys(defaultProps);
-  dPKeys.forEach((value, i) => {
+  const dPKeys = keys(defaultProps);
+  for (let i = 0; i < dPKeys.length; i++) {
     if (!obj[dPKeys[i]]) {
       obj[dPKeys[i]] = defaultProps[dPKeys[i]];
     }
-  });
+  }
   return obj;
 
-  // version 3 - worked out a solution with ELY
+  // version 2 √
+  // const dPKeys = Object.keys(defaultProps);
+  // dPKeys.forEach((value, i) => {
+  //   if (!obj[dPKeys[i]]) {
+  //     obj[dPKeys[i]] = defaultProps[dPKeys[i]];
+  //   }
+  // });
+  // return obj;
+
+  // version 3 - √
+  // worked out a solution with ELY
+  //
   // const dPKeys = keys(defaultProps);
-  // dPKeys.forEach((value) => { // x y and z
+  // dPKeys.forEach((value) => {
   //   if (obj[value] === undefined) {
   //     obj[value] = defaultProps[value];
   //   }
