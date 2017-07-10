@@ -23,8 +23,8 @@ const me = new User({ username: 'LambdaSchool', password: 'correcthorsebatteryst
 const result = me.checkPwd('correcthorsebatterystaple'); // should return `true`
 console.log(result);// ---> true
 // false case
-const falseResult = me.checkPwd('staplehorsecorrectbattery'); // should return `true`
-console.log(falseResult);// ---> true
+const falseResult = me.checkPwd('staplehorsecorrectbattery'); // should return `false`
+console.log(falseResult);// ---> false
 
 
 const checkPassword = function comparePasswords(passwordToCompare) {
