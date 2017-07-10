@@ -13,8 +13,7 @@ class User {
   // return `true` if they match, otherwise return `false`
 
   checkPass(pW) {
-    return pW === this.password; {
-    }
+    return pW === this.password;
   }
 }
 
