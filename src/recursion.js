@@ -53,11 +53,11 @@ const checkMatchingLeaves = (obj) => {
   return true;
 
   // version 3 - working towards depth check, iterative
-  const tree1 = { x: 1, y: 1, z: 1, xa: { xx: 1, xy: 1, xz: 1, zz: {a: { b: { z: 1, }, }, }, }, };
+  const tree1 = { x: 1, y: 1, z: 1, xa: { xx: 1, xy: 1, xz: 1, zz: { a: { b: { z: 1, }, }, }, }, };
 
-  const x = Object.keys(tree1);
+  const k = Object.keys(tree1);
 
-  console.log(x);
+  console.log(k);
 
   const anArray = []
 
