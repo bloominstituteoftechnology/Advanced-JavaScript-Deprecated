@@ -20,7 +20,7 @@ const mapObject = (obj, cb) => {
   // http://underscorejs.org/#mapObject
   //
   // version 1 √
-  // using previous functions to make array from all keys
+  // // using previous functions to make array from all keys
   // const keyArr = keys(obj);
   // // using previous functions to make array from all values
   // const valArr = values(obj);
@@ -37,7 +37,7 @@ const mapObject = (obj, cb) => {
   // }
   // return mappedObj;
 
-  // version 2 - forEach method √
+  // version 2 - using forEach from Hamblin's 7/10 review √
   // const newObj = {};
   // Object.keys(obj).forEach((key) => {
   //   newObj[key] = cb(obj[key]);
@@ -72,9 +72,18 @@ const pairs = (obj) => {
   // }
   // return pairArr;
 
-  // version 2 - forEach √
+  // version 2 - using forEach from Hamblin's 7/10 review √
+  // const newArr = [];
+  // Object.keys(obj).forEach((givenKey) => {
+  //   const tempArray = [];
+  //   tempArray.push(givenKey, obj[givenKey]);
+  //   newArr.push(tempArray);
+  // });
+  // return newArr;
+
+  // version 3 - using previous eys method √
   const newArr = [];
-  Object.keys(obj).forEach((givenKey) => {
+  keys(obj).forEach((givenKey) => {
     const tempArray = [];
     tempArray.push(givenKey, obj[givenKey]);
     newArr.push(tempArray);
@@ -88,21 +97,28 @@ const invert = (obj) => {
   // http://underscorejs.org/#invert
   //
   // version 1 √
-  // const keyArr = keys(obj);
-  // const valArr = values(obj);
-  // const mappedObj = {};
-  // for (let i = 0; i < keyArr.length; i++) {
-  //   // {key:value} inverted to {value:key}
-  //   mappedObj[valArr[i]] = keyArr[i];
-  // }
-  // return mappedObj;
+  const keyArr = keys(obj);
+  const valArr = values(obj);
+  const mappedObj = {};
+  for (let i = 0; i < keyArr.length; i++) {
+    // {key:value} inverted to {value:key}
+    mappedObj[valArr[i]] = keyArr[i];
+  }
+  return mappedObj;
 
-  // version 2 - forEach √
-  const newObj = [];
-  Object.keys(obj).forEach((givenKey) => {
-    newObj[obj[givenKey]] = givenKey;
-  });
-  return newObj;
+  // version 2 - using forEach from Hamblin's 7/10 review √
+  // const newObj = {};
+  // Object.keys(obj).forEach((givenKey) => {
+  //   newObj[obj[givenKey]] = givenKey;
+  // });
+  // return newObj;
+
+  // version 3 - using previous keys method √
+  // const newObj = {};
+  // keys(obj).forEach((givenKey) => {
+  //   newObj[obj[givenKey]] = givenKey;
+  // });
+  // return newObj;
 };
 
 const defaults = (obj, defaultProps) => {
