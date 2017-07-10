@@ -52,6 +52,31 @@ const checkMatchingLeaves = (obj) => {
   }
   return true;
 
+  // version 3 - working towards depth check, iterative
+  const tree1 = { x: 1, y: 1, z: 1, xa: { xx: 1, xy: 1, xz: 1, zz: {a: { b: { z: 1, }, }, }, }, };
+
+  const x = Object.keys(tree1);
+
+  console.log(x);
+
+  const anArray = []
+
+  for (y in tree1) {
+    anArray.push([]);
+  };
+
+  console.log(anArray);
+
+  for (b in tree1) {
+    console.log(`${b} ${typeof b} ${tree1[b]} ${typeof tree1[b]}`);
+    if (typeof tree1[b] === 'object') {
+      for (c in tree1[b]) {
+      console.log(`${c} ${typeof c} ${tree1[b][c]} ${typeof tree1[b][c]}`);
+      }
+    }
+  };
+
+
   // version 2 - NOPE
   // const keys = (kObj) => {
   //   return Object.keys(kObj);
