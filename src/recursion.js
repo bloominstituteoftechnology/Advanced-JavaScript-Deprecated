@@ -40,6 +40,51 @@ const nFactorial = (n) => {
 const checkMatchingLeaves = (obj) => {
   // return true if every property on `obj` is the same
   // otherwise return false
+
+  // version 1 - solve for first test ONLY √
+  // compare one object value against (itself and) all other values
+  const x = Object.keys(obj);
+  // const x = Object.getOwnPropertyNames(obj); // <--- same as Object.keys()
+  const y = x[0];
+
+  for (let i = 0; i < x.length; i++) {
+    if (obj[y] !== obj[x[i]]) return false;
+  }
+  return true;
+
+  // version 2 - NOPE
+  // const keys = (kObj) => {
+  //   return Object.keys(kObj);
+  // };
+  //
+  // const values = (vObj) => {
+  //   return Object.values(vObj);
+  // };
+  //
+  // const pairs = (xObj) => {
+  //   const keyArr = keys(xObj);
+  //   const valArr = values(xObj);
+  //   const pairArr = [];
+  //   for (let i = 0; i < keyArr.length; i++) {
+  //     pairArr.push([]);
+  //   }
+  //   for (let i = 0; i < keyArr.length; i++) {
+  //     pairArr[i].push(keyArr[i]);
+  //     pairArr[i].push(valArr[i]);
+  //   }
+  //   return pairArr;
+  // };
+  //
+  // const arrPair = pairs(obj);
+  //
+  // const firstPairItem = arrPair[0][0];
+  //
+  // for (let i = 0; i < arrPair.length; i++) {
+  //   if (arrPair[0][0] !== arrPair[i][1]) {
+  //     return false;
+  //   } return true;
+  // }
+
   // const array = Object.keys(obj);
   // const anObject = {x: 4, y: 6, z: 7};
   // UGH!!!!!!!!!!!!!
