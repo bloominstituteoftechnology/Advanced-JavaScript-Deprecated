@@ -5,6 +5,7 @@ const counter = () => {
   // Example: const newCounter = counter();
   // newCounter(); // 1
   // newCounter(); // 2
+
   // version 1 √
   // let value = 0;
   // const increment = () => value += 1;
@@ -24,44 +25,28 @@ const counterFactory = () => {
   // Return an object that has two methods called `increment` and `decrement`.
   // `increment` should increment a counter variable in closure scope and return it.
   // `decrement` should decrement the counter variable and return it.
-  // version 1 - NOPE
-  // let value = 0;
-  // const obj = {
-  //   increment() { value += 1; }, // Ha - no return!!!
-  //   decrement() { value -= 1; }  // whoops!
-  // };
-  // return obj;
 
-  // version 2 - NOPE
-  // trying to tighten up code - Ha - but still no method returns!!!
+  // version 1 √
+  let value = 0;
+  const obj = {
+    increment() { return value += 1; },
+    decrement() { return value -= 1; }
+  };
+  return obj;
+
+  // version 2 √
   // let value = 0;
   // return {
-  //   increment() { value += 1; },
-  //   decrement() { value -= 1; }
+  //   increment() { return value += 1; },
+  //   decrement() { return value -= 1; }
   // };
 
   // version 3 √
   // let value = 0;
   // return {
-  //   increment() { return value += 1; },
-  //   decrement() { return value -= 1; }
+  //   increment: () => value += 1,
+  //   decrement: () => value -= 1
   // };
-
-  // version 4 √
-  // let value = 0;
-  // const obj = {
-  //   increment() { return value += 1; },
-  //   decrement() { return value -= 1; }
-  // };
-  // return obj;
-
-  // version 5 √
-  let value = 0;
-  const obj = {
-    increment: () => value += 1,
-    decrement: () => value -= 1
-  };
-  return obj;
 };
 
 const limitFunctionCallCount = (cb, n) => {
@@ -129,7 +114,7 @@ const cacheFunction = (cb) => {
   //   return cache[x];
   // };
 
-  // version 2 √
+  // version 2 √ - Not sure why the above doesn't work and this does
   return (x) => {
     if (x in cache) {
       return cache[x];
