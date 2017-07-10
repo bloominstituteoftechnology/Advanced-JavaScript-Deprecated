@@ -9,7 +9,7 @@ const each = (elements, cb) => {
   // A: somewhat arbitrary, discernable from the test suite
   //    just emulating forEach and underscore's each
 
-  // version 1
+  // version 1 √
   for (let i = 0; i < elements.length; i++) {
     cb(elements[i], i);
   }
@@ -19,9 +19,9 @@ const each = (elements, cb) => {
   //   cb(value, index);
   // });
 
-  // version 3 - jsfiddle has underscore library
+  // version 3 - jsfiddle has underscore library √
   // _.each(elements, (value, index) => {
-  //   cb(value, index); // <--- ??? Not sure that's it
+  //   cb(value, index);
   // });
 };
 
@@ -110,13 +110,13 @@ const reduce = (elements, cb, memo) => {
   // const total = elements.reduce(cb, memo);
   // return total;
 
-  // Karthik's version A: passing the 2nd test only, "✓ should accept a memo argument"
+  // Karthik's version A: passing the 2nd test only, "should accept a memo argument" √
   // each(elements, (elem) => {
   //   memo = cb(memo, elem); // <-- returns a new memo which is used for the next callback
   // });
   // return memo;
 
-  // Karthik's version B: passes all tests
+  // Karthik's version B: passes all tests √
   // if (memo === undefined) {
   //   memo = elements.shift(); // <--- removes first element from array and returns it to memo variable
   // }
@@ -125,7 +125,7 @@ const reduce = (elements, cb, memo) => {
   // });
   // return memo;
 
-  // Karthik's version C: a better way
+  // Karthik's version C: a better way √
   let i = 0;
   if (memo === undefined) {
     memo = elements[0];
