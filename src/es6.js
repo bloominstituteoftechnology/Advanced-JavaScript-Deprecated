@@ -1,4 +1,4 @@
-/* eslint-disable */
+// /* eslint-disable */
 
 // Refactor the following code to use the specified ES6 features.
 // There are no automated tests.
@@ -51,7 +51,7 @@ class User {
   constructor(options) {
     this.username = options.username;
     this.password = options.password;
-    this.sayHi = function() { // <------------------ Unexpected unnamed function
+    this.sayHi = function () { // <--------------------------- Unexpected unnamed function
       return `${this.username} says hello!`; // <--- template literals √
     };
   }
@@ -61,8 +61,8 @@ const username = 'JavaScriptForever';
 const password = 'password';
 
 const me = new User({
-  username,                                 // <--- enhanced object literals √
-  password,                                 // <--- enhanced object literals √
+  username,                                  // <--- enhanced object literals √
+  password,                                  // <--- enhanced object literals √
 });
 
 console.log(me);
@@ -70,7 +70,7 @@ console.log(me);
 // ----------------
 // let, const, =>, ... (spread operator)
 
-const addArgs = function (...args) { // <---------- Unexpected unnamed function
+const addArgs = function (...args) { // <--------------------- Unexpected unnamed function
   let sum = 0;
   for (let i = 0; i < args.length; i++) {
     sum += args[i];
