@@ -61,11 +61,23 @@ const find = (elements, cb) => {
 const filter = (elements, cb) => {
   // Similar to `find` but you will return an array of all elements that passed the truth test
   // Return an empty array if no elements pass the truth test
+
+  const arr = [];
+  for (let i = 0; i < elements.length; i++) {
+    if (cb(elements[i]) === true) arr.push(elements[i]);
+  }
+  return arr;
 };
 
 const flatten = (elements) => {
   // Flattens a nested array (the nesting can be to any depth).
   // Example: flatten([1, [2], [3, [[4]]]]); => [1, 2, 3, 4];
+  let arr = [];
+  for (let i = 0; i < elements.length; i++) {
+    if (Array.isArray(elements[i])) {
+      arr = arr.concat(flatten(elements[i]));
+    } else arr.push(elements[i]);
+  } return arr;
 };
 
 /* eslint-enable no-unused-vars, max-len */
