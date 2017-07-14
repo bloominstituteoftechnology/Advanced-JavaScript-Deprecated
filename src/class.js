@@ -6,7 +6,6 @@
 // for a potential password that will be compared to the `password` property.
 // Return true if the potential password matches the `password` property.  Otherwise return false.
 
-
 /* eslint-disable no-undef */ // Remove this comment once you write your classes.
 
 
