@@ -6,7 +6,13 @@ const each = (elements, cb) => {
   // Iterates over a list of elements, yielding each in turn to the `cb` function.
   // This only needs to work with arrays.
   // based off http://underscorejs.org/#each
-
+  if (Array.isArray(elements)) {
+    for (let i = 0; i < elements.length; i++) {
+      cb(elements[i], i);
+    }
+  } else {
+    throw new Error();
+  }
   elements.forEach((item, index) => {
     cb(item, index);
   });
@@ -15,10 +21,13 @@ const each = (elements, cb) => {
 const map = (elements, cb) => {
   // Produces a new array of values by mapping each value in list through a transformation function (iteratee).
   // Return the new array.
-
-  const myArray = elements.map((item, index) => {
-    return cb(item, index);
+  const myArray = [];
+  each(elements, (element, index) => {
+    myArray.push(cb(element, index));
   });
+  // const myArray = elements.map((item, index) => {
+  // return cb(item, index);
+  // });
 
   return myArray;
 };
@@ -41,7 +50,7 @@ const reduce = (elements, cb, memo) => {
   //   memo.push.cb(elements);
   // }
   if (!memo) {
-    memo = elements[0];
+    memo = elements.shift();
   }
   for (let i = 0; i < elements.length; i++) {
     memo = cb(memo, elements[i]);
