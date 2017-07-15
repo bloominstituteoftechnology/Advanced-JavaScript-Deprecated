@@ -15,27 +15,21 @@ const reduce = (elements, cb, memo) => {
   // Combine all elements into a single value going from left to right.
   // Elements will be passed one by one into `cb`.
   // `memo` is the starting value.  If `memo` is undefined then make `elements[0]` the initial value.
-
   // TODO come back to later
-  const myValue = elements.reduce((sum, value) => {
-    if (!memo) {
-      return cb(sum + value);
-    }
-    return cb(memo + sum + value);
-  }, 0);
+  if (!memo) memo = elements.shift();
+  for (let i = 0; i < elements.length; i++) {
+    memo += elements[i];
+  }
+  return memo;
 };
 
 const find = (elements, cb) => {
   // Look through each value in `elements` and pass each element to `cb`.
   // If `cb` returns `true` then return that element.
   // Return `undefined` if no elements pass the truth test.
-
-  elements.forEach((value, i) => {
-    if (cb(value)) {
-      return value;
-    }
-    // if (i === elements.length - 1) return 'undefined';
-  });
+  for (let i = 0; i < elements.length; i++) {
+    if (cb(elements[i])) return elements[i];
+  }
   return 'undefined';
 };
 
@@ -63,7 +57,6 @@ const flatten = (elements) => {
   //   }
   // });
   // return nArr;
-
   return elements.reduce((flat, toFlatten) => {
     return flat.concat(Array.isArray(toFlatten) ? flatten(toFlatten) : toFlatten);
   }, []);
