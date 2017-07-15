@@ -28,17 +28,17 @@ class User {
 // `meow` that should return the string `<name> meowed!` where `<name>` is the `name`
 // property set on the Cat instance.
 class Animal {
-  constructor(age) {
-    this.age = age;
+  constructor(options) {
+    this.age = options.age;
   }
   growOlder() {
-    return this.age;
+    return (this.age + 1);
   }
 }
 class Cat extends Animal {
-  constructor(name) {
-    super();
-    this.name = name;
+  constructor(options) {
+    super(options);
+    this.name = options.name;
   }
   meow() {
     return `${this.name} meowed!`;
