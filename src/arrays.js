@@ -9,9 +9,6 @@ const each = (elements, cb) => {
   // Iterates over a list of elements, yielding each in turn to the `cb` function.
   // This only needs to work with arrays.
   // based off http://underscorejs.org/#each
-  return elements.forEach((element, i) => {
-    return cb(element, i);
-  });
 };
 
 
@@ -24,17 +21,15 @@ const map = (elements, cb) => {
 
   // Produces a new array of values by mapping each value in list through a transformation function (iteratee).
   // Return the new array.
-  const newArray = [];
-  elements.forEach((element) => {
-    newArray.push(cb(element));
-  });
-  return newArray;
 };
 
 const reduce = (elements, cb, memo) => {
   // Combine all elements into a single value going from left to right.
   // Elements will be passed one by one into `cb`.
   // `memo` is the starting value.  If `memo` is undefined then make `elements[0]` the initial value.
+  // return elements.reduce((previousTotal, currentValue) => {
+  //     return cb(previousTotal, currentValue)
+  // }, typeof memo == 'undefined' ? elements[0] : memo);
   let sum = 0;
   let newStr = '';
   if (typeof memo === 'number') sum = memo;
