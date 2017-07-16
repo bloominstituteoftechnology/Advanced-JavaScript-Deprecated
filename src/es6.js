@@ -14,12 +14,12 @@ const isMyFavoriteFood = (food) =>{
   return food === 'thousand-year-old egg';
 };
 
-var isThisMyFavorite = isMyFavoriteFood(food);
+const isThisMyFavorite = isMyFavoriteFood(food);
 
 //----------------
 //const, class, template literals, enhanced object literals (foo: foo, -> foo,)
 
-/* class User {
+class User {
   constructor(options) {
   this.username = options.username
   this.password = options.password
@@ -28,30 +28,30 @@ var isThisMyFavorite = isMyFavoriteFood(food);
     return `${username} says hello!`;
 };
 
-var username = 'JavaScriptForever';
-var password = 'password';
+const username = 'JavaScriptForever';
+const password = 'password';
 
-var me = new User({
-  username: username,
-  password: password,
-}); */
+const me = new User({
+  username,
+  password,
+});
 
 // ----------------
 // let, const, =>, ... (spread operator)
 
-var addArgs = function () {
-  var sum = 0;
-  for (var i = 0; i < arguments.length; i++) {
+const addArgs = () {
+  let sum = 0;
+  for (let i = 0; i < arguments.length; i++) {
     sum += arguments[i];
   }
   return sum;
 };
 
-var argsToCb = function (cb) {
-  var args = Array.prototype.slice.call(arguments);
+const argsToCb = (cb) {
+  const args = Array.prototype.slice.call(arguments);
   return cb.apply(null, args.splice(1));
 };
 
-var result = argsToCb(addArgs, 1, 2, 3, 4, 5); //result should be 15
+const result = argsToCb(addArgs, 1, 2, 3, 4, 5); //result should be 15
 
 /* eslint-enable */
