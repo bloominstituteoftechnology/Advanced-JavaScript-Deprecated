@@ -9,6 +9,6 @@ Fork and clone this repo.
 	* Run the command `npm test` to run the tests.
 		* Done √
 	* Work through the files and make the tests pass.
-		*
+		* all except matchingLeaves...
 	* Suggested order: `es6.js`, `arrays.js`, `objects.js`, `this.js`, `class.js`, `closure.js`, and then `recursion.js`.
 	* Submit a pull request when you are finished and we will review your code.
