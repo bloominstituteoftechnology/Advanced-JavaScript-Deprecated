@@ -12,7 +12,7 @@ const nFactorial = (n) => {
 	if (n <= 1) {
 		return true;
 	}
-	return nFactorial(n - 1) + nFactorial(n-2);
+	return nFactorial(n - 1) + nFactorial(n - 2);
   // factorial example: !5 = 5 * 4 * 3 * 2 * 1
   // return the factorial of `n`
 };
