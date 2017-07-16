@@ -65,25 +65,25 @@ const flatten = (elements) => {
   // Flattens a nested array (the nesting can be to any depth).
   // Example: flatten([1, [2], [3, [[4]]]]); => [1, 2, 3, 4];
      onst flattener = (els, arr) => {
-       if (abc.length > 0) {
-       const el = abc.shift();
-       if (el instanceof Array) {
-         flattener(x, arr);
-       } else {
-         arr.push(x);
+       const newArray=[];
+       elements.forEach(elements)=>{
+          if(Array.isArray(element)=>{
+            const nestedArray=flatten(element);
+            nestedArray.forEach(nestedElement)=>{
+                
+            }
+              
+          } else{
+              newArray.push(element);
+          }
+           
+           
        }
- 
-       flattener(abc, arr);
-     }
- 
-     return arr;
-   };
- 
-   return flattener(elements, []);
   };
-  
+  return newArray;
 };
 
+   
 
 /*
 module.exports = {
