@@ -33,13 +33,13 @@ const limitFunctionCallCount = (cb, n) => {
   // Should return a function that invokes `cb`.
   // The returned function should only allow `cb` to be invoked `n` times.
   let counterNumber3 = 1;
-  let invocationLimit = n;
+  const invocationLimit = n;
   return (...args) => {
     if (counterNumber3 <= invocationLimit) {
       counterNumber3++;
       return cb(...args);
     } return null;
-  }
+  };
 };
 
 const cacheFunction = (cb) => {
@@ -49,20 +49,15 @@ const cacheFunction = (cb) => {
   // If the returned function is invoked with arguments that it has already seen
   // then it should return the cached result and not invoke `cb` again.
   // `cb` should only ever be invoked once for a given set of arguments.
-  let cache = {};
-  cache = {
-    values: [10, 2, 5, true]
-  }
+  const cache = {};
   return (...args) => {
-      if(cache.hasOwnProperty(args)) {
-        return cache[args];
-      }
-      cache[args] = cb(args);
+    if (cache.hasOwnProperty.calls(args)) {
       return cache[args];
+    }
+    cache[args] = cb(args);
+    return cache[args];
   };
-
 };
-
 /* eslint-enable no-unused-vars */
 
 module.exports = {
