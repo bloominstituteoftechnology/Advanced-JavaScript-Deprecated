@@ -26,8 +26,8 @@ const nFactorial = (n) => {
   // return the factorial of `n`
 
   // // version 1 √
-  // if (n === 1) return n;
-  // return n * nFactorial(n - 1);
+  if (n === 1) return n;
+  return n * nFactorial(n - 1);
 
   // // version 2: ternary solution √
   // // declare variableName = ifCondition ? thenThis : otherwiseThat;
