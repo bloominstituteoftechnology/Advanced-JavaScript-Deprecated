@@ -37,16 +37,15 @@ const me = new User({
 // ----------------
 // let, const, =>, ... (spread operator)
 
-const addArgs = () => {
+const addArgs = (...args) => {
   let sum = 0;
-  for (let i = 0; i < arguments.length; i++) {
-    sum += arguments[i];
+  for (let i = 0; i < args.length; i++) {
+    sum += args[i];
   }
   return sum;
 };
 
-const argsToCb = (cb) => {
-  const args = Array.prototype.slice.call(arguments);
+const argsToCb = (cb, ...args) => {
   return cb.apply(null, args.splice(1));
 };
 
