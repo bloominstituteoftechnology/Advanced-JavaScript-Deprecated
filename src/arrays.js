@@ -1,6 +1,8 @@
 // Complete the following functions.
 // These functions only need to work with arrays.
-
+// Do NOT use the built in array methods to solve these. forEach, map, reduce, filter, includes, etc.
+// You CAN use concat, push, pop, etc. but do not use the exact method that you are replicating
+// You can use the functions that you have already written to help solve the other problems
 
 const each = (elements, cb) => {
   // Iterates over a list of elements, yielding each in turn to the `cb` function.
