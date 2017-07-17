@@ -16,11 +16,12 @@ const reduce = (elements, cb, memo) => {
   // Elements will be passed one by one into `cb`.
   // `memo` is the starting value.  If `memo` is undefined then make `elements[0]` the initial value.
   // TODO come back to later
+  let val;
   if (!memo) memo = elements.shift();
   for (let i = 0; i < elements.length; i++) {
-    memo += elements[i];
+    val += cb(memo, elements[i]);
   }
-  return memo;
+  return val;
 };
 
 const find = (elements, cb) => {

@@ -39,7 +39,7 @@ class Animal {
 
 class Cat extends Animal {
   constructor(options) {
-    super(options, options);
+    super(options);
     this.name = options.name;
     this.meow = function () {
       return `${this.name} meowed!`;
