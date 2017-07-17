@@ -2,26 +2,35 @@
 // These functions only need to work with arrays.
 
 
-const each = (elements, cb) => elements.forEach((value, i) => cb(value, i));
+const each = (elements, cb) => {
   // Iterates over a list of elements, yielding each in turn to the `cb` function.
   // This only needs to work with arrays.
   // based off http://underscorejs.org/#each
+  for (let i = 0; i < elements.length; i++) {
+    cb(elements[i], i);
+  }
+};
 
-const map = (elements, cb) => elements.map(cb);
+const map = (elements, cb) => {
   // Produces a new array of values by mapping each value in list through a transformation function (iteratee).
   // Return the new array.
+  const arr = [];
+  for (let i = 0; i < elements.length; i++) {
+    arr.push(cb(elements[i]));
+  }
+  return arr;
+};
 
 const reduce = (elements, cb, memo) => {
   // Combine all elements into a single value going from left to right.
   // Elements will be passed one by one into `cb`.
   // `memo` is the starting value.  If `memo` is undefined then make `elements[0]` the initial value.
   // TODO come back to later
-  let val;
   if (!memo) memo = elements.shift();
-  for (let i = 0; i < elements.length; i++) {
-    val += cb(memo, elements[i]);
+  for (let i = 0; elements.length; i++) {
+    memo = cb(memo, elements[i]);
   }
-  return val;
+  return memo;
 };
 
 const find = (elements, cb) => {
@@ -38,29 +47,28 @@ const filter = (elements, cb) => {
   // Similar to `find` but you will return an array of all elements that passed the truth test
   // Return an empty array if no elements pass the truth test
   const arr = [];
-  elements.forEach((value) => {
-    if (cb(value)) {
-      arr.push(value);
-    }
-  });
+  for (let i = 0; i < elements.length; i++) {
+    if (cb(elements[i])) arr.push(elements[i]);
+  }
   return arr;
 };
 
 const flatten = (elements) => {
   // Flattens a nested array (the nesting can be to any depth).
   // Example: flatten([1, [2], [3, [[4]]]]); => [1, 2, 3, 4];
-  // let nArr = [];
-  // elements.forEach((value, i) => {
-  //   if (Array.isArray(this[i])) {
-  //     nArr = nArr.concat(this[i].flatten());
-  //   } else {
-  //     nArr.push(this[i]);
-  //   }
-  // });
-  // return nArr;
-  return elements.reduce((flat, toFlatten) => {
-    return flat.concat(Array.isArray(toFlatten) ? flatten(toFlatten) : toFlatten);
-  }, []);
+  const arr = [];
+  elements.forEach((value) => {
+    // First make base case.
+    if (Array.isArray(value)) { // If value is an array.
+      const nestedArray = flatten(value);
+      nestedArray.forEach((nestedValue) => {
+        arr.push(nestedValue);
+      });
+    } else { // Else if it's not, just add to new array.
+      arr.push(value);
+    }
+  });
+  return arr;
 };
 
 /* eslint-enable no-unused-vars, max-len */
