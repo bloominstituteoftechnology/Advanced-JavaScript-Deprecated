@@ -7,37 +7,60 @@
 //----------------
 // const, =>, default parameters, arrow functions default return statements using ()
 
-var food = 'pineapple';
+const food = 'Pineapple';
 
+/*
 var isMyFavoriteFood = function(food) {
   food = food || 'thousand-year-old egg'; //This sets a default value if `food` is falsey
   return food === 'thousand-year-old egg';
 };
+*/
 
-var isThisMyFavorite = isMyFavoriteFood(food);
+const isMyFavoriteFood = (food) => {
+  return (food && 'thousand-year-old egg' ? false : true);
+};
+
+const isThisMyFavorite = isMyFavoriteFood(food);
 
 //----------------
 //const, class, template literals, enhanced object literals (foo: foo, -> foo,)
 
+/*
 var User = function(options) {
   this.username = options.username;
   this.password = options.password;
   this.sayHi = function() {
     return this.username + ' says hello!';
   };
+} 
+*/
+
+class User {
+  constructor() {
+  this.username = username;
+  this.password = password;
+  this.sayHi = function() {
+    return this.username + ' says hello!';
+  };
 }
+}; 
 
-var username = 'JavaScriptForever';
-var password = 'password';
 
-var me = new User({
+const username = 'JavaScriptForever';
+const password = 'password';
+
+/*
+const me = new User({
   username: username,
   password: password,
 });
+*/
+const me = new User('username', 'password');
 
 // ----------------
 // let, const, =>, ... (spread operator)
 
+/*
 var addArgs = function () {
   var sum = 0;
   for (var i = 0; i < arguments.length; i++) {
@@ -45,12 +68,36 @@ var addArgs = function () {
   }
   return sum;
 };
+*/
+
+
+// Working
+/*
+const addArgs = (arguments) => {
+  const sum = 0;
+  for (let i = 0; i < arguments.length; i++) {
+    sum += arguments[i];
+  }
+  return sum;
+};
+*/
+
 
 var argsToCb = function (cb) {
   var args = Array.prototype.slice.call(arguments);
   return cb.apply(null, args.splice(1));
 };
 
-var result = argsToCb(addArgs, 1, 2, 3, 4, 5); //result should be 15
+
+/*
+const argsToCb = (cb) => {
+  const args = Array.prototype.slice.call(arguments);
+  return cb.apply(null, args.splice(1));
+};
+*/
+
+const result = argsToCb(addArgs, 1, 2, 3, 4, 5); //result should be 15
+
+console.log(result);
 
 /* eslint-enable */
