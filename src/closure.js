@@ -33,15 +33,33 @@ const limitFunctionCallCount = (cb, n) => {
 };
 
 const cacheFunction = (cb) => {
-  // Should return a funciton that invokes `cb`.
-  // A cache (object) should be kept in closure scope.
-  // The cache should keep track of all arguments have been used to invoke this function.
-  // If the returned function is invoked with arguments that it has already seen
-  // then it should return the cached result and not invoke `cb` again.
-  // `cb` should only ever be invoked once for a given set of arguments.
+        // Should return a funciton that invokes `cb`.
+        // A cache (object) should be kept in closure scope.
+        // The cache should keep track of all arguments have been used to invoke this function.
+        // If the returned function is invoked with arguments that it has already seen
+        // then it should return the cached result and not invoke `cb` again.
+        // `cb` should only ever be invoked once for a given set of arguments.
 
+        let cacheObject = {
+            //put keys here
+        };
+        return (...args) => {
+            let key = args.toString() + cb.toString();
+            if (!cacheObject[key]) {
+                let value = cb(args)
+                cacheObject[key] = value;
+              console.log(cacheObject)
+                return value;
+            } else {
+                return cacheObject[key];
+            }
 
+        };
+}
+let cFunc = cacheFunction((args) => args);
 
+cFunc(1, 2, 3)
+cFunc(1, 2);
 
 module.exports = {
   counter,
