@@ -22,9 +22,11 @@ class User {
 const me = new User({ username: 'LambdaSchool', password: 'correcthorsebatterystaple' });
 const result = me.checkPassword('correcthorsebatterystaple'); // should return `true`
 
-//console.log(me.username);
-//console.log(me.password);
-//console.log(result);
+/*
+  console.log(me.username);
+  console.log(me.password);
+  console.log(result);
+*/
 
 const checkPassword = function comparePasswords(passwordToCompare) {
   // recreate the `checkPassword` method that you made on the `User` class
