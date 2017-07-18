@@ -22,19 +22,19 @@ class User {
 const me = new User({ username: 'LambdaSchool', password: 'correcthorsebatterystaple' });
 const result = me.checkPassword('correcthorsebatterystaple'); // should return `true`
 
-console.log(me.username);
-console.log(me.password);
-console.log(result);
+//console.log(me.username);
+//console.log(me.password);
+//console.log(result);
 
 const checkPassword = function comparePasswords(passwordToCompare) {
   // recreate the `checkPassword` method that you made on the `User` class
   // use `this` to access the object's `password` property.
   // do not modify this function's parameters
   // note that we use the `function` keyword and not `=>`{
-    if (passwordToCompare === this.password) {
-      return true;
-    }
-    return false;
+  if (passwordToCompare === this.password) {
+    return true;
+  }
+  return false;
 };
 
 
