@@ -33,13 +33,13 @@ const limitFunctionCallCount = (cb, n) => {
   // Should return a function that invokes `cb`.
   // The returned function should only allow `cb` to be invoked `n` times.
   let counterNumber3 = 1;
-  let invocationLimit = n;
+  const invocationLimit = n;
   return (...args) => {
     if (counterNumber3 <= invocationLimit) {
       counterNumber3++;
       return cb(...args);
     } return null;
-  }
+  };
 };
 
 const cacheFunction = (cb) => {
@@ -52,15 +52,14 @@ const cacheFunction = (cb) => {
   let cache = {};
   cache = {
     values: [10, 2, 5, true]
-  }
-  return (...args) => {
-      if(cache.hasOwnProperty(args)) {
-        return cache[args];
-      }
-      cache[args] = cb(args);
-      return cache[args];
   };
-
+  return (...args) => {
+    if (Object.hasOwnProperty.call(cache, args)) {
+      return cache[args];
+    }
+    cache[args] = cb(args);
+    return cache[args];
+  };
 };
 
 /* eslint-enable no-unused-vars */
