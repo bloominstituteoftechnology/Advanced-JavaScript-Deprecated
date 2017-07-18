@@ -7,41 +7,43 @@
 //----------------
 // const, =>, default parameters, arrow functions default return statements using ()
 
-var food = 'pineapple';
+const food = 'pineapple';
 
 const isMyFavoriteFood = (food) => {
   food = food || 'thousand-year-old egg'; //This sets a default value if `food` is falsey
   return food === 'thousand-year-old egg';
 };
 
-var isThisMyFavorite = isMyFavoriteFood(food);
-console.log(isThisMyFavorite);
+const isThisMyFavorite = isMyFavoriteFood(food);
+
 //----------------
 //const, class, template literals, enhanced object literals (foo: foo, -> foo,)
 
-const User = function(options) {
-  this.username = options.username;
-  this.password = options.password;
-  this.sayHi = function() {
-    return this.username + ' says hello!';
-  };
+class User {
+  constructor(options) {
+    this.username = options.username;
+    this.password = options.password;
+    this.sayHi = function () {
+      return `${this.username} says hello!`;
+    }
+  }
 }
 
-var username = 'JavaScriptForever';
-var password = 'password';
+const username = 'JavaScriptForever';
+const password = 'password';
 
-var me = new User({
-  username: username,
-  password: password,
+const me = new User({
+  username,
+  password,
 });
-console.log(me.sayHi());
+
 // ----------------
 // let, const, =>, ... (spread operator)
 
-const addArgs = (...argument) => {
+const addArgs = (...args) => {
   let sum = 0;
-  for (let i = 0; i < arguments.length; i++) {
-    sum += arguments[i];
+  for (let i = 0; i < args.length; i++) {
+    sum += args[i];
   }
   return sum;
 };
@@ -52,5 +54,5 @@ const argsToCb = (cb) => {
 };
 
 const result = argsToCb(addArgs, 1, 2, 3, 4, 5); //result should be 15
-
+console.log(result);
 /* eslint-enable */
