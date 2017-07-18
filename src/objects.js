@@ -1,7 +1,6 @@
 // Complete the following underscore functions.
 // Reference http://underscorejs.org/ for examples.
 
-/* eslint-disable no-unused-vars, arrow-body-style */
 
 const keys = (obj) => {
   return Object.keys(obj);
@@ -63,5 +62,5 @@ module.exports = {
   mapObject,
   pairs,
   invert,
-  defaults,
+  defaults
 };

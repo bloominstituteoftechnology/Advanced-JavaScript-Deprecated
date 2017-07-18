@@ -1,7 +1,5 @@
 // Complete the following functions.
 
-/* eslint-disable no-unused-vars */
-
 const nFibonacci = (n) => {
   if (n <= 1) return 1;
   return nFibonacci(n - 1) + nFibonacci(n - 2);
@@ -44,5 +42,5 @@ const checkMatchingLeaves = (obj) => {
 module.exports = {
   nFibonacci,
   nFactorial,
-  checkMatchingLeaves,
+  checkMatchingLeaves
 };
