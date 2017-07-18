@@ -27,20 +27,14 @@ const reduce = (elements, cb, memo) => {
   // Combine all elements into a single value going from left to right.
   // Elements will be passed one by one into `cb`.
   // `memo` is the starting value.  If `memo` is undefined then make `elements[0]` the initial value.
-  // return elements.reduce((previousTotal, currentValue) => {
-  //     return cb(previousTotal, currentValue)
-  // }, typeof memo == 'undefined' ? elements[0] : memo);
-  let sum = 0;
-  let newStr = '';
-  if (typeof memo === 'number') sum = memo;
-  if (typeof memo === 'string') newStr = memo;
-  if (typeof elements[0] === 'number') {
-    for (let i = 0; i < elements.length; i++) {
-      sum += elements[i];
-    }
-    return sum;
+  if (typeof memo === 'undefined') {
+    return elements.reduce((previousTotal, currentValue) => {
+      return cb(previousTotal, currentValue);
+    });
   }
-  return newStr.concat(elements.join(''));
+  return elements.reduce((previousTotal, currentValue) => {
+    return cb(previousTotal, currentValue);
+  }, memo);
 };
 
 const find = (elements, cb) => {
@@ -66,13 +60,17 @@ const filter = (elements, cb) => {
 const flatten = (elements) => {
   // Flattens a nested array (the nesting can be to any depth).
   // Example: flatten([1, [2], [3, [[4]]]]); => [1, 2, 3, 4];
-  let newArr = [];
-  for (let i = 0; i < elements.length; i++) {
-    if (Array.isArray(elements[i])) {
-      newArr = newArr.concat(flatten(elements[i]));
+  const newArr = [];
+  elements.forEach((element) => {
+    if (Array.isArray(element)) {
+      const nestedArray = flatten(element);
+      nestedArray.forEach((nestedElement) => {
+        newArr.push(nestedElement);
+      });
+    } else {
+      newArr.push(element);
     }
-    newArr.push(elements[i]);
-  }
+  });
   return newArr;
 };
 
