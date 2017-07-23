@@ -6,6 +6,7 @@
 
 //----------------
 // const, =>, default parameters, arrow functions default return statements using ()
+//Passes
 
 const food = 'pineapple';
 
@@ -18,12 +19,13 @@ const isThisMyFavorite = isMyFavoriteFood(food);
 
 //----------------
 //const, class, template literals, enhanced object literals (foo: foo, -> foo,)
+//Passes
 
-const User = (options) => {
+function User(options) {
   this.username = options.username;
   this.password = options.password;
   this.sayHi = () => {
-    return this.username + ' says hello!';
+    return `${this.username} says hello!`;
   };
 }
 
@@ -37,10 +39,11 @@ const me = new User({
 
 // ----------------
 // let, const, =>, ... (spread operator)
+//Passes
 
-var addArgs = function () {
-  var sum = 0;
-  for (var i = 0; i < arguments.length; i++) {
+const addArgs = () => {
+  let sum = 0;
+  for (let i = 0; i < arguments.length; i++) {
     sum += arguments[i];
   }
   return sum;
