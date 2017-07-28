@@ -17,6 +17,12 @@ describe('arrays', () => {
       });
       expect(count).toBe(9);
     });
+    it('should call the callback passed to it for each element in array given', () => {
+      const callBackMockFn = jest.fn(); // this function is going to act as your callback, if it's not called your test will fail.
+      expect(callBackMockFn.mock.calls.length).toBe(0);
+      arrayMethods.each([1, 2, 3, 'four'], callBackMockFn);
+      expect(callBackMockFn.mock.calls.length).toBe(4);
+    });
   });
 
   describe('map', () => {
@@ -29,6 +35,12 @@ describe('arrays', () => {
       const arr = [1, 2, 3];
       const mappedArr = arrayMethods.map(arr, n => (n * 2));
       expect(mappedArr).toEqual([2, 4, 6]);
+    });
+    it('should call the callback passed to it for each element in array given', () => {
+      const callBackMockFn = jest.fn(); // this function is going to act as your callback, if it's not called your test will fail.
+      expect(callBackMockFn.mock.calls.length).toBe(0);
+      arrayMethods.each([1, 2, 3, 'four'], callBackMockFn);
+      expect(callBackMockFn.mock.calls.length).toBe(4);
     });
   });
 
@@ -48,8 +60,15 @@ describe('arrays', () => {
       const result = arrayMethods.reduce(arr, (memo, num) => (memo + num));
       expect(result).toBe('hello!');
     });
+    it('should call the given callback per every item but one in the array and return an expected value', () => {
+      const callBackMockFn = jest.fn();
+      callBackMockFn.mockReturnValue(25);
+      const arr = [1, 2, 3, 4, 5];
+      const result = arrayMethods.reduce(arr, callBackMockFn);
+      expect(result).toBe(25);
+      expect(callBackMockFn.mock.calls.length).toBe(4);
+    });
   });
-
   describe('find', () => {
     it('should return the first element that passes the truth test', () => {
       const arr = [1, 2, 3, 4, 5];
