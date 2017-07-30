@@ -5,17 +5,32 @@ const counter = () => {
   // Example: const newCounter = counter();
   // newCounter(); // 1
   // newCounter(); // 2
+  let count = 0;
+  return () => ++count;
 };
 
 const counterFactory = () => {
   // Return an object that has two methods called `increment` and `decrement`.
   // `increment` should increment a counter variable in closure scope and return it.
   // `decrement` should decrement the counter variable and return it.
+  let count = 0;
+  return {
+    increment: () => ++count,
+    decrement: () => --count,
+  };
 };
 
 const limitFunctionCallCount = (cb, n) => {
   // Should return a function that invokes `cb`.
   // The returned function should only allow `cb` to be invoked `n` times.
+  let invoked = 0;
+  return (...args) => {
+    if (invoked < n) {
+      invoked++;
+      return cb(...args);
+    }
+    return null;
+  };
 };
 
 const cacheFunction = (cb) => {
