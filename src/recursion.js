@@ -8,6 +8,11 @@ const nFibonacci = (n) => {
 const nFactorial = (n) => {
   // factorial example: !5 = 5 * 4 * 3 * 2 * 1
   // return the factorial of `n`
+  let factorial = 1;
+  for (let i = 0; i < n; i++) {
+    factorial *= n - i;
+  }
+  return factorial;
 };
 
 const checkMatchingLeaves = (obj) => {
