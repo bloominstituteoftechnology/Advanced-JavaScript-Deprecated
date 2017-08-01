@@ -6,41 +6,44 @@
 
 //----------------
 // const, =>, default parameters, arrow functions default return statements using ()
+//Passes
 
-var food = 'pineapple';
+const food = 'pineapple';
 
-var isMyFavoriteFood = function(food) {
-  food = food || 'thousand-year-old egg'; //This sets a default value if `food` is falsey
+const isMyFavoriteFood = (food) => {
+  food = food || 'thousand-year-old egg'; //This sets a default value if `food` is false
   return food === 'thousand-year-old egg';
 };
 
-var isThisMyFavorite = isMyFavoriteFood(food);
+const isThisMyFavorite = isMyFavoriteFood(food);
 
 //----------------
 //const, class, template literals, enhanced object literals (foo: foo, -> foo,)
+//Passes
 
-var User = function(options) {
+function User(options) {
   this.username = options.username;
   this.password = options.password;
-  this.sayHi = function() {
-    return this.username + ' says hello!';
+  this.sayHi = () => {
+    return `${this.username} says hello!`;
   };
 }
 
-var username = 'JavaScriptForever';
-var password = 'password';
+const username = 'JavaScriptForever';
+const password = 'password';
 
-var me = new User({
+const me = new User({
   username: username,
   password: password,
 });
 
 // ----------------
 // let, const, =>, ... (spread operator)
+//Passes
 
-var addArgs = function () {
-  var sum = 0;
-  for (var i = 0; i < arguments.length; i++) {
+const addArgs = () => {
+  let sum = 0;
+  for (let i = 0; i < arguments.length; i++) {
     sum += arguments[i];
   }
   return sum;
