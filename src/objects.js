@@ -24,7 +24,7 @@ const mapObject = (obj, cb) => {
   keyArray.forEach((k) => {
     result[k] = cb(obj[k]);
   });
-  return result; 
+  return result;
 };
 
 const pairs = (obj) => {
@@ -40,7 +40,7 @@ const invert = (obj) => {
   const keyArray = Object.keys(obj);
   const result = {};
 
-  keyArray.forEach((k) => result[obj[k]] = k);
+  keyArray.forEach(k => result[obj[k]] = k);
   return result;
 };
 
