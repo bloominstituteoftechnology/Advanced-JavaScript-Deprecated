@@ -27,20 +27,21 @@ const reduce = (elements, cb, memo = elements.shift()) => {
   // Combine all elements into a single value going from left to right.
   // Elements will be passed one by one into `cb`.
   // `memo` is the starting value.  If `memo` is undefined then make `elements[0]` the initial value.
+  let initialElement;
   if (memo) {
-    cb(memo);
-    let initialElement = memo;
+    initialElement = memo;
     for (let i = 0; i < elements.length; i++) {
       initialElement += elements[i];
       cb(initialElement);
     }
   } else {
-    let initialElement = elements[0];
+    initialElement = elements[0];
     for (let i = 1; i < elements.length; i++) {
       initialElement += elements[i];
       cb(initialElement);
     }
   }
+  return initialElement;
 };
 
 const find = (elements, cb) => {
