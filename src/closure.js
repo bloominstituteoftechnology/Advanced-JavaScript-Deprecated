@@ -17,7 +17,7 @@ const counterFactory = () => {
   return {
     increment: () => counterVar += 1,
     decrement: () => counterVar -= 1
-  }
+  };
 };
 
 const limitFunctionCallCount = (cb, n) => {
@@ -30,7 +30,7 @@ const limitFunctionCallCount = (cb, n) => {
     }
     counterVar += 1;
     return cb(...args);
-  }
+  };
 };
 
 const cacheFunction = (cb) => {
@@ -46,9 +46,9 @@ const cacheFunction = (cb) => {
     if (Object.prototype.hasOwnProperty.call(cache, input)) {
       return cache[input];
     }
-   cache[input] = cb(input);
-   return cache[input];
-  }
+    cache[input] = cb(input);
+    return cache[input];
+  };
 };
 
 /* eslint-enable no-unused-vars */
