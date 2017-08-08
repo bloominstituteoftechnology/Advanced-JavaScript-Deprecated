@@ -17,6 +17,8 @@
       "max-len": 0,
       "no-unused-vars": 0,
       "no-useless-constructor": 0,
-      "import/no-unresolved": 0
+      "import/no-unresolved": 0,
+      "space-in-parens": 0,
+      "space-infix-ops": 0
     }
 }

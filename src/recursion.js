@@ -30,8 +30,8 @@ const checkMatchingLeaves = (obj) => {
         value = object[key];
         return undefined;
       }
-      if (typeof object[key] === 'object') { 
-        return checkLeaves(object[key]); 
+      if (typeof object[key] === 'object') {
+        return checkLeaves(object[key]);
       }
       if (object[key] !== value) {
         allMatch = false;
@@ -39,7 +39,7 @@ const checkMatchingLeaves = (obj) => {
       }
       return undefined;
     });
-  }
+  };
   checkLeaves(obj);
   return allMatch;
 };
