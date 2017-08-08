@@ -8,17 +8,39 @@ const each = (elements, cb) => {
   // Iterates over a list of elements, yielding each in turn to the `cb` function.
   // This only needs to work with arrays.
   // based off http://underscorejs.org/#each
+  for (let i = 0; i < elements.length; i++) {
+    cb(elements[i], i);
+  }
 };
 
 const map = (elements, cb) => {
   // Produces a new array of values by mapping each value in list through a transformation function (iteratee).
   // Return the new array.
+  const arr = [];
+  for (let i = 0; i < elements.length; i++) {
+    arr.push(cb(elements[i]));
+  }
+  return arr;
 };
 
 const reduce = (elements, cb, memo = elements.shift()) => {
   // Combine all elements into a single value going from left to right.
   // Elements will be passed one by one into `cb`.
   // `memo` is the starting value.  If `memo` is undefined then make `elements[0]` the initial value.
+  if (memo) {
+    cb(memo);
+    let initialElement = memo;
+    for (let i = 0; i < elements.length; i++) {
+      initialElement += elements[i];
+      cb(initialElement);
+    }
+  } else {
+    let initialElement = elements[0];
+    for (let i = 1; i < elements.length; i++) {
+      initialElement += elements[i];
+      cb(initialElement);
+    }
+  }
 };
 
 const find = (elements, cb) => {
