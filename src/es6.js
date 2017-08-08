@@ -38,19 +38,18 @@ const me = new User({username, password});
 // ----------------
 // let, const, =>, ... (spread operator)
 
-var addArgs = function () {
-  var sum = 0;
-  for (var i = 0; i < arguments.length; i++) {
-    sum += arguments[i];
+const addArgs = (...args) => {
+  let sum = 0;
+  for (let i = 0; i < args.length; i++) {
+    sum += args[i];
   }
   return sum;
 };
 
-var argsToCb = function (cb) {
-  var args = Array.prototype.slice.call(arguments);
-  return cb.apply(null, args.splice(1));
+const argsToCb = (cb, ...args) => {
+  return cb(...args);
 };
 
-var result = argsToCb(addArgs, 1, 2, 3, 4, 5); //result should be 15
+const result = argsToCb(addArgs, 1, 2, 3, 4, 5); //result should be 15
 
 /* eslint-enable */
