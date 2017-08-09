@@ -9,7 +9,7 @@ class User {
     // set a username and password property on the user object that is created
   }
   checkPassword(str) {
-    if(str === this.password) {
+    if (str === this.password) {
       return true;
     }
     return false;
