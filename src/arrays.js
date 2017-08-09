@@ -27,35 +27,46 @@ const reduce = (elements, cb, memo = elements.shift()) => {
   // Combine all elements into a single value going from left to right.
   // Elements will be passed one by one into `cb`.
   // `memo` is the starting value.  If `memo` is undefined then make `elements[0]` the initial value.
-  let initialElement;
-  if (memo) {
-    initialElement = memo;
-    for (let i = 0; i < elements.length; i++) {
-      initialElement += elements[i];
-      cb(initialElement);
-    }
-  } else {
-    initialElement = elements[0];
-    for (let i = 1; i < elements.length; i++) {
-      initialElement += elements[i];
-      cb(initialElement);
-    }
+  let result = memo;
+  for (let i = 0; i < elements.length; i++) {
+    result = cb(result, elements[i]);
   }
-  return initialElement;
+  return result;
 };
 
 const find = (elements, cb) => {
+  for (let i = 0; i < elements.length; i++) {
+    if (cb(elements[i]) === true) {
+      return elements[i];
+    }
+  }
   // Look through each value in `elements` and pass each element to `cb`.
   // If `cb` returns `true` then return that element.
   // Return `undefined` if no elements pass the truth test.
 };
 
 const filter = (elements, cb) => {
+  const array = [];
+  for (let i = 0; i < elements.length; i++) {
+    if (cb(elements[i]) === true) {
+      array.push(elements[i]);
+    }
+  }
+  return array;
   // Similar to `find` but you will return an array of all elements that passed the truth test
   // Return an empty array if no elements pass the truth test
 };
 
 const flatten = (elements) => {
+  let array = [];
+  for (let i = 0; i < elements.length; i++) {
+    if (Array.isArray(elements[i])) {
+      array = array.concat(flatten(elements[i]));
+    } else {
+      array.push(elements[i]);
+    }
+  }
+  return array;
   // Flattens a nested array (the nesting can be to any depth).
   // Example: flatten([1, [2], [3, [[4]]]]); => [1, 2, 3, 4];
 };
