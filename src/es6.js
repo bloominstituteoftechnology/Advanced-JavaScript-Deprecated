@@ -33,12 +33,12 @@ const isThisMyFavorite = isMyFavoriteFood(food);
 //   };
 // }
 class User {
-  contstructor(options) {
+  constructor(options) {
     this.username = options.username;
     this.password = options.password;
   }
   sayHi() {
-    return this.username + ' says hello!';
+    return `${this.username} says hello!`;
   }
 }
 
