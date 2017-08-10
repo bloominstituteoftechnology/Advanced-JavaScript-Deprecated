@@ -40,8 +40,9 @@ const find = (elements, cb) => {
   // If `cb` returns `true` then return that element.
   // Return `undefined` if no elements pass the truth test.
   //
-  //  
-  // REVIEW PREVIOUS COMMIT VERSION USING BUILT EACH FUNCTION AND BRING UP DURING A Q & A 
+  //
+  // REVIEW PREVIOUS COMMIT VERSION USING BUILT EACH FUNCTION AND BRING UP DURING A Q & A
+  //
   //
   for (let i = 0; i < elements.length; i++) {
     if (cb(elements[i])) {
