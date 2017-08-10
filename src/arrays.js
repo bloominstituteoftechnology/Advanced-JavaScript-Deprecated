@@ -74,17 +74,41 @@ const flatten = (elements) => {
  *
  * the recursive call will return a number while base case returns an array
  */
-  // easiest case [1]
-  // next easiest case [1, [2]] etc.
+  // easiest case [1] =>  [1]
+  // next easiest case [1, [2,2,3]] etc. => [1,2]
+  //[1]
+  //[1,[2]]
+  // create empty output array // []
+  // if the current input with var name array is not an array 
+  //   assign output array to [input]
+  //   return output array
+  // iterate over inputted array(for each) // elements = [2,2,3], curr = 2 out2 = [2,2,3]
+  //   if current element is an array with multiple elements
+  //     for each element
+  //       concatenate to output array the return value of running flatten on the current element
+  //   concatenate to output array the return value of running flatten for the current input // output = [1]
+  // return output array
+  //
+  //new stack
+  //iterate over [2,2,3]
+  //
   //
   const newArr = []; // this is what the function will at the end return
-  
-  
-  let hasArray = false;:
+  if(!Array.isArray(elements)) { // elements = [1]
+    newArr = [elements];
+    return newArr;
+  }
   elements.forEach((el) => {
-    if (Array.isArray(el)) hasArray = true;
+    if(Array.isArray(el)){
+      el.forEach((subEl) => {
+        newArr = newArr.concat(flatten(subEl));
+      })
+    }
+    newArr = newArr.
+  })
 
-  if(hasArray)
+  elements.forEach((el) => {
+
 };
 
 /* eslint-enable no-unused-vars, max-len */
