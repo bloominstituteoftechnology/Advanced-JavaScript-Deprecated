@@ -9,10 +9,7 @@
 
 const food = 'pineapple';
 
-const isMyFavoriteFood = (food) => {
-  food = food || 'thousand-year-old egg'; //This sets a default value if `food` is falsey
-  return food === 'thousand-year-old egg';
-};
+const isMyFavoriteFood = (food = 'thousand-year-old egg') => (food === 'thousand-year-old egg'); //This sets a default value if `food` is falsey
 
 const isThisMyFavorite = isMyFavoriteFood(food);
 
@@ -20,13 +17,13 @@ const isThisMyFavorite = isMyFavoriteFood(food);
 //const, class, template literals, enhanced object literals (foo: foo, -> foo,)
 
 class User {
- constructor(username, password) {
- 	this.username = username;
-	this.password = password;
-	this.sayHi = () => {
-		return '${this.username} says hello!'
-	}
+ constructor(options) {
+ 	this.username = options.username;
+	this.password = options.password;
  }
+  sayHi() {
+		return `${this.username} says hello!`
+	}
 }
 
 const username = 'JavaScriptForever';
@@ -40,18 +37,9 @@ const me = new User({
 // ----------------
 // let, const, =>, ... (spread operator)
 
-const addArgs = () => {
-  let sum = 0;
-  for (let i = 0; i < arguments.length; i++) {
-    sum += arguments[i];
-  }
-  return sum;
-};
+const addArgs = (...args) => (args.reduce((memo, val) => (memo + val)));
 
-const argsToCb = (cb) => {
-  const args = Array.prototype.slice.call(arguments);
-  return cb.apply(...args.splice(1));
-};
+const argsToCb = (cb, ...args) => (cb(...args));
 
 const result = argsToCb(addArgs, 1, 2, 3, 4, 5); //result should be 15
 
