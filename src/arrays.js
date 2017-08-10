@@ -39,9 +39,15 @@ const find = (elements, cb) => {
   // Look through each value in `elements` and pass each element to `cb`.
   // If `cb` returns `true` then return that element.
   // Return `undefined` if no elements pass the truth test.
-  each(elements, (el) => {
-    if (cb(el) === true) return el;
-  });
+  //
+  //  
+  // REVIEW PREVIOUS COMMIT VERSION USING BUILT EACH FUNCTION AND BRING UP DURING A Q & A 
+  //
+  for (let i = 0; i < elements.length; i++) {
+    if (cb(elements[i])) {
+      return elements[i];
+    }
+  }
   return undefined;
 };
 
@@ -60,7 +66,7 @@ const flatten = (elements) => {
   // Example: flatten([1, [2], [3, [[4]]]]); => [1, 2, 3, 4];
 
 // we want to recursively flatten layers
-/* 
+/*
  * establish base case
  * if array has no arrays as elements return array (test for 'has or has not' involves iteration)
  * create master array
@@ -76,39 +82,29 @@ const flatten = (elements) => {
  */
   // easiest case [1] =>  [1]
   // next easiest case [1, [2,2,3]] etc. => [1,2]
-  //[1]
-  //[1,[2]]
+  // [1]
+  // [1,[2]]
   // create empty output array // []
-  // if the current input with var name array is not an array 
+  // if the current input with var name array is not an array
   //   assign output array to [input]
   //   return output array
   // iterate over inputted array(for each) // elements = [2,2,3], curr = 2 out2 = [2,2,3]
-  //   if current element is an array with multiple elements
-  //     for each element
-  //       concatenate to output array the return value of running flatten on the current element
   //   concatenate to output array the return value of running flatten for the current input // output = [1]
   // return output array
   //
-  //new stack
-  //iterate over [2,2,3]
+  // new stack
+  // iterate over [2,2,3]
   //
-  //
-  const newArr = []; // this is what the function will at the end return
-  if(!Array.isArray(elements)) { // elements = [1]
-    newArr = [elements];
+  // [1,[2]]
+  let newArr = []; // this is what the function will at the end return
+  if (!Array.isArray(elements)) { // elements = [1]  // els2 = [2]
+    newArr = [elements];  //
     return newArr;
   }
-  elements.forEach((el) => {
-    if(Array.isArray(el)){
-      el.forEach((subEl) => {
-        newArr = newArr.concat(flatten(subEl));
-      })
-    }
-    newArr = newArr.
-  })
-
-  elements.forEach((el) => {
-
+  elements.forEach((el) => { // newArr = [1], el = [2] // el = 2
+    newArr = newArr.concat(flatten(el));// newArr = [1].concat([2]) => [1,2]
+  });
+  return newArr;
 };
 
 /* eslint-enable no-unused-vars, max-len */
