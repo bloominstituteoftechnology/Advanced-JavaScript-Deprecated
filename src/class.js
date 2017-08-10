@@ -6,17 +6,14 @@
 // for a potential password that will be compared to the `password` property.
 // Return true if the potential password matches the `password` property.  Otherwise return false.
 class User {
-  constructor (options) {
+  constructor(options) {
     this.email = options.email;
     this.password = options.password;
   }
-  comparePasswords (password) {
+  comparePasswords(password) {
     return this.password === password;
   }
 }
-
-  eslint-disable no-undef  // Remove this comment once you write your classes.
-
 
 // Create a class called `Animal` and a class called `Cat`.
 // `Cat` should extend the `Animal` class.
@@ -28,7 +25,7 @@ class User {
 // property set on the Cat instance.
 
 class Animal {
-  constructor (options) {
+  constructor(options) {
     this.age = options.age;
   }
   growOlder() {
@@ -37,8 +34,8 @@ class Animal {
   }
 }
 class Cat extends Animal {
-  constructor (options) {
-    super (options);
+  constructor(options) {
+    super(options);
     this.name = options.name;
   }
   meow() {

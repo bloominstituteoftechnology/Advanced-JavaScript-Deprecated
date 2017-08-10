@@ -8,7 +8,7 @@ class User {
     this.password = options.password;
     // set a username and password property on the user object that is created
   }
-    checkPassword (string) {
+  checkPassword(string) {
     return this.password === string;
   }
   // create a method on the User class called `checkPassword`
@@ -31,8 +31,8 @@ const checkPassword = function comparePasswords(passwordToCompare) {
 // use .call, .apply, and .bind
 
 // .call
-  checkPassword.call(me, 'correcthorsebatterystaple');
+checkPassword.call(me, 'correcthorsebatterystaple');
 // .apply
-  checkPassword.apply(this, me, 'correcthorsebatterystaple');
+checkPassword.apply(this, me, 'correcthorsebatterystaple');
 // .bind
-  checkPassword.bind(me);
+checkPassword.bind(me);
