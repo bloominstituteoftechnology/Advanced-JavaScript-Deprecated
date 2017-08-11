@@ -1,37 +1,23 @@
 // Complete the following functions.
 
 const counter = () => {
-  let count = 0;
-  const newCounter = () => {
-    count++;
-    return count;
-  };
-  return newCounter;
   // Return a function that when invoked increments and returns a counter variable.
   // Example: const newCounter = counter();
   // newCounter(); // 1
   // newCounter(); // 2
+  let count = 0;
+  return () => ++count;
 };
 
 const counterFactory = () => {
-  let count = 0;
-  const newCounter = (value) => {
-    count += value;
-  };
-  return {
-    increment() {
-      newCounter(1);
-      return count;
-    },
-    decrement() {
-      newCounter(-1);
-      return count;
-    }
-  };
-
   // Return an object that has two methods called `increment` and `decrement`.
   // `increment` should increment a counter variable in closure scope and return it.
   // `decrement` should decrement the counter variable and return it.
+  let count = 0;
+  return {
+    increment() { return ++count; },
+    decrement() { return --count; }
+  };
 };
 
 const limitFunctionCallCount = (cb, n) => {
@@ -39,10 +25,7 @@ const limitFunctionCallCount = (cb, n) => {
   // The returned function should only allow `cb` to be invoked `n` times.
   let count = 0;
   return (...args) => {
-    if (count < n) {
-      count++;
-      return cb(...args);
-    }
+    if (count < n) { count++; return cb(...args); }
     return null;
   };
 };
@@ -56,14 +39,11 @@ const cacheFunction = (cb) => {
   // `cb` should only ever be invoked once for a given set of arguments.
   const cache = [];
   return (...args) => {
-    if (!cache.includes(...args)) {
-      cache.push(...args);
-      return cb(...args);
-    }
-    return cache;
+    if (cache.includes(...args)) return cache;
+    cache.push(...args);
+    return cb(...args);
   };
 };
-
 /* eslint-enable no-unused-vars */
 
 module.exports = {
