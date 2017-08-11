@@ -24,11 +24,11 @@ const checkPassword = function comparePasswords(passwordToCompare) {
   // recreate the `checkPassword` method that you made on the `User` class
   // use `this` to access the object's `password` property.
   // do not modify this function's parameters
-  // note that we use the `function` keyword and not `=>` 
+  // note that we use the `function` keyword and not `=>`
   if (this.password === passwordToCompare) {
-      return true;
-    }
-    return false;
+    return true;
+  }
+  return false;
 };
 me.checkPassword();
 // invoke `checkPassword` on `me` by explicitly setting the `this` context
@@ -40,4 +40,4 @@ checkPassword.call(me, 'correcthorsebatterystaple');
 // .apply
 checkPassword.apply(me, ['correcthorsebatterystaple']);
 // .bind
-checkPassword.bind(me, 'correcthorsebatterystaple');
+checkPassword.bind('correcthorsebatterystaple');

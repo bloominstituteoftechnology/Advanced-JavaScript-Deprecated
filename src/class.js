@@ -38,12 +38,9 @@ class Animal {
 }
 
 class Cat extends Animal {
-  constructor(options) {
-  	Super(growOlder()) {
-  		return this.age;
-  	});
+  constructor(options, name) {
+    super(options);
     this.name = options.name;
-    }
   }
 
   meow(name) {
