@@ -28,10 +28,11 @@ const mapObject = (obj, cb) => {
 const pairs = (obj) => {
   // Convert an object into a list of [key, value] pairs.
   // http://underscorejs.org/#pairs
-  const pair = [];
+  const purs = [];
   Object.keys(obj).forEach((key) => {
-    pair.push([key, obj[key]]);
+    purs.push([key, obj[key]]);
   });
+  return purs;
 };
 
 const invert = (obj) => {
@@ -49,10 +50,10 @@ const defaults = (obj, defaultProps) => {
   // Fill in undefined properties that match properties on the `defaultProps` parameter object.
   // Return `obj`.
   // http://underscorejs.org/#defaults
-  /* Object.keys(obj).forEach((key) in )
+  Object.keys(defaultProps).forEach((key) => {
     if (obj[key] === undefined) obj[key] = defaultProps[key];
-  }
-  return obj; */
+  });
+  return obj;
 };
 
 /* eslint-enable no-unused-vars */
