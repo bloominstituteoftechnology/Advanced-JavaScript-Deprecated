@@ -36,9 +36,7 @@ const reduce = (elements, cb, memo = elements.shift()) => {
 
 const find = (elements, cb) => {
   for (let i = 0; i < elements.length; i++) {
-    if (cb(elements[i]) === true) {
-      return elements[i];
-    }
+    if (cb(elements[i]) === true) return elements[i];
   }
   // Look through each value in `elements` and pass each element to `cb`.
   // If `cb` returns `true` then return that element.
@@ -48,9 +46,7 @@ const find = (elements, cb) => {
 const filter = (elements, cb) => {
   const array = [];
   for (let i = 0; i < elements.length; i++) {
-    if (cb(elements[i]) === true) {
-      array.push(elements[i]);
-    }
+    if (cb(elements[i]) === true) array.push(elements[i]);
   }
   return array;
   // Similar to `find` but you will return an array of all elements that passed the truth test
@@ -58,17 +54,14 @@ const filter = (elements, cb) => {
 };
 
 const flatten = (elements) => {
-  let array = [];
-  for (let i = 0; i < elements.length; i++) {
-    if (Array.isArray(elements[i])) {
-      array = array.concat(flatten(elements[i]));
-    } else {
-      array.push(elements[i]);
-    }
-  }
-  return array;
   // Flattens a nested array (the nesting can be to any depth).
   // Example: flatten([1, [2], [3, [[4]]]]); => [1, 2, 3, 4];
+  let array = [];
+  for (let i = 0; i < elements.length; i++) {
+    const roller = Array.isArray(elements[i]) ? flatten(elements[i]) : [elements[i]];
+    array = array.concat(roller);
+  }
+  return array;
 };
 
 /* eslint-enable no-unused-vars, max-len */
