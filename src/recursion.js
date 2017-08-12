@@ -17,14 +17,21 @@ const nFactorial = (n) => {
 const checkMatchingLeaves = (obj) => {
   // return true if every property on `obj` is the same
   // otherwise return false
-  /* Object.keys(obj).forEach((key) =>
-    if(key === ){
-      return
-    }
-    else {
-      return checkMatchingLeaves
-    }
-  }); */
+  let flag = true;
+  let check;
+  const checkLeaf = (testObject) => {
+    Object.keys(testObject).forEach((key) => {
+      if (typeof key !== 'object' && check === undefined) {
+        check = testObject[key];
+      } else if (typeof testObject[key] === 'object') {
+        checkLeaf(testObject[key]);
+      } else if (testObject[key] !== check) {
+        flag = false;
+      }
+    });
+  };
+  checkLeaf(obj);
+  return flag;
 };
 
 /* eslint-enable no-unused-vars */

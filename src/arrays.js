@@ -44,12 +44,12 @@ const find = (elements, cb) => {
   // REVIEW PREVIOUS COMMIT VERSION USING BUILT EACH FUNCTION AND BRING UP DURING A Q & A
   //
   //
-  each(elements, (el) => {
-    if (cb(el)) {
-      return el;
+  for (let i = 0; i < elements.length; i++) {
+    if (cb(elements[i])) {
+      return elements[i];
     }
-    return undefined;
-  });
+  }
+  return undefined;
 };
 
 const filter = (elements, cb) => {
