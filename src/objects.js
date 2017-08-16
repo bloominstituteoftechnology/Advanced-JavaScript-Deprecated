@@ -5,21 +5,11 @@ const keys = obj => Object.keys(obj);
   // Retrieve all the names of the object's properties.
   // Return the keys as strings in an array.
   // Based on http://underscorejs.org/#keys
-<<<<<<< HEAD
 
-
-=======
-  // Object.getOwnPropertyNames(obj);
-
->>>>>>> 0c8b8c99aa95cbe366257806775ed8597b1ad216
 const values = obj => Object.values(obj);
   // Return all of the values of the object's own properties.
   // Ignore functions
   // http://underscorejs.org/#values
-<<<<<<< HEAD
-
-=======
->>>>>>> 0c8b8c99aa95cbe366257806775ed8597b1ad216
 
 const mapObject = (obj, cb) => {
   Object.keys(obj).forEach(key => (obj[key]) = cb(obj[key]));

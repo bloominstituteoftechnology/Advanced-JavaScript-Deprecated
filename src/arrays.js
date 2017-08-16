@@ -83,15 +83,12 @@ const filter = (elements, cb) => {
 };
 
 const flatten = (elements) => {
-<<<<<<< HEAD
   // Flattens a nested array (the nesting can be to any depth).
   // Example: flatten([1, [2], [3, [[4]]]]); => [1, 2, 3, 4];
   // iterate through the array
   // determine if each element is an array or not
   // concat arrays down into elements
   // push all non-arrays into a new array
-=======
->>>>>>> 0c8b8c99aa95cbe366257806775ed8597b1ad216
   const newArr = [];
   for (let i = 0; i < elements.length; i++) {
     if (Array.isArray(elements[i])) {

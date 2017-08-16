@@ -26,11 +26,9 @@ class User {
   this.password = options.password;
   this.sayHi = function() {
     return `${this.username} says hello!`;
-=======
   constructor(options) {
     this.username = options.username;
     this.password = options.password;
->>>>>>> 0c8b8c99aa95cbe366257806775ed8597b1ad216
   };
 }
 }
