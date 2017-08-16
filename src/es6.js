@@ -20,18 +20,35 @@ const isThisMyFavorite = isMyFavoriteFood(food);
 //const, class, template literals, enhanced object literals (foo: foo, -> foo,)
 
 class User {
+<<<<<<< HEAD
   constructor (options) {
   this.username = options.username;
   this.password = options.password;
   this.sayHi = function() {
     return `${this.username} says hello!`;
+=======
+  constructor(options) {
+    this.username = options.username;
+    this.password = options.password;
+>>>>>>> 0c8b8c99aa95cbe366257806775ed8597b1ad216
   };
 }
 }
 const username = 'JavaScriptForever';
 const password = 'password';
 
+<<<<<<< HEAD
 const me = new User({ username, password });
+=======
+User.prototype.sayHi = function() {
+  return `${this.username} says hello!`;
+}
+
+const username = 'JavaScriptForever';
+const password = 'password';
+
+const me = new User({username, password});
+>>>>>>> 0c8b8c99aa95cbe366257806775ed8597b1ad216
 
 // ----------------
 // let, const, =>, ... (spread operator)
