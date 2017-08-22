@@ -3,16 +3,38 @@
 const nFibonacci = (n) => {
   // fibonacci sequence: 1 2 3 5 8 13 ...
   // return the nth number in the sequence
+  return n < 2 ? 1 : nFibonacci(n - 2) + nFibonacci(n - 1);
 };
 
 const nFactorial = (n) => {
   // factorial example: !5 = 5 * 4 * 3 * 2 * 1
   // return the factorial of `n`
+  return n < 1 ? 1 : n * nFactorial(n - 1);
 };
 
 const checkMatchingLeaves = (obj) => {
   // return true if every property on `obj` is the same
   // otherwise return false
+  let value;
+  let allMatch = true;
+
+  // Solution from Tai
+  const checkLeaves = (object) => {
+    Object.keys(object).forEach((key) => {
+      if (value === undefined && typeof object[key] !== 'object') { // will only ever run once
+        value = object[key];
+        return; // breaks out of forEach
+      }
+      if (typeof object[key] === 'object') return checkLeaves(object[key]);
+      if (object[key] !== value) {
+        allMatch = false;
+        return; // breaks out of forEach
+      }
+      return; // breaks out of forEach
+    });
+  };
+  checkLeaves(obj);
+  return allMatch;
 };
 
 /* eslint-enable no-unused-vars */
