@@ -5,6 +5,10 @@ const counter = () => {
   // Example: const newCounter = counter();
   // newCounter(); // 1
   // newCounter(); // 2
+  let sum = 0;
+  return () => {
+    return sum += 1;
+  };
 };
 
 const counterFactory = () => {
