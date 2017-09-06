@@ -10,6 +10,7 @@ const nFactorial = (n) => {
   // return the factorial of `n`
 };
 
+/* Extra Credit */
 const checkMatchingLeaves = (obj) => {
   // return true if every property on `obj` is the same
   // otherwise return false

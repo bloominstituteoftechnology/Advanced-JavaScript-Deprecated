@@ -32,6 +32,7 @@ const filter = (elements, cb) => {
   // Return an empty array if no elements pass the truth test
 };
 
+/* Extra Credit */
 const flatten = (elements) => {
   // Flattens a nested array (the nesting can be to any depth).
   // Example: flatten([1, [2], [3, [[4]]]]); => [1, 2, 3, 4];
