@@ -27,7 +27,26 @@ class User {
 // Cat should have the property `name` that is set in the constructor and the method
 // `meow` that should return the string `<name> meowed!` where `<name>` is the `name`
 // property set on the Cat instance.
+class Animal {
+  constructor(options) {
+    this.age = options;
+  }
 
+  growOlder() {
+    return this.age += 1;
+  }
+}
+
+class Cat extends Animal {
+  constructor(options) {
+    super(options.age);
+    this.name = options.name;
+  }
+
+  meow() {
+    return `${this.name} meowed!`;
+  }
+}
 
 module.exports = {
   User,
