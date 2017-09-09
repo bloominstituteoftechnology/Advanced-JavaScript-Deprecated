@@ -63,7 +63,7 @@ const flatten = (elements) => {
   // Example: flatten([1, [2], [3, [[4]]]]); => [1, 2, 3, 4];
   const falttenedArray = [];
   const cb = (element) => {
-    if (element instanceof Array) {
+    if (Array.isArray(element)) {
       each(element, cb);
     } else {
       falttenedArray.push(element);
