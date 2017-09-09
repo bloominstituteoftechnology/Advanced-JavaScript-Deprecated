@@ -126,6 +126,7 @@ const checkMatchingLeaves = (obj) => {
   // console.log('Leaf Values found: ' + r.length);
   // console.log(r);
   return checkValuesForEquality(r);
+
 };
 
 /* eslint-enable no-unused-vars */
