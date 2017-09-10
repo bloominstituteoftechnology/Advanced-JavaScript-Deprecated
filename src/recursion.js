@@ -29,10 +29,10 @@ const checkMatchingLeaves = (obj) => {
     }, []);
   };
 
-  const flatArr = flattenToArr(obj);
+  const flatValues = flattenToArr(obj);
 
-  for (let i = 0; i < flatArr.length; i++) {
-    if (flatArr[i] !== flatArr[0]) {
+  for (let i = 0; i < flatValues.length; i++) {
+    if (flatValues[i] !== flatValues[0]) {
       return false;
     }
   }
