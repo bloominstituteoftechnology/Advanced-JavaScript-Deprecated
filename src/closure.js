@@ -33,7 +33,6 @@ const limitFunctionCallCount = (cb, n) => {
   return (...nums) => {
     cbcount += 1;
     if (cbcount <= n) {
-      console.log(cbcount);
       return caller(...nums);
     }
     return null;
