@@ -19,6 +19,38 @@
 // `meow` that should return the string `<name> meowed!` where `<name>` is the `name`
 // property set on the Cat instance.
 
+class User {
+  constructor(options) {
+    this.email = options.email;
+    this.password = options.password;
+  }
+
+  comparePasswords(password) {
+    return (password === this.password);
+  }
+}
+
+class Animal {
+  constructor(options) {
+    this.age = options.age;
+  }
+
+  growOlder() {
+    this.age++;
+    return this.age;
+  }
+}
+
+class Cat extends Animal {
+  constructor(options) {
+    super(options);
+    this.name = options.name;
+  }
+
+  meow() {
+    return `${this.name} meowed!`;
+  }
+}
 
 module.exports = {
   User,
