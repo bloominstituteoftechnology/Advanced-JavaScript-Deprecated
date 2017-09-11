@@ -17,7 +17,7 @@ class User {
   }
 }
 
-/* eslint-disable no-undef */ // Remove this comment once you write your classes.
+/* eslint-disable no-undef */ // Remove this comment once you write your classes. 
 
 
 // Create a class called `Animal` and a class called `Cat`.

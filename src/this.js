@@ -4,7 +4,7 @@
 
 class User {
   constructor(options) {
-    // set a username and password property on the user object that is created
+    // set a username and password property on the user object that is created 
     this.username = options.username;
     this.password = options.password;
     this.checkPassword = (string) => {
