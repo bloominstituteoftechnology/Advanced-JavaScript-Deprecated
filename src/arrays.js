@@ -2,7 +2,7 @@
 // These functions only need to work with arrays.
 // Do NOT use the built in array methods to solve these. forEach, map, reduce, filter, includes, etc.
 // You CAN use concat, push, pop, etc. but do not use the exact method that you are replicating
-// You can use the functions that you have already written to help solve the other problems
+// You can use the functions that you have already written for the other problems
 
 const each = (elements, cb) => {
   // Iterates over a list of elements, yielding each in turn to the `cb` function.
@@ -30,13 +30,33 @@ const find = (elements, cb) => {
 const filter = (elements, cb) => {
   // Similar to `find` but you will return an array of all elements that passed the truth test
   // Return an empty array if no elements pass the truth test
+  // elements.filter = function (collection, test) {
+  // const filtered = [];
+  // elements.each(collection, function (item)) {
+  // if (test(item)) {
+  // filtered.push(item);
+  // }
+  // });
+  // return filtered;
+  // };
 };
 
 /* Extra Credit */
+// Flattens a nested array (the nesting can be to any depth).
+// Example: flatten([1, [2], [3, [[4]]]]); => [1, 2, 3, 4];
 const flatten = (elements) => {
-  // Flattens a nested array (the nesting can be to any depth).
-  // Example: flatten([1, [2], [3, [[4]]]]); => [1, 2, 3, 4];
+  let ret = [];
+  for (let i = 0; i < elements.length; i++) {
+    if (Array.isArray(elements[i])) {
+      ret = ret.concat(flatten(elements[i]));
+    } else {
+      ret.push(elements[i]);
+    }
+  }
+  return ret;
 };
+flatten([[[[[0]], [1]], [[[2], [3]]], [[4], [5]]]]);
+
 
 /* eslint-enable no-unused-vars, max-len */
 
