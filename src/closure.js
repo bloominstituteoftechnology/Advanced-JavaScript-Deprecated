@@ -5,6 +5,14 @@ const counter = () => {
   // Example: const newCounter = counter();
   // newCounter(); // 1
   // newCounter(); // 2
+  // create a point for the counter to start at
+  let num = 0;
+  // create a function which increase num by one
+  const addOne = () => {
+    return num += 1;
+  }
+  // return the addOne to show the new value of num
+  return addOne();
 };
 
 const counterFactory = () => {
