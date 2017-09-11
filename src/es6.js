@@ -10,7 +10,7 @@
 let food = 'pineapple';
 
 const isMyFavoriteFood = (food) => {
-  food = food || 'thousand-year-old egg'; //This sets a default value if `food` is falsey
+  food = food || 'thousand-year-old egg'; //This sets a default value if `food` is falsey 
   return food === 'thousand-year-old egg';
 };
 

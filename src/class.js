@@ -9,7 +9,7 @@ class User {
 // Add a method called `comparePasswords`.  `comparePasswords` should have a parameter
     this.comparePasswords = (potentialPassword) => {
 // for a potential password that will be compared to the `password` property.
-// Return true if the potential password matches the `password` property.  Otherwise return false.
+// Return true if the potential password matches the `password` property. Otherwise return false.
       if (potentialPassword === this.password) {
         return true;
       } return false;
