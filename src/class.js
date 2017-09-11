@@ -5,9 +5,15 @@
 // Add a method called `comparePasswords`.  `comparePasswords` should have a parameter
 // for a potential password that will be compared to the `password` property.
 // Return true if the potential password matches the `password` property.  Otherwise return false.
+class User {
+  constructor(options) {
+    [this.email, this.password] = [options.email, options.password];
+  }
 
-
-/* eslint-disable no-undef */ // Remove this comment once you write your classes.
+  comparePasswords(pass) {
+    return pass === this.password;
+  }
+}
 
 
 // Create a class called `Animal` and a class called `Cat`.
@@ -19,6 +25,27 @@
 // `meow` that should return the string `<name> meowed!` where `<name>` is the `name`
 // property set on the Cat instance.
 
+
+class Animal {
+  constructor(options) {
+    this.age = options.age;
+  }
+
+  growOlder() {
+    return this.age + 1;
+  }
+}
+
+class Cat extends Animal {
+  constructor(options) {
+    super(options);
+    this.name = options.name;
+  }
+
+  meow() {
+    return `${this.name} meowed!`;
+  }
+}
 
 module.exports = {
   User,
