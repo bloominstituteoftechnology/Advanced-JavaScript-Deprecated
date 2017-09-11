@@ -5,7 +5,16 @@
 // Add a method called `comparePasswords`.  `comparePasswords` should have a parameter
 // for a potential password that will be compared to the `password` property.
 // Return true if the potential password matches the `password` property.  Otherwise return false.
+class User {
+  constructor(options) {
+    this.email = options.email;
+    this.password = options.password;
+  }
 
+  comparePasswords(otherPassword) {
+    return this.password === otherPassword;
+  }
+}
 
 /* eslint-disable no-undef */ // Remove this comment once you write your classes.
 
@@ -18,7 +27,26 @@
 // Cat should have the property `name` that is set in the constructor and the method
 // `meow` that should return the string `<name> meowed!` where `<name>` is the `name`
 // property set on the Cat instance.
+class Animal {
+  constructor(options) {
+    this.age = options;
+  }
 
+  growOlder() {
+    return this.age += 1;
+  }
+}
+
+class Cat extends Animal {
+  constructor(options) {
+    super(options.age);
+    this.name = options.name;
+  }
+
+  meow() {
+    return `${this.name} meowed!`;
+  }
+}
 
 module.exports = {
   User,
