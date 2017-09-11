@@ -5,11 +5,18 @@ const counter = () => {
   // Example: const newCounter = counter();
   // newCounter(); // 1
   // newCounter(); // 2
+  let num = 0;
+  // create a function which increase num by one
+  const addOne = () => {
+    return num += 1;
+  }
+  // return the addOne to show the new value of num
+  return addOne();
 };
 
 const counterFactory = () => {
   // Return an object that has two methods called `increment` and `decrement`.
-  // `increment` should increment a counter variable in closure scope and return it.
+  // `increment` should increment a counter variable in closure scope and return it. 
   // `decrement` should decrement the counter variable and return it.
 };
 
