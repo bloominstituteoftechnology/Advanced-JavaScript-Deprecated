@@ -22,9 +22,17 @@ const nFactorial = (n) => {
 
 const checkMatchingLeaves = (obj) => {
   // return true if every property on obj is the same
-  // otherwise return false
+  // otherwise return
+  //
+  // Used an array to store an undefined value.
+  // If I used something like leaf = undefined and looped
+  // through checking if leaf was still undefined,
+  // it would return true in cases where some
+  // object's values were set to undefined
+  // and all others were set to 1 or whatever else
   const leaves = [];
   const getLeaves = (branch) => {
+    // if it finds more than two leaves, it skips over everything else
     if (leaves.length <= 1) {
       if (typeof branch === 'object') {
         arrayMethods.each(objectMethods.values(branch), twig => getLeaves(twig));
@@ -36,6 +44,7 @@ const checkMatchingLeaves = (obj) => {
 
   getLeaves(obj);
 
+  // empty object is truthy
   return leaves.length <= 1;
 };
 

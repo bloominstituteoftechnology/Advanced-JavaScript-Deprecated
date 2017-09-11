@@ -8,14 +8,20 @@ const keys = (obj) => {
   // Based on http://underscorejs.org/#keys
 
   // not sure how to do this without just using an Object method
-  return arrayMethods.reduce(Object.entries(obj), (array, [key, value]) => array.concat(key), []);
+  return arrayMethods.reduce(Object.entries(obj), (array, [key, value]) => {
+    array.push(key);
+    return array;
+  }, []);
 };
 
 const values = (obj) => {
   // Return all of the values of the object's own properties.
   // Ignore functions
   // http://underscorejs.org/#values
-  return arrayMethods.reduce(Object.entries(obj), (array, [key, value]) => array.concat(value), []);
+  return arrayMethods.reduce(Object.entries(obj), (array, [key, value]) => {
+    array.push(value);
+    return array;
+  }, []);
 };
 
 const mapObject = (obj, cb) => {

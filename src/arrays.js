@@ -17,7 +17,7 @@ const map = (elements, cb) => {
   // Produces a new array of values by mapping each value in list through a transformation function (iteratee).
   // Return the new array.
   const arr = [];
-  each(elements, (item) => { arr.push(cb(item)); });
+  each(elements, (item, index) => { arr.push(cb(item, index)); });
   return arr;
 };
 
@@ -28,7 +28,7 @@ const reduce = (elements, cb, memo = elements.shift()) => {
   if (typeof memo === 'undefined') {
     memo = elements[0];
   }
-  each(elements, (item) => { memo = cb(memo, item); });
+  each(elements, (item, index) => { memo = cb(memo, item, index); });
   return memo;
 };
 
