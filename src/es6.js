@@ -9,11 +9,11 @@
 
 const food = 'pineapple';
 
-var isMyFavoriteFood = (food = 'thousand-year-old egg') => {
+const isMyFavoriteFood = (food = 'thousand-year-old egg') => {
   return food === 'thousand-year-old egg';
 };
 
-var isThisMyFavorite = isMyFavoriteFood(food);
+const isThisMyFavorite = isMyFavoriteFood(food);
 
 
 //----------------
@@ -43,8 +43,8 @@ console.log(me);
 // let, const, =>, ... (spread operator)
 
 const addArgs = (...args) => {
-  var sum = 0;
-  for (var i = 0; i < args.length; i++) {
+  let sum = 0;
+  for (let i = 0; i < args.length; i++) {
     sum += args[i];
   }
   return sum;
@@ -56,6 +56,6 @@ const argsToCb = (cb, ...args) => {
   return cb.apply(null, args);
 };
 
-var result = argsToCb(addArgs, 1, 2, 3, 4, 5); //result should be 15
+const result = argsToCb(addArgs, 1, 2, 3, 4, 5); //result should be 15
 console.log(result);
 /* eslint-enable */
