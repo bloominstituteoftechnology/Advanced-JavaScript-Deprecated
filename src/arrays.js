@@ -8,11 +8,20 @@ const each = (elements, cb) => {
   // Iterates over a list of elements, yielding each in turn to the `cb` function.
   // This only needs to work with arrays.
   // based off http://underscorejs.org/#each
+  for (let i = 0; i < elements.length; i++) {
+    cb(elements[i], i);
+  }
 };
-
+// each([1, 2, 3]), (item, index) =>{
+  // console.log(`${item} @ ${index}`)
 const map = (elements, cb) => {
   // Produces a new array of values by mapping each value in list through a transformation function (iteratee).
   // Return the new array.
+  const newArray = [];
+  each(elements, (item, index) => {
+    newArray.push(cb(item, index));
+  });
+  return newArray;
 };
 
 const reduce = (elements, cb, memo = elements.shift()) => {
@@ -27,18 +36,14 @@ const find = (elements, cb) => {
   // Return `undefined` if no elements pass the truth test.
 };
 
-const filter = (elements, cb) => {
+const filter = (elements, test, cb) => {
   // Similar to `find` but you will return an array of all elements that passed the truth test
   // Return an empty array if no elements pass the truth test
-  // elements.filter = function (collection, test) {
-  // const filtered = [];
-  // elements.each(collection, function (item)) {
-  // if (test(item)) {
-  // filtered.push(item);
-  // }
-  // });
-  // return filtered;
-  // };
+    // define an empty array
+    // for each item in the collection array
+      // if the item passed in the function returns true
+        // push the item into the defined array
+    // return the defined array
 };
 
 /* Extra Credit */
