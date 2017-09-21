@@ -24,7 +24,7 @@ const values = (obj) => {
   // Ignore functions
   // http://underscorejs.org/#values
   const newObj = Object.keys(obj);
-  return Object.keys(obj);
+  return Object.keys(newObj);
 };
 
 const mapObject = (obj, cb) => {
@@ -40,16 +40,12 @@ const mapObject = (obj, cb) => {
 const pairs = (obj) => {
   // Convert an object into a list of [key, value] pairs.
   // http://underscorejs.org/#pairs
-  const newObj = Object.pairs(obj);
-  return newObj;
 };
 
 const invert = (obj) => {
   // Returns a copy of the object where the keys have become the values and the values the keys.
   // Assume that all of the object's values will be unique and string serializable.
   // http://underscorejs.org/#invert
-  const newObj = Object.invert(obj);
-  return Object.invert(obj);
 };
 
 const defaults = (obj, defaultProps) => {

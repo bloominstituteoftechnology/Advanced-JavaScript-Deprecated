@@ -28,7 +28,19 @@ const reduce = (elements, cb, memo = elements.shift()) => {
   // Combine all elements into a single value going from left to right.
   // Elements will be passed one by one into `cb`.
   // `memo` is the starting value.  If `memo` is undefined then make `elements[0]` the initial value.
+  let considerFirst = true;
+  if (arguments.length < 3) {
+    memo = elements[0];
+    considerFirst = false;
+  }
+  each(elements, (element, index) => {
+    if (index > 0 || considerFirst) {
+      memo = cb(memo, element, index, elements);
+    }
+  });
+  return memo;
 };
+
 
 const find = (elements, cb) => {
   // Look through each value in `elements` and pass each element to `cb`.
@@ -44,6 +56,13 @@ const filter = (elements, test, cb) => {
       // if the item passed in the function returns true
         // push the item into the defined array
     // return the defined array
+  const filtered = [];
+  each(elements, (item) => {
+    if (test(item)) {
+      filtered.push(item);
+    }
+  });
+  return filtered;
 };
 
 /* Extra Credit */
