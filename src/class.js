@@ -15,10 +15,23 @@
 // Animal and Cat should both have a parameter called `options` in their constructors.
 // Animal should have the property `age` that's set in the constructor and the method
 // `growOlder` that returns the age.
+
 // Cat should have the property `name` that is set in the constructor and the method
 // `meow` that should return the string `<name> meowed!` where `<name>` is the `name`
 // property set on the Cat instance.
 
+/* class Animal {
+  constructor(options) {
+    this.name = options.name;
+    this.age = options.age;
+    this.say = (`${name}' meowed!`);
+  }
+  growOlder() {
+    return this.age;
+  }
+}
+const Cat = new Animal();
+this.name = options.name; */
 
 module.exports = {
   User,
