@@ -22,34 +22,28 @@ const counterFactory = () => {
   };
 };
 
+// const limitFunctionCallCount = (cb, n) => {
+  // Should return a function that invokes `cb`.
+  // The returned function should only allow `cb` to be invoked `n` times.
+  // let count = 0;
+  // return function () {
+    // count += 1;
+    // if (count <= n) return cb();
+  // };
+// };
 const limitFunctionCallCount = (cb, n) => {
   // Should return a function that invokes `cb`.
   // The returned function should only allow `cb` to be invoked `n` times.
-  /* let i = 0;
-  function call() {
-    if (i > 10) {
-      return;
-    }
-    i++;
-    console.log('call me');
-
-    call();
-  }
-  call();
+  let count = 0;
+  return function () {
+    count += 1;
+    if (count <= n) return cb();
+    return null;
+  };
 };
 
 const limited = limitFunctionCallCount(() => console.log('go!'), 8);
-console.log(limited());
-console.log(limited());
-console.log(limited());
-console.log(limited());
-console.log(limited());
-console.log(limited());
-console.log(limited());
-console.log(limited());
-console.log(limited());
-*/
-};
+
 
 /* Extra Credit */
 const cacheFunction = (cb) => {

@@ -46,6 +46,7 @@ const find = (elements, cb) => {
   // Look through each value in `elements` and pass each element to `cb`.
   // If `cb` returns `true` then return that element.
   // Return `undefined` if no elements pass the truth test.
+  return elements.filter(cb)[0];
 };
 
 const filter = (elements, test, cb) => {
