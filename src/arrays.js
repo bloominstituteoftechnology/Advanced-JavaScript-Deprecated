@@ -35,7 +35,7 @@ const reduce = (elements, cb, memo = elements.shift()) => {
   }
   each(elements, (element, index) => {
     if (index > 0 || considerFirst) {
-      memo = cb(memo, element, index, elements);
+      memo = cb(memo, element, index);
     }
   });
   return memo;
@@ -59,7 +59,7 @@ const filter = (elements, test, cb) => {
     // return the defined array
   const filtered = [];
   each(elements, (item) => {
-    if (test(item)) {
+    if (test(item) === true) {
       filtered.push(item);
     }
   });
