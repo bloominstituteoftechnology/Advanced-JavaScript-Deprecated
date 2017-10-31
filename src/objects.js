@@ -28,7 +28,8 @@ const values = (obj) => {
 };
 
 const mapObject = (obj, cb) => {
-  // Like map for arrays, but for objects. Transform the value of each property in turn.
+  // Like map for arrays, but for objects. Transform the value of
+  // each property in turn.
   // http://underscorejs.org/#mapObject
   const arrayOfKeys = Object.keys(obj);
   each(arrayOfKeys, (key) => {
@@ -39,25 +40,39 @@ const mapObject = (obj, cb) => {
 
 const pairs = (obj) => {
   // Convert an object into a list of [key, value] pairs.
+  return Object.entries(obj);
   // http://underscorejs.org/#pairs
-  const result = Object.keys(pairs).map(key => ({ key, value: pairs[key] }));
-  return Object.keys(result);
 };
 
 const invert = (obj) => {
   // Returns a copy of the object where the keys have become the values and the values the keys.
   // Assume that all of the object's values will be unique and string serializable.
-  // http://underscorejs.org/#inver
-  return obj;
+  // http://underscorejs.org/#invert
+  // return obj;
+  const result = {};
+  const newKeys = Object.keys(obj);
+  for (let i = 0, length = newKeys.length; i < length; i++) {
+    if (result[obj[newKeys[i]]] instanceof Array) {
+      result[obj[newKeys[i]]].push(newKeys[i]);
+    } else if (result[obj[newKeys[i]]]) {
+      const temp = result[obj[newKeys[i]]];
+      result[obj[newKeys[i]]] = [temp, newKeys[i]];
+    } else {
+      result[obj[newKeys[i]]] = newKeys[i];
+    }
+  }
+  return result;
 };
 
 const defaults = (obj, defaultProps) => {
-  // Fill in undefined properties that match properties on the `defaultProps` parameter object.
-  // Return `obj`.
-  // http://underscorejs.org/#defaults
+// Fill in undefined properties that match properties on the
+// `defaultProps` parameter object.
+// http://underscorejs.org/#defaults
+  Object.keys(defaultProps).forEach((key) => {
+    obj[key] = obj[key] || defaultProps[key];
+  });
   return obj;
 };
-
 /* eslint-enable no-unused-vars */
 
 module.exports = {
