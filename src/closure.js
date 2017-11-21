@@ -29,12 +29,16 @@ const limitFunctionCallCount = (cb, n) => {
   return () => {
     count += 1;
     if (count <= n) return cb();
-    return null;
+    else if
+      (count >= n) return null;
   };
 };
 
-// const limited = limitFunctionCallCount(() => ('go!'), 8);
+// const bar = (x, y, z) => (x + y + z);
+const limitedFunction = limitFunctionCallCount(() => console.log(5), 30);
 
+// console.log(limitedFunction());
+// limitedFunction(5, 10, 15);
 
 /* Extra Credit */
 const cacheFunction = (cb) => {

@@ -20,7 +20,7 @@ class User {
   }
 
 }
-/*eslint-disable no-undef */
+/* eslint-disable no-undef */
 
 
 // Create a class called `Animal` and a class called `Cat`.
@@ -39,22 +39,28 @@ class Animal {
     this.age = options.age;
   }
   growOlder() {
-    return this.age;
+    return this.age += 1;
   }
 }
 class Cat extends Animal {
   constructor(options) {
-    super(name);
+    super(options);
     this.name = options.name;
-    this.age = options.age;
-  }
-  growOlder() {
-    return this.age;
   }
   meow() {
-    return `${this.name} meowed!`;
+    console.log(`${this.name} meowed!`);
   }
 }
+
+const animal = new Animal({ age: 1 });
+
+const cat = new Cat({
+  age: 1,
+  name: 'El Gato'
+});
+console.log(cat.growOlder());
+cat.meow();
+console.log(cat.growOlder());
 
 module.exports = {
   User,
