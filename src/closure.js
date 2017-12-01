@@ -26,19 +26,12 @@ const limitFunctionCallCount = (cb, n) => {
   // Should return a function that invokes `cb`.
   // The returned function should only allow `cb` to be invoked `n` times.
   let count = 0;
-  return () => {
+  return (...args) => {
+    if (count === n) return null;
     count += 1;
-    if (count <= n) return cb();
-    else if
-      (count >= n) return null;
+    return cb(...args);
   };
 };
-
-// const bar = (x, y, z) => (x + y + z);
-const limitedFunction = limitFunctionCallCount(() => console.log(5), 30);
-
-// console.log(limitedFunction());
-// limitedFunction(5, 10, 15);
 
 /* Extra Credit */
 const cacheFunction = (cb) => {
