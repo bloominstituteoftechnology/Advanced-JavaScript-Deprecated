@@ -14,7 +14,7 @@
 // `Cat` should extend the `Animal` class.
 // Animal and Cat should both have a parameter called `options` in their constructors.
 // Animal should have the property `age` that's set in the constructor and the method
-// `growOlder` that returns the age.
+// `growOlder` that returns the age incremented by one.
 // Cat should have the property `name` that is set in the constructor and the method
 // `meow` that should return the string `<name> meowed!` where `<name>` is the `name`
 // property set on the Cat instance.
