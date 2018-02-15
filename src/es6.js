@@ -7,50 +7,62 @@
 //----------------
 // const, =>, default parameters, arrow functions default return statements using ()
 
-var food = 'pineapple';
+const food = 'pineapple';
 
-var isMyFavoriteFood = function(food) {
+const isMyFavoriteFood = (food) => {
   food = food || 'thousand-year-old egg'; //This sets a default value if `food` is falsey
   return food === 'thousand-year-old egg';
 };
 
-var isThisMyFavorite = isMyFavoriteFood(food);
+const isThisMyFavorite = isMyFavoriteFood(food);
 
 //----------------
 //const, class, template literals, enhanced object literals (foo: foo, -> foo,)
 
-var User = function(options) {
+class User {
+<<<<<<< HEAD
+  constructor (options) {
   this.username = options.username;
   this.password = options.password;
   this.sayHi = function() {
-    return this.username + ' says hello!';
+    return `${this.username} says hello!`;
+  constructor(options) {
+    this.username = options.username;
+    this.password = options.password;
   };
 }
+}
+const username = 'JavaScriptForever';
+const password = 'password';
 
-var username = 'JavaScriptForever';
-var password = 'password';
+<<<<<<< HEAD
+const me = new User({ username, password });
+=======
+User.prototype.sayHi = function() {
+  return `${this.username} says hello!`;
+}
 
-var me = new User({
-  username: username,
-  password: password,
-});
+const username = 'JavaScriptForever';
+const password = 'password';
+
+const me = new User({username, password});
+>>>>>>> 0c8b8c99aa95cbe366257806775ed8597b1ad216
 
 // ----------------
 // let, const, =>, ... (spread operator)
 
-var addArgs = function () {
-  var sum = 0;
-  for (var i = 0; i < arguments.length; i++) {
-    sum += arguments[i];
+const addArgs = (...args) => {
+  let sum = 0;
+  for (let i = 0; i < args.length; i++) {
+    sum += args[i];
   }
   return sum;
 };
 
-var argsToCb = function (cb) {
-  var args = Array.prototype.slice.call(arguments);
-  return cb.apply(null, args.splice(1));
+const argsToCb = (cb, ...args) => {
+  return cb(...args);
 };
 
-var result = argsToCb(addArgs, 1, 2, 3, 4, 5); //result should be 15
+const result = argsToCb(addArgs, 1, 2, 3, 4, 5); //result should be 15
 
 /* eslint-enable */
