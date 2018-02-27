@@ -42,9 +42,19 @@ const cacheFunction = (cb) => {
   // then it should return the cached result and not invoke `cb` again.
   // `cb` should only ever be invoked once for a given set of arguments.
   const cache = {};
+  /* return (args) => {
+    const cacheKey = args.toString();
+    if (!(cacheKey in cache)) {
+      cache[cacheKey] = cb(args);
+    }
+    return cache[cacheKey];
+  };
+}; */
   return (input) => {
     // if input is already cached, don't do it
     if (Object.prototype.hasOwnProperty.call(cache, input)) return cache[input];
+    // const something = Object.prototype.hasOwnProperty.call( , );
+    // if (something) return cache[input];
     cache[input] = cb(input);
     return cache[input];
   };
